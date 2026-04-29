@@ -82,12 +82,10 @@ export function SiteFooter() {
               modern stacks.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 text-eyebrow text-muted-foreground">
-              <span>Made between</span>
-              <span className="font-mono text-foreground">Oslo</span>
-              <span>·</span>
-              <span className="font-mono text-foreground">Lisbon</span>
-              <span>·</span>
-              <span className="font-mono text-foreground">Bristol</span>
+              <span>Made in</span>
+              <span className="font-mono text-foreground">West Germany</span>
+              <span>by</span>
+              <span className="font-mono text-foreground">Castropians</span>
             </div>
           </div>
 

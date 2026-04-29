@@ -31,12 +31,12 @@ const toc: TocItem[] = [
 ]
 
 const FACTS = [
-  { label: "Founded", value: "2024, Oslo" },
+  { label: "Founded", value: "2024, Castrop-Rauxel" },
   { label: "Studio size", value: "4 makers" },
-  { label: "Locations", value: "Oslo · Lisbon · Bristol" },
+  { label: "Locations", value: "Castrop-Rauxel, West Germany" },
   { label: "License", value: "AGPL-3.0-or-later" },
   { label: "Funding", value: "Patrons & grants" },
-  { label: "Languages", value: "EN · NB · PT · ES" },
+  { label: "Languages", value: "EN · DE" },
 ]
 
 const PALETTE = [
@@ -82,7 +82,7 @@ export default function PressPage() {
           <p>
             Wyrhta Labs takes its name from the Old English{" "}
             <em className="text-foreground">wyrhta</em> — a maker, a wright.
-            Founded in Oslo in 2024, the studio designs and ships
+            Founded in Castrop-Rauxel in 2024, the studio designs and ships
             open-source tools for households: software for the kitchen
             wall, the family calendar, and the slow correspondence between
             people who care for one another.
@@ -261,7 +261,7 @@ export default function PressPage() {
           />
           <BoilerCard
             length="Long · 1 paragraph"
-            text="Wyrhta Labs is an independent open-source studio of four people, working between Oslo, Lisbon, and Bristol. Founded in 2024, the studio builds tools for households rather than enterprises: Heorth, a homestead and family management system, and KithLedger, an API-first database for nurturing personal relationships. Everything ships under AGPL-3.0-or-later, with a public roadmap, a monthly journal, and a small community of patrons and contributors."
+            text="Wyrhta Labs is an independent open-source studio of four Castropians, working from Castrop-Rauxel in West Germany. Founded in 2024, the studio builds tools for households rather than enterprises: Heorth, a homestead and family management system, and KithLedger, an API-first database for nurturing personal relationships. Everything ships under AGPL-3.0-or-later, with a public roadmap, a monthly journal, and a small community of patrons and contributors."
           />
         </Section>
 

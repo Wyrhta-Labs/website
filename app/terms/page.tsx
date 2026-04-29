@@ -152,10 +152,11 @@ export default function TermsPage() {
 
         <Section id="law" n="09" title="Governing law">
           <p>
-            These terms are governed by the laws of Norway. Disputes that
-            cannot be resolved through correspondence will be heard in the
-            courts of Oslo, without prejudice to your mandatory rights as
-            a consumer in your country of residence.
+            These terms are governed by the laws of the Federal Republic
+            of Germany. Disputes that cannot be resolved through
+            correspondence will be heard in the courts of Castrop-Rauxel,
+            without prejudice to your mandatory rights as a consumer in
+            your country of residence.
           </p>
         </Section>
 
