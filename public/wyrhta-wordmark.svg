@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="640" height="128" fill="none">
+  <g transform="translate(8 16)" stroke="#322a23" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 8 L9 24 L13 14 L16 22 L19 14 L23 24 L27 8" />
+    <path d="M16 6.5 C 16 5 14.6 4.2 14.6 3 C 14.6 2 15.2 1.4 16 1.4 C 16.8 1.4 17.4 2 17.4 3 C 17.4 4.2 16 5 16 6.5 Z" fill="#322a23" stroke="none" opacity="0.9" />
+  </g>
+  <text x="56" y="42" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="30" font-weight="500" fill="#322a23" letter-spacing="-0.5">Wyrhta</text>
+  <text x="173" y="42" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="30" font-weight="300" fill="#7c6f5f" letter-spacing="-0.2">Labs</text>
+</svg>

@@ -1,15 +1,16 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
 import { WyrhtaMark } from "./wyrhta-mark"
 
 const NAV = [
-  { label: "Projects", href: "#projects" },
-  { label: "Philosophy", href: "#philosophy" },
-  { label: "Community", href: "#community" },
-  { label: "Journal", href: "#journal" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Philosophy", href: "/#philosophy" },
+  { label: "Journal", href: "/#journal" },
+  { label: "Community", href: "/#community" },
 ]
 
 export function SiteHeader() {
@@ -34,8 +35,8 @@ export function SiteHeader() {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a
-            href="#"
+          <Link
+            href="/"
             aria-label="Wyrhta Labs — home"
             className="flex items-center gap-2.5 group"
           >
@@ -43,17 +44,17 @@ export function SiteHeader() {
             <span className="font-serif text-lg md:text-xl tracking-tight text-foreground">
               Wyrhta <span className="text-muted-foreground font-light">Labs</span>
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-8">
             {NAV.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="text-eyebrow text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -66,12 +67,12 @@ export function SiteHeader() {
             >
               GitHub ↗
             </a>
-            <a
-              href="#projects"
+            <Link
+              href="/#projects"
               className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-sm font-medium hover:bg-primary transition-colors"
             >
               See projects
-            </a>
+            </Link>
           </div>
 
           <button
@@ -89,14 +90,14 @@ export function SiteHeader() {
           <div className="md:hidden pb-6 pt-2 border-t border-border">
             <nav className="flex flex-col gap-4 py-4">
               {NAV.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className="text-base text-foreground"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <a
                 href="https://github.com/wyrhta-labs"
