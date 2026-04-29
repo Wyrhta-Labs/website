@@ -4,6 +4,7 @@ import { ProjectsOverview } from "@/components/projects-overview"
 import { HeorthFeature } from "@/components/heorth-feature"
 import { KithLedgerFeature } from "@/components/kithledger-feature"
 import { PhilosophySection } from "@/components/philosophy-section"
+import { JournalSection } from "@/components/journal-section"
 import { CommunitySection } from "@/components/community-section"
 import { SiteFooter } from "@/components/site-footer"
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <HeorthFeature />
       <KithLedgerFeature />
       <PhilosophySection />
+      <JournalSection />
       <CommunitySection />
       <SiteFooter />
     </main>
