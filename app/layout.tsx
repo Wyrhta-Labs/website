@@ -1,49 +1,45 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Fraunces } from "next/font/google"
+import { GeistMono } from "geist/font/mono"
 import "./globals.css"
 
-const inter = Inter({
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-fraunces",
+  axes: ["opsz", "SOFT"],
 })
 
 export const metadata: Metadata = {
-  title: "Katachi — Design furniture for spaces that breathe.",
-  description: "Architected in Belgium, built to last—timeless pieces.",
+  title: "Wyrhta Labs — Open-source tools for the home",
+  description:
+    "A small open-source team building patient software for family and home life. Makers of Heorth and KithLedger.",
   generator: "v0.app",
   alternates: {
-    canonical: "https://katachi.example/",
+    canonical: "https://wyrhta.example/",
   },
   openGraph: {
-    siteName: "Katachi",
-    title: "Design furniture for spaces that breathe. | Katachi",
-    description: "Architected in Belgium, built to last—timeless pieces.",
+    siteName: "Wyrhta Labs",
+    title: "Wyrhta Labs — Open-source tools for the home",
+    description:
+      "A small open-source team building patient software for family and home life. Makers of Heorth and KithLedger.",
     type: "website",
-    url: "https://katachi.example/",
-    images: [
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/opengraph-katachi.jpg-7vz2r3hxZA6woukGOmH115Fg7Piyjs.jpeg",
-        alt: "Katachi design furniture — timeless pieces, architected in Belgium",
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "en_BE",
+    url: "https://wyrhta.example/",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Design furniture for spaces that breathe. | Katachi",
-    description: "Architected in Belgium, built to last—timeless pieces.",
-    images: [
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/opengraph-katachi.jpg-7vz2r3hxZA6woukGOmH115Fg7Piyjs.jpeg",
-        alt: "Katachi design furniture — timeless pieces, architected in Belgium",
-      },
-    ],
-    site: "@katachi",
+    title: "Wyrhta Labs — Open-source tools for the home",
+    description:
+      "A small open-source team building patient software for family and home life. Makers of Heorth and KithLedger.",
   },
+}
+
+export const viewport = {
+  themeColor: "#f4eee2",
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -52,8 +48,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="font-sans bg-neutral-50 text-neutral-900 overflow-x-hidden">{children}</body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${GeistMono.variable} antialiased bg-background`}
+    >
+      <body className="font-sans bg-background text-foreground overflow-x-hidden">{children}</body>
     </html>
   )
 }

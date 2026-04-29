@@ -1,120 +1,131 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
-import Image from "next/image"
-import { PackageCheck, Rocket, ShieldCheck } from "lucide-react" // Added PackageCheck, Rocket, and ShieldCheck icon imports
 import { Reveal } from "./reveal"
-import { BlurPanel } from "./blur-panel"
+import { ArrowRight, GitBranch } from "lucide-react"
 
 export function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  })
-
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.05, 0.95]) // Reduced hero image shrink from 15% to 5%
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 100])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
-  const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
-    return (
-      <span>
-        {text.split("").map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: delay + index * 0.03,
-              ease: [0.21, 0.47, 0.32, 0.98],
-            }}
-            style={{ display: char === " " ? "inline" : "inline-block" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </span>
-    )
-  }
-
   return (
-    <section ref={containerRef} className="relative h-screen overflow-hidden">
-      {/* Background Image with Cinematic Effects */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ scale: imageScale, y: imageY }}
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-      >
-        <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/u3195299943_une_vue_sur_lespace_toil_--ar_11_--sref_httpss.mj_f1cd1575-c301-46fa-8b30-665ae1ab22a0_3_bloom_subtle_6x.png-EslKdscYhdWOUeP4RBajclEejxh8iO.jpeg"
-          alt="KATACHI Studio - Elegant interior with sage green walls and terracotta furniture overlooking surreal landscape"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-      </motion.div>
+    <section className="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden">
+      {/* subtle grain wash */}
+      <div className="absolute inset-0 grain pointer-events-none" aria-hidden="true" />
 
-      {/* Content */}
-      <motion.div
-        className="relative z-10 h-full flex items-center justify-center"
-        style={{ y: contentY, opacity: contentOpacity }}
-      >
-        <div className="container-custom text-center text-white">
+      <div className="container-custom relative">
+        {/* Top meta strip */}
+        <div className="flex items-center justify-between mb-12 md:mb-16">
           <Reveal>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight mb-6">
-              <AnimatedText text="Design furniture for" delay={0.5} />
-              <br />
-              <span className="italic font-light">
-                <AnimatedText text="spaces that breathe." delay={1.1} />
-              </span>
-            </h1>
+            <div className="flex items-center gap-3 text-eyebrow text-muted-foreground">
+              <span className="inline-block size-1.5 rounded-full bg-primary animate-pulse" />
+              Established 2024 · Open source
+            </div>
           </Reveal>
-
-          <Reveal delay={0.2}>
-            <motion.p
-              className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-            >
-              Designed in Belgium, crafted to endure — timeless pieces for modern living.
-            </motion.p>
+          <Reveal delay={0.1}>
+            <div className="hidden sm:block text-eyebrow text-muted-foreground">
+              v0.4 · Public alpha
+            </div>
           </Reveal>
         </div>
-      </motion.div>
 
-      {/* Info Strip */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 z-20 flex justify-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-      >
-        <BlurPanel className="mx-6 mb-6 px-6 py-4 bg-black/24 backdrop-blur-md border-white/20">
-          <div className="flex items-center justify-center gap-6 text-white/90">
-            <div className="flex items-center gap-2">
-              <PackageCheck className="w-4 h-4 text-green-400" />
-              <span className="text-sm">Free shipping</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Rocket className="w-4 h-4 text-amber-400" />
-              <span className="text-sm">Delivered in 6 weeks</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-blue-400" />
-              <span className="text-sm">Lifetime guarantee</span>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
+          <div className="lg:col-span-8">
+            <Reveal>
+              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight text-balance">
+                Patient software{" "}
+                <span className="italic font-light text-muted-foreground">for the</span>{" "}
+                <span className="text-primary">hearth</span>{" "}
+                <span className="italic font-light text-muted-foreground">and</span>{" "}
+                <span className="">kin.</span>
+              </h1>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <p className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">
+                Wyrhta Labs is a small open-source team making tools for family
+                and home life — built slowly, in the open, with the patience of
+                woodwork.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.25}>
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-3 text-sm font-medium hover:bg-primary transition-colors"
+                >
+                  Explore our projects
+                  <ArrowRight size={16} />
+                </a>
+                <a
+                  href="https://github.com/wyrhta-labs"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:border-foreground transition-colors"
+                >
+                  <GitBranch size={16} />
+                  Read the source
+                </a>
+              </div>
+            </Reveal>
           </div>
-        </BlurPanel>
-      </motion.div>
+
+          {/* Etymology card */}
+          <div className="lg:col-span-4">
+            <Reveal delay={0.2}>
+              <figure className="rounded-md border border-border bg-card p-6 md:p-7">
+                <figcaption className="text-eyebrow text-muted-foreground mb-4">
+                  Etymology
+                </figcaption>
+                <div className="space-y-4">
+                  <div>
+                    <div className="font-serif text-2xl">
+                      wyrhta{" "}
+                      <span className="font-mono text-sm text-muted-foreground align-middle">
+                        /ˈwʏr.x.ta/
+                      </span>
+                    </div>
+                    <div className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                      <span className="text-eyebrow text-foreground/70">n. Old English</span>{" "}
+                      one who works or makes — a <em>wright</em>. Survives in
+                      English as <em>shipwright</em>, <em>playwright</em>,
+                      <em> wheelwright</em>.
+                    </div>
+                  </div>
+                  <div className="rule-warm" />
+                  <div>
+                    <div className="font-serif text-2xl">
+                      heorth{" "}
+                      <span className="font-mono text-sm text-muted-foreground align-middle">
+                        /ˈhe.orθ/
+                      </span>
+                    </div>
+                    <div className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                      <span className="text-eyebrow text-foreground/70">n. Old English</span>{" "}
+                      hearth — the warm centre of a home, the place where the
+                      family gathers.
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Inline marquee of values */}
+        <Reveal delay={0.35}>
+          <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-border py-6">
+            {[
+              ["02", "Active projects"],
+              ["100%", "Source available"],
+              ["AGPL-3.0", "Default license"],
+              ["self-host", "First-class"],
+            ].map(([k, v]) => (
+              <div key={v} className="flex flex-col gap-1">
+                <span className="font-serif text-2xl md:text-3xl tracking-tight">{k}</span>
+                <span className="text-eyebrow text-muted-foreground">{v}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
     </section>
   )
 }
