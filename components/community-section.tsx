@@ -23,7 +23,7 @@ const CHANNELS = [
     label: "Journal",
     handle: "wyrhta.dev/journal",
     note: "A monthly note on what we're building, in plain prose.",
-    href: "#journal",
+    href: "/journal",
   },
 ]
 

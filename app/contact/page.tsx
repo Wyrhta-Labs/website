@@ -70,7 +70,7 @@ const SOCIALS = [
   { label: "GitHub", handle: "@wyrhta-labs", href: "https://github.com/wyrhta-labs" },
   { label: "Mastodon", handle: "@wyrhta@social.coop", href: "https://social.coop/@wyrhta" },
   { label: "Matrix", handle: "#wyrhta:matrix.org", href: "https://matrix.to/#/#wyrhta:matrix.org" },
-  { label: "Journal", handle: "wyrhta.dev/journal", href: "/#journal" },
+  { label: "Journal", handle: "wyrhta.dev/journal", href: "/journal" },
 ]
 
 export default function ContactPage() {

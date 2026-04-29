@@ -19,7 +19,7 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
     title: "Studio",
     links: [
       { label: "Philosophy", href: "/#philosophy" },
-      { label: "Journal", href: "/#journal" },
+      { label: "Journal", href: "/journal" },
       { label: "Press kit", href: "/press" },
       { label: "Contact", href: "/contact" },
     ],
@@ -39,7 +39,7 @@ const LEGAL: LinkItem[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
   { label: "Security", href: "/security" },
-  { label: "RSS", href: "/#journal" },
+  { label: "RSS", href: "/journal" },
 ]
 
 function FooterLink({ link, className }: { link: LinkItem; className?: string }) {
