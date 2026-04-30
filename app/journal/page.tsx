@@ -152,14 +152,14 @@ export default function JournalPage() {
     <PageShell>
       <PageHeader
         kind="§ Studio · Journal"
-        title="A monthly note, written by hand."
-        dek="One letter a month, posted on the first Sunday. It is where we work out loud — design dilemmas, code we are proud of, code we have since deleted, and what the families using Heorth and KithLedger have taught us."
+        title="Notes from the workshop, posted when the work warrants it."
+        dek="Drafted with the help of AI coding agents — Claude and Codex — then read, trimmed, and signed by a person before it goes out. We publish when there is something genuinely worth a letter: a design we settled, a decision we reversed, a release worth marking. Never to fill a slot."
         crumbs={[{ label: "Journal" }]}
         meta={[
-          { label: "Cadence", value: "Monthly · 1st Sunday" },
+          { label: "Cadence", value: "When the work warrants" },
+          { label: "Authored", value: "Human edited · AI assisted" },
           { label: "Issues", value: `${totalIssues} published` },
           { label: "Last posted", value: lastUpdated },
-          { label: "Read at", value: "wyrhta.dev/journal" },
         ]}
       />
       <PageBody
