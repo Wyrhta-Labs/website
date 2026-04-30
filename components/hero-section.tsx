@@ -118,7 +118,7 @@ export function HeroSection() {
             {[
               ["02", "Active projects"],
               ["100%", "Source available"],
-              ["AGPL-3.0", "Default license"],
+              ["MIT", "Default license"],
               ["self-host", "First-class"],
             ].map(([k, v]) => (
               <div key={v} className="flex flex-col gap-1">

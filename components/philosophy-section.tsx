@@ -19,7 +19,7 @@ const PRINCIPLES = [
     n: "iii",
     title: "Source available, by default.",
     body:
-      "Every line we write is published. Heorth under AGPL-3.0, KithLedger under MIT. You can read it, fork it, host it, audit it — and fix it when we're asleep.",
+      "Every line we write is published under the permissive MIT license — Heorth, KithLedger, and every package we ship beside them. You can read it, fork it, host it, audit it — and fix it when we're asleep.",
   },
   {
     n: "iv",

@@ -36,7 +36,7 @@ const FACTS = [
   { label: "Studio size", value: "1 maker · open to contributors" },
   { label: "First release", value: "0.1 beta, Q3 2026" },
   { label: "Location", value: "Castrop-Rauxel, West Germany" },
-  { label: "License", value: "AGPL-3.0-or-later" },
+  { label: "License", value: "MIT (all projects & packages)" },
   { label: "Funding", value: "Self-funded, patrons welcome" },
   { label: "Languages", value: "EN · DE" },
 ]
@@ -90,9 +90,10 @@ export default function PressPage() {
             correspondence between people who care for one another.
           </p>
           <p>
-            We work in the open by default: code on GitHub under
-            AGPL-3.0-or-later, a public handbook, a monthly journal, and a
-            roadmap discussed in the open before it is built. The first 0.1
+            We work in the open by default: code on GitHub under the
+            permissive MIT license, a public handbook, a journal posted
+            when the work warrants, and a roadmap discussed in the open
+            before it is built. The first 0.1
             beta of Heorth and KithLedger is planned for{" "}
             <em className="text-foreground">Q3 2026</em>, and additional
             developers are warmly invited to join the project — write to{" "}
@@ -273,7 +274,7 @@ export default function PressPage() {
           />
           <BoilerCard
             length="Long · 1 paragraph"
-            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system, and KithLedger, an API-first database for nurturing personal relationships — both designed API-first, with a UI for human hands and an MCP server for AI agents, and co-authored in the open with Claude and Codex. The first 0.1 beta of each project is scheduled for Q3 2026. Everything ships under AGPL-3.0-or-later, with a public roadmap, a monthly journal, and an open invitation to additional developers who would like to join."
+            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system, and KithLedger, an API-first database for nurturing personal relationships — both designed API-first, with a UI for human hands and an MCP server for AI agents, and co-authored in the open with Claude and Codex. The first 0.1 beta of each project is scheduled for Q3 2026. Everything ships under the permissive MIT license, with a public roadmap, a journal posted when the work warrants, and an open invitation to additional developers who would like to join."
           />
         </Section>
 

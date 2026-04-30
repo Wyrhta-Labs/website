@@ -26,7 +26,7 @@ const PROJECTS: Project[] = [
       "Chores, meals, calendar, finances, library, garden — the running of a household, gathered around a single quiet hearth. API-first beneath a UI shaped for kitchen tables, with an MCP server so home-aware agents can plan alongside you. Self-hosted, family-shaped, and built to last beyond the next funding round.",
     status: "0.1 beta · Q3 2026",
     language: "TypeScript · Rust",
-    license: "AGPL-3.0",
+    license: "MIT",
     agents: "MCP-ready",
     href: "#heorth",
     featured: true,

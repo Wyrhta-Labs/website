@@ -40,7 +40,7 @@ export default function TermsPage() {
         meta={[
           { label: "Last updated", value: "April 12, 2026" },
           { label: "Version", value: "v2" },
-          { label: "License", value: "AGPL-3.0-or-later" },
+          { label: "License", value: "MIT (all projects & packages)" },
           { label: "Document", value: "wyrhta.dev/terms" },
         ]}
       />
@@ -52,19 +52,19 @@ export default function TermsPage() {
           <p>
             By visiting wyrhta.dev or using a hosted service we operate, you
             agree to the terms below. If you self-host our open-source code,
-            the AGPL license governs your use; these terms cover the
+            the MIT license governs your use; these terms cover the
             interaction with our infrastructure and people only.
           </p>
         </Section>
 
         <Section id="license" n="02" title="Open-source license">
           <p>
-            Heorth and KithLedger are released under the{" "}
-            <Mono>AGPL-3.0-or-later</Mono> license. You are free to study,
-            run, modify, and redistribute the software, including for
-            commercial purposes, provided that you preserve the source
-            chain and offer the source of any networked modifications to
-            the people who use them.
+            Heorth, KithLedger, and every package we publish alongside
+            them are released under the permissive{" "}
+            <Mono>MIT</Mono> license. You are free to study, run, modify,
+            redistribute, and embed the software, including in commercial
+            and proprietary products, provided that the copyright and
+            permission notice are preserved.
           </p>
           <p>
             Our docs, design assets, and the contents of this website
@@ -89,12 +89,12 @@ export default function TermsPage() {
 
         <Section id="self-host" n="04" title="Self-hosting">
           <p>
-            Self-hosted installations are governed by the AGPL and the
-            documentation in each repository. We provide no SLA, no uptime
-            guarantee, and no individualised support for self-hosted
-            instances. The community forum and GitHub issues are the
-            appropriate places to ask questions; we monitor both as time
-            allows.
+            Self-hosted installations are governed by the MIT license and
+            the documentation in each repository. We provide no SLA, no
+            uptime guarantee, and no individualised support for
+            self-hosted instances. The community forum and GitHub issues
+            are the appropriate places to ask questions; we monitor both
+            as time allows.
           </p>
         </Section>
 
