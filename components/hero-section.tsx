@@ -41,7 +41,7 @@ export function HeroSection() {
               <p className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">
                 Wyrhta Labs is a private, personal open-source project,
                 started in 2026 — a quiet labour of devotion toward one
-                clear goal: patient tools for family and home life, built
+                clear goal: an organization core for family and home life, built
                 slowly, in the open, with the patience of woodwork. The
                 first <span className="text-foreground">0.1 beta</span>{" "}
                 ships in <span className="text-foreground">Q3 2026</span>,

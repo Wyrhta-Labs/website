@@ -68,7 +68,7 @@ export default function PressPage() {
         <Section id="glance" n="01" title="At a glance">
           <Lede>
             Wyrhta Labs is a private, personal open-source project devoted
-            to patient software for family and home life.
+            to an organization core for family and home life.
           </Lede>
           <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-5 border-t border-b border-border py-6">
             {FACTS.map((f) => (
@@ -274,7 +274,7 @@ export default function PressPage() {
           <p>Two paragraphs you can paste verbatim, short and long.</p>
           <BoilerCard
             length="Short · 1 sentence"
-            text="Wyrhta Labs is a personal open-source initiative making patient software for family and home life — the maker of Heorth and KithLedger, with the first 0.1 beta planned for Q3 2026 and contributors warmly invited."
+            text="Wyrhta Labs is a personal open-source initiative building an organization core for family and home life — the maker of Heorth and KithLedger, with the first 0.1 beta planned for Q3 2026 and contributors warmly invited."
           />
           <BoilerCard
             length="Long · 1 paragraph"

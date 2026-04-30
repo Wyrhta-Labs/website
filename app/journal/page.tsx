@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Journal — Wyrhta Labs",
   description:
-    "Notes from the Wyrhta Labs workshop on building Heorth, KithLedger, and patient open-source tools for family and home life — a private, personal project, posted when the work warrants.",
+    "Notes from the Wyrhta Labs workshop on building Heorth, KithLedger, and an organization core for family and home life — a private, personal project, posted when the work warrants.",
 }
 
 function FeaturedNote({ entry }: { entry: JournalEntry }) {
