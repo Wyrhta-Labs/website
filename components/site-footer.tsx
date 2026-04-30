@@ -16,7 +16,7 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
     ],
   },
   {
-    title: "Studio",
+    title: "Project",
     links: [
       { label: "Philosophy", href: "/#philosophy" },
       { label: "Journal", href: "/journal" },
@@ -77,9 +77,9 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-5 max-w-md text-base text-muted-foreground leading-relaxed">
-              A small open-source studio making patient software for family and
-              home life. Names borrowed from Old English, code written in
-              modern stacks.
+              A private, personal open-source project devoted to patient
+              software for family and home life. Names borrowed from Old
+              English, code written in modern stacks.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 text-eyebrow text-muted-foreground">
               <span>Made in</span>

@@ -31,7 +31,7 @@ export default function CodeOfConductPage() {
       <PageHeader
         kind="§ Community · Conduct"
         title="A code of conduct for a small, kind room."
-        dek="Wyrhta Labs is a tiny studio with a public porch. These are the manners we expect of each other when we're standing on it."
+        dek="Wyrhta Labs is a personal project with a public porch. These are the manners expected of everyone — maintainer and visitors alike — when standing on it."
         crumbs={[{ label: "Code of Conduct" }]}
         meta={[
           { label: "Last updated", value: "March 1, 2026" },

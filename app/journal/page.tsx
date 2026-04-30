@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Journal — Wyrhta Labs",
   description:
-    "A monthly note from the Wyrhta Labs studio on building Heorth, KithLedger, and patient open-source tools for family and home life.",
+    "Notes from the Wyrhta Labs workshop on building Heorth, KithLedger, and patient open-source tools for family and home life — a private, personal project, posted when the work warrants.",
 }
 
 function FeaturedNote({ entry }: { entry: JournalEntry }) {
@@ -151,7 +151,7 @@ export default function JournalPage() {
   return (
     <PageShell>
       <PageHeader
-        kind="§ Studio · Journal"
+        kind="§ Project · Journal"
         title="Notes from the workshop, posted when the work warrants it."
         dek="Drafted with the help of AI coding agents — Claude and Codex — then read, trimmed, and signed by a person before it goes out. We publish when there is something genuinely worth a letter: a design we settled, a decision we reversed, a release worth marking. Never to fill a slot."
         crumbs={[{ label: "Journal" }]}

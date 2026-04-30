@@ -39,12 +39,13 @@ export function HeroSection() {
 
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">
-                Wyrhta Labs began in 2026 as a personal open-source initiative,
-                making patient tools for family and home life — built slowly,
-                in the open, with the patience of woodwork. The first{" "}
-                <span className="text-foreground">0.1 beta</span> ships in{" "}
-                <span className="text-foreground">Q3 2026</span>, and additional
-                developers are warmly welcome at the bench.
+                Wyrhta Labs is a private, personal open-source project,
+                started in 2026 — a quiet labour of devotion toward one
+                clear goal: patient tools for family and home life, built
+                slowly, in the open, with the patience of woodwork. The
+                first <span className="text-foreground">0.1 beta</span>{" "}
+                ships in <span className="text-foreground">Q3 2026</span>,
+                and additional developers are warmly welcome at the bench.
               </p>
             </Reveal>
 

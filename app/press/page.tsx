@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const toc: TocItem[] = [
   { id: "glance", n: "01", label: "At a glance" },
-  { id: "studio", n: "02", label: "The studio" },
+  { id: "project", n: "02", label: "The project" },
   { id: "projects", n: "03", label: "Projects" },
   { id: "logo", n: "04", label: "Logo & wordmark" },
   { id: "color", n: "05", label: "Color" },
@@ -33,7 +33,7 @@ const toc: TocItem[] = [
 const FACTS = [
   { label: "Founded", value: "2026, Castrop-Rauxel" },
   { label: "Form", value: "Personal initiative" },
-  { label: "Studio size", value: "1 maker · open to contributors" },
+  { label: "Maintainers", value: "1 · open to contributors" },
   { label: "First release", value: "0.1 beta, Q3 2026" },
   { label: "Location", value: "Castrop-Rauxel, West Germany" },
   { label: "License", value: "MIT (all projects & packages)" },
@@ -53,7 +53,7 @@ export default function PressPage() {
   return (
     <PageShell>
       <PageHeader
-        kind="§ Studio · Press kit"
+        kind="§ Project · Press kit"
         title="A short, honest brief."
         dek="Everything a thoughtful piece needs about Wyrhta Labs: facts, logos, colour, type, and a few sentences you can paste without rewriting."
         crumbs={[{ label: "Press" }]}
@@ -67,8 +67,8 @@ export default function PressPage() {
       <PageBody toc={toc}>
         <Section id="glance" n="01" title="At a glance">
           <Lede>
-            Wyrhta Labs is a small open-source studio building patient
-            software for family and home life.
+            Wyrhta Labs is a private, personal open-source project devoted
+            to patient software for family and home life.
           </Lede>
           <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-5 border-t border-b border-border py-6">
             {FACTS.map((f) => (
@@ -80,30 +80,34 @@ export default function PressPage() {
           </dl>
         </Section>
 
-        <Section id="studio" n="02" title="The studio">
+        <Section id="project" n="02" title="The project">
           <p>
             Wyrhta Labs takes its name from the Old English{" "}
             <em className="text-foreground">wyrhta</em> — a maker, a wright.
-            It was started in 2026 as a personal open-source initiative in
-            Castrop-Rauxel, designing and shipping tools for households:
-            software for the kitchen wall, the family calendar, and the slow
+            It is a private, personal open-source project, started in 2026
+            in Castrop-Rauxel by a single maintainer, devoted to one clear
+            goal: tools for households rather than enterprises — software
+            for the kitchen wall, the family calendar, and the slow
             correspondence between people who care for one another.
           </p>
           <p>
-            We work in the open by default: code on GitHub under the
-            permissive MIT license, a public handbook, a journal posted
-            when the work warrants, and a roadmap discussed in the open
-            before it is built. The first 0.1
-            beta of Heorth and KithLedger is planned for{" "}
+            The work is done in the open by default: code on GitHub under
+            the permissive MIT license, a public handbook, a journal
+            posted when the work warrants, and a roadmap discussed openly
+            before it is built. The first 0.1 beta of Heorth and
+            KithLedger is planned for{" "}
             <em className="text-foreground">Q3 2026</em>, and additional
-            developers are warmly invited to join the project — write to{" "}
+            developers are warmly invited to join — please open an issue
+            on{" "}
             <a
-              href="mailto:hello@wyrhta.dev"
+              href="https://github.com/wyrhta-labs"
               className="border-b border-foreground/30 hover:border-foreground"
+              target="_blank"
+              rel="noreferrer"
             >
-              hello@wyrhta.dev
-            </a>{" "}
-            or open a pull request on GitHub.
+              GitHub
+            </a>
+            , which is the project&apos;s primary place of conversation.
           </p>
         </Section>
 
@@ -280,10 +284,20 @@ export default function PressPage() {
 
         <Section id="people" n="08" title="People">
           <p>
-            Founders Sigrid Halland, Tomás Reis, Maeve Atherton, and
-            Ezekiel Vale share editorial and engineering responsibilities.
-            For interview availability, head shots, and bios, write to
-            press@wyrhta.dev with a deadline and outlet.
+            Wyrhta Labs is authored and maintained by a single Castropian
+            working from Castrop-Rauxel, in the open and at a deliberate
+            pace. AI coding agents (Claude and Codex) are used as
+            drafting partners on both code and prose, with every commit
+            and every letter read, edited, and signed by a person before
+            it ships. For interview availability, a head shot, or a short
+            bio, please write to{" "}
+            <a
+              href="mailto:press@wyrhta.dev"
+              className="border-b border-foreground/30 hover:border-foreground"
+            >
+              press@wyrhta.dev
+            </a>{" "}
+            with your deadline and outlet.
           </p>
         </Section>
 
@@ -295,15 +309,24 @@ export default function PressPage() {
             >
               press@wyrhta.dev
             </a>{" "}
-            · Sigrid Halland, on rotation. We reply within 3 working days,
-            usually faster. For all other matters, see the{" "}
+            — replied to by the maintainer, usually within three working
+            days. For all other matters, the project lives on{" "}
+            <a
+              href="https://github.com/wyrhta-labs"
+              className="underline underline-offset-2 hover:text-primary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            ; see the{" "}
             <Link
               href="/contact"
               className="underline underline-offset-2 hover:text-primary"
             >
               contact page
-            </Link>
-            .
+            </Link>{" "}
+            for the full picture.
           </p>
         </Section>
       </PageBody>

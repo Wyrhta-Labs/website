@@ -33,7 +33,7 @@ export default function RoadmapPage() {
   return (
     <PageShell>
       <PageHeader
-        kind="§ Studio · Roadmap"
+        kind="§ Project · Roadmap"
         title="A patient plan, written in pencil."
         dek="What is being built, when, and why — for Heorth and KithLedger. The first 0.1 beta of each project ships in Q3 2026; the year that follows is shown below, quarter by quarter."
         crumbs={[{ label: "Roadmap" }]}

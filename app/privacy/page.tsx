@@ -36,7 +36,7 @@ export default function PrivacyPage() {
       <PageHeader
         kind="§ Legal · Privacy"
         title="A privacy notice you can read in one sitting."
-        dek="We are a small studio building tools for family life. We collect very little, sell nothing, and would rather you leave the page understanding what we do than walk away soothed."
+        dek="Wyrhta Labs is a private, personal open-source project devoted to tools for family life. We collect very little, sell nothing, and would rather you leave the page understanding what happens with your data than walk away soothed."
         crumbs={[{ label: "Privacy" }]}
         meta={[
           { label: "Last updated", value: "April 12, 2026" },

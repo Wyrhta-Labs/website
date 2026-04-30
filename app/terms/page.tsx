@@ -35,7 +35,7 @@ export default function TermsPage() {
       <PageHeader
         kind="§ Legal · Terms"
         title="The agreement, written like a letter."
-        dek="These terms cover wyrhta.dev, our hosted services, and the studio's relationship with people who use, fork, or sponsor our software. They are short by design."
+        dek="These terms cover wyrhta.dev, any hosted services we operate, and the project's relationship with people who use, fork, or sponsor the software. They are short by design."
         crumbs={[{ label: "Terms" }]}
         meta={[
           { label: "Last updated", value: "April 12, 2026" },
@@ -81,7 +81,7 @@ export default function TermsPage() {
             <li>Probe or attack our infrastructure outside of a coordinated security report (see our security policy).</li>
             <li>Resell hosted Heorth or KithLedger as your own product without contacting us first.</li>
             <li>
-              Misrepresent yourself or impersonate the studio when using our
+              Misrepresent yourself or impersonate the project when using our
               communication channels.
             </li>
           </ul>
@@ -118,7 +118,7 @@ export default function TermsPage() {
           <p>
             "Wyrhta Labs", "Heorth", and "KithLedger", together with the
             respective marks, belong to Wyrhta Labs Ltd. You may use them
-            in unmodified form to refer to the studio and our projects in
+            in unmodified form to refer to the project in
             articles, talks, and tutorials. You may not use them to
             suggest endorsement, or as part of a product, service, or
             domain name without our written permission.
