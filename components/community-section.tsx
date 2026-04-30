@@ -47,10 +47,12 @@ export function CommunitySection() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
-                Wyrhta Labs is currently three people in three time zones, a
-                spreadsheet of grants, and a fairly opinionated Notion. We
-                welcome contributors — especially people who run the homes
-                they&apos;re writing software for.
+                Wyrhta Labs is, today, a personal initiative — one maker in
+                Castrop-Rauxel, two repositories, and a deliberate pace toward
+                a 0.1 beta in Q3 2026. We are openly inviting additional
+                developers to join: Rust and TypeScript hands, designers, or
+                simply people who run the homes they&apos;re writing software
+                for. There is room at the bench.
               </p>
             </Reveal>
             <Reveal delay={0.15}>

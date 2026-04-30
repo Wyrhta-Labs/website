@@ -15,12 +15,12 @@ export function HeroSection() {
           <Reveal>
             <div className="flex items-center gap-3 text-eyebrow text-muted-foreground">
               <span className="inline-block size-1.5 rounded-full bg-primary animate-pulse" />
-              Established 2024 · Open source
+              Established 2026 · Personal initiative
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="hidden sm:block text-eyebrow text-muted-foreground">
-              v0.4 · Public alpha
+              0.1 beta · Q3 2026
             </div>
           </Reveal>
         </div>
@@ -39,9 +39,12 @@ export function HeroSection() {
 
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">
-                Wyrhta Labs is a small open-source team making tools for family
-                and home life — built slowly, in the open, with the patience of
-                woodwork.
+                Wyrhta Labs began in 2026 as a personal open-source initiative,
+                making patient tools for family and home life — built slowly,
+                in the open, with the patience of woodwork. The first{" "}
+                <span className="text-foreground">0.1 beta</span> ships in{" "}
+                <span className="text-foreground">Q3 2026</span>, and additional
+                developers are warmly welcome at the bench.
               </p>
             </Reveal>
 

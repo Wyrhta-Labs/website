@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
     tagline: "A homestead and family management system.",
     description:
       "Chores, meals, calendar, finances, library, garden — the running of a household, gathered around a single quiet hearth. API-first beneath a UI shaped for kitchen tables, with an MCP server so home-aware agents can plan alongside you. Self-hosted, family-shaped, and built to last beyond the next funding round.",
-    status: "Public alpha",
+    status: "0.1 beta · Q3 2026",
     language: "TypeScript · Rust",
     license: "AGPL-3.0",
     agents: "MCP-ready",
@@ -37,7 +37,7 @@ const PROJECTS: Project[] = [
     tagline: "An API-first database for nurturing relationships.",
     description:
       "A small, opinionated service for keeping track of the people in your life — the threads worth tending. REST, gRPC, and an MCP surface so your own tools (or your agent) can read and write touchpoints. Designed to be embedded, not another app to check.",
-    status: "Early access",
+    status: "0.1 beta · Q3 2026",
     language: "Rust · SQLite",
     license: "MIT",
     agents: "MCP-ready",
@@ -64,11 +64,11 @@ export function ProjectsOverview() {
             <Reveal delay={0.1}>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
                 We focus narrowly. One main project for the household, and a small
-                companion service that one of our tools needed and we couldn&apos;t
-                find anywhere else. Both are designed API-first — a quiet UI for
-                the people who live with them, and an MCP server so AI agents can
-                work the same surface. Co-authored, in the open, with Claude and
-                Codex.
+                companion service that grew out of it. Both ship their first 0.1
+                beta in Q3 2026, both are designed API-first — a quiet UI for
+                the people who live with them, and an MCP server so AI agents
+                can work the same surface. Co-authored, in the open, with Claude
+                and Codex; additional contributors are warmly invited.
               </p>
             </Reveal>
           </div>
