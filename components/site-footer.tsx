@@ -11,7 +11,7 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
     links: [
       { label: "Heorth", href: "/#heorth" },
       { label: "KithLedger", href: "/#kithledger" },
-      { label: "Roadmap", href: "/#roadmap" },
+      { label: "Roadmap", href: "/roadmap" },
       { label: "Changelog", href: "/#changelog" },
     ],
   },

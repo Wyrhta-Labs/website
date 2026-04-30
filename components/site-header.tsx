@@ -8,6 +8,7 @@ import { WyrhtaMark } from "./wyrhta-mark"
 
 const NAV = [
   { label: "Projects", href: "/#projects" },
+  { label: "Roadmap", href: "/roadmap" },
   { label: "Philosophy", href: "/#philosophy" },
   { label: "Journal", href: "/journal" },
   { label: "Community", href: "/#community" },
