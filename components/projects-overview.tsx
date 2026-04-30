@@ -12,6 +12,7 @@ type Project = {
   status: string
   language: string
   license: string
+  agents: string
   href: string
   featured?: boolean
 }
@@ -22,10 +23,11 @@ const PROJECTS: Project[] = [
     name: "Heorth",
     tagline: "A homestead and family management system.",
     description:
-      "Chores, meals, calendar, finances, library, garden — the running of a household, gathered around a single quiet hearth. Self-hosted, family-shaped, and built to last beyond the next funding round.",
+      "Chores, meals, calendar, finances, library, garden — the running of a household, gathered around a single quiet hearth. API-first beneath a UI shaped for kitchen tables, with an MCP server so home-aware agents can plan alongside you. Self-hosted, family-shaped, and built to last beyond the next funding round.",
     status: "Public alpha",
     language: "TypeScript · Rust",
     license: "AGPL-3.0",
+    agents: "MCP-ready",
     href: "#heorth",
     featured: true,
   },
@@ -34,10 +36,11 @@ const PROJECTS: Project[] = [
     name: "KithLedger",
     tagline: "An API-first database for nurturing relationships.",
     description:
-      "A small, opinionated service for keeping track of the people in your life — the threads worth tending. Designed to be embedded in your own tools, not another app to check.",
+      "A small, opinionated service for keeping track of the people in your life — the threads worth tending. REST, gRPC, and an MCP surface so your own tools (or your agent) can read and write touchpoints. Designed to be embedded, not another app to check.",
     status: "Early access",
     language: "Rust · SQLite",
     license: "MIT",
+    agents: "MCP-ready",
     href: "#kithledger",
   },
 ]
@@ -62,8 +65,10 @@ export function ProjectsOverview() {
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
                 We focus narrowly. One main project for the household, and a small
                 companion service that one of our tools needed and we couldn&apos;t
-                find anywhere else. Both are free, source-available, and shaped by
-                everyday use.
+                find anywhere else. Both are designed API-first — a quiet UI for
+                the people who live with them, and an MCP server so AI agents can
+                work the same surface. Co-authored, in the open, with Claude and
+                Codex.
               </p>
             </Reveal>
           </div>
@@ -121,10 +126,14 @@ function ProjectCard({ project }: { project: Project }) {
         {project.description}
       </p>
 
-      <dl className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-border">
+      <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-border">
         <div>
           <dt className="text-eyebrow text-muted-foreground mb-1.5">Stack</dt>
           <dd className="font-mono text-xs text-foreground">{project.language}</dd>
+        </div>
+        <div>
+          <dt className="text-eyebrow text-muted-foreground mb-1.5">Agents</dt>
+          <dd className="font-mono text-xs text-foreground">{project.agents}</dd>
         </div>
         <div>
           <dt className="text-eyebrow text-muted-foreground mb-1.5">License</dt>
@@ -135,6 +144,13 @@ function ProjectCard({ project }: { project: Project }) {
           <dd className="font-mono text-xs text-foreground">github.com/wyrhta-labs</dd>
         </div>
       </dl>
+
+      <div className="mt-5 flex items-center gap-2 text-eyebrow text-muted-foreground">
+        <span>Built with</span>
+        <span className="font-mono text-foreground/80">Claude</span>
+        <span aria-hidden="true">·</span>
+        <span className="font-mono text-foreground/80">Codex</span>
+      </div>
     </a>
   )
 }

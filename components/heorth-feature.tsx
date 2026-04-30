@@ -37,7 +37,10 @@ export function HeorthFeature() {
                 Heorth replaces the dozen apps and shared docs that quietly run a
                 family. Calendars, meal plans, chores, budgets, the children&apos;s
                 appointments, the manuals for the boiler — pulled into a single
-                home-shaped place. Self-hosted, end-to-end encrypted, and yours.
+                home-shaped place. Designed API-first: a UI for human hands and
+                tired evenings, an MCP server for AI agents that help you plan,
+                balance, and remember. Self-hosted, end-to-end encrypted, and
+                co-authored in the open with Claude and Codex.
               </p>
               <a
                 href="https://github.com/wyrhta-labs/heorth"
@@ -46,6 +49,20 @@ export function HeorthFeature() {
                 Read the README
                 <ArrowRight size={14} />
               </a>
+              <dl className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 pt-6 border-t border-border">
+                <div>
+                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Surface</dt>
+                  <dd className="font-mono text-xs text-foreground">REST · gRPC · MCP</dd>
+                </div>
+                <div>
+                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Clients</dt>
+                  <dd className="font-mono text-xs text-foreground">Web · CLI · Agents</dd>
+                </div>
+                <div>
+                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Co-authors</dt>
+                  <dd className="font-mono text-xs text-foreground">Claude · Codex</dd>
+                </div>
+              </dl>
             </Reveal>
           </div>
         </div>
@@ -90,7 +107,7 @@ function HeorthMockup() {
         </div>
         <div className="text-eyebrow text-muted-foreground">heorth · the rowan house</div>
         <div className="font-mono text-[10px] text-muted-foreground hidden sm:block">
-          self-hosted · v0.4.2
+          self-hosted · v0.4.2 · mcp on
         </div>
       </div>
 

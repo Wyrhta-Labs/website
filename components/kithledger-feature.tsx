@@ -7,17 +7,17 @@ const POINTS = [
   {
     icon: Database,
     title: "API-first by design",
-    body: "Every relationship, touchpoint, and note reachable through a small, well-versioned REST and gRPC surface. No UI assumptions baked in.",
+    body: "Every relationship, touchpoint, and note reachable through a small, well-versioned REST and gRPC surface. The web UI is one client among many; the human is welcome but not assumed.",
   },
   {
     icon: Zap,
-    title: "Embeddable",
-    body: "Drop it behind your own dashboard, journal, CRM, or chat bot. KithLedger holds the ledger; you build the room.",
+    title: "Agent-ready over MCP",
+    body: "Ships with a Model Context Protocol server so Claude, Codex, and your own LLM-driven assistants can read and write the ledger as a first-class backend — same auth, same audit trail as the UI.",
   },
   {
     icon: Lock,
     title: "Yours, end-to-end",
-    body: "Single-binary Rust service. SQLite or Postgres. Encrypted at rest. No telemetry, no accounts you don't host yourself.",
+    body: "Single-binary Rust service. SQLite or Postgres. Encrypted at rest. No telemetry, no accounts you don't host yourself. Co-authored with Claude and Codex, kept small and readable on purpose.",
   },
 ]
 
@@ -40,9 +40,11 @@ export function KithLedgerFeature() {
             <Reveal delay={0.1}>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
                 Friendships need tending — birthdays remembered, debts settled,
-                last-met dates. KithLedger is the quiet database underneath.
-                It started as a service Heorth needed and became a project of
-                its own.
+                last-met dates. KithLedger is the quiet database underneath:
+                API-first, with a thin UI for daily use and an MCP server so
+                AI agents can keep the ledger alongside you. It started as a
+                service Heorth needed, was co-authored with Claude and Codex,
+                and became a project of its own.
               </p>
               <a
                 href="https://github.com/wyrhta-labs/kithledger"
