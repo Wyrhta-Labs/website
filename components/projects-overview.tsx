@@ -26,7 +26,7 @@ const PROJECTS: Project[] = [
     description:
       "Chores, meals, calendar, finances, library, garden — the running of a household, gathered around a single quiet hearth. API-first beneath a UI shaped for kitchen tables, with an MCP server so home-aware agents can plan alongside you. Self-hosted, family-shaped, and built to last beyond the next funding round.",
     status: "0.1 beta · Q3 2026",
-    language: "TypeScript · Rust",
+    language: "TypeScript · PostgreSQL",
     license: "MIT",
     agents: "MCP-ready",
     href: "#heorth",
@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
     description:
       "A small, opinionated service for keeping track of the people in your life — the threads worth tending. REST, gRPC, and an MCP surface so your own tools (or your agent) can read and write touchpoints. Designed to be embedded, not another app to check.",
     status: "0.1 beta · Q3 2026",
-    language: "Rust · SQLite",
+    language: "TypeScript · PostgreSQL",
     license: "MIT",
     agents: "MCP-ready",
     href: "#kithledger",
@@ -52,7 +52,7 @@ const PROJECTS: Project[] = [
     description:
       "Envelopes on the kitchen wall, double-entry behind the cupboard. Recurring bills, joint expenses split fairly, savings goals that breathe with the season. Runs as a first-class module beside Heorth, sharing the same household, the same auth, and the same MCP surface — co-authored with the help of AI coding agents.",
     status: "0.1 beta · Q1 2027",
-    language: "TypeScript · SQLite",
+    language: "TypeScript · PostgreSQL",
     license: "MIT",
     agents: "MCP-ready",
     href: "#feoh",

@@ -25,7 +25,7 @@ const PRINCIPLES = [
     n: "iv",
     title: "Self-host first.",
     body:
-      "Your home runs your home. Our hosted offerings are conveniences, never strategies. The single-binary, run-it-on-a-Pi path is always the one we test most.",
+      "Your home runs your home. Our hosted offerings are conveniences, never strategies. The run-it-on-a-Pi path — a Node service with PostgreSQL tucked beside it — is always the one we test most.",
   },
   {
     n: "v",

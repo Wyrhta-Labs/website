@@ -300,8 +300,8 @@ export default function RoadmapPage() {
                   Join the build.
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                  Additional developers are warmly invited. Rust,
-                  TypeScript, and design hands all welcome — see{" "}
+                  Additional developers are warmly invited. TypeScript,
+                  PostgreSQL, and design hands all welcome — see{" "}
                   <Link
                     href="/contact"
                     className="border-b border-foreground/30 hover:border-foreground"

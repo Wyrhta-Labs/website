@@ -50,7 +50,7 @@ export function CommunitySection() {
                 Wyrhta Labs is, today, a personal initiative — one maker in
                 Castrop-Rauxel, three repositories, and a deliberate pace
                 toward a 0.1 beta in Q3 2026. We are openly inviting additional
-                developers to join: Rust and TypeScript hands, designers, or
+                developers to join: TypeScript and PostgreSQL hands, designers, or
                 simply people who run the homes they&apos;re writing software
                 for. There is room at the bench.
               </p>

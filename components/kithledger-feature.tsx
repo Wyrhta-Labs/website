@@ -17,7 +17,7 @@ const POINTS = [
   {
     icon: Lock,
     title: "Yours, end-to-end",
-    body: "Single-binary Rust service. SQLite or Postgres. Encrypted at rest. No telemetry, no accounts you don't host yourself. Co-authored with the help of AI coding agents, kept small and readable on purpose.",
+    body: "A single TypeScript service with PostgreSQL beneath. Encrypted at rest. No telemetry, no accounts you don't host yourself. Co-authored with the help of AI coding agents, kept small and readable on purpose.",
   },
 ]
 

@@ -63,7 +63,7 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
     title: "Self-hosting Heorth on a Raspberry Pi, three families later.",
     dek: "Notes from a winter spent watching three households install a single binary on a shelf.",
     body:
-      "Three families ran the holiday-season build of Heorth on a Pi 5 under the stairs, behind the boiler, and on top of a fridge respectively. The single-binary path held. We learned that the hardest step is not the install — it's the moment a family realises their photos and their grocery list now live on a small computer they own, not on someone else's. We have notes on backups, on the Tailscale path, and on what to tell a partner who is, reasonably, sceptical.",
+      "Three families ran the holiday-season build of Heorth on a Pi 5 under the stairs, behind the boiler, and on top of a fridge respectively. The one-command install — Node service, PostgreSQL alongside, all in a single Compose file — held. We learned that the hardest step is not the install: it's the moment a family realises their photos and their grocery list now live on a small computer they own, not on someone else's. We have notes on backups, on the Tailscale path, and on what to tell a partner who is, reasonably, sceptical.",
     read: "8 min read",
     author: "Ingrid",
   },
@@ -86,10 +86,10 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
     display: "November 2025",
     issue: "№ 009",
     tag: "Engineering",
-    title: "Choosing SQLite for the household.",
-    dek: "On databases that fit on a thumb drive, and the operational calm that follows.",
+    title: "Choosing PostgreSQL for the household.",
+    dek: "On the boring database — and the operational calm that follows when one of the oldest things in computing runs your kitchen.",
     body:
-      "Heorth and KithLedger both ship with SQLite as the default store. There is a Postgres path for households that need it, but we suspect most do not. A family of four generates roughly twenty megabytes of data a year, including photos of school lunches. A database that fits on a thumb drive is a database a person can understand, back up, and restore on a Sunday afternoon — and that, increasingly, is the property we optimise for.",
+      "Heorth, KithLedger, and Feoh all ship with PostgreSQL as the canonical store. We tried SQLite first — a family of four generates roughly twenty megabytes of data a year, after all — and it almost won. What changed our minds was the second device. The moment a partner opens Heorth on a phone while a tablet shows the meal plan in the kitchen, we want the same numbers everywhere, in the same second. A modern Postgres on a Pi handles a household's lifetime of data without breaking a sweat, restores cleanly from a single dump file on a Sunday afternoon, and gives us logical replication for free when a family decides their data should also live at a grandparent's house. It is, in the end, the boring choice — and the boring choice is the property we optimise for.",
     read: "7 min read",
     author: "Olu",
   },

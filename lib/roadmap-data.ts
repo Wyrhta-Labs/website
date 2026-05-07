@@ -158,7 +158,7 @@ export const MILESTONES: Milestone[] = [
     end: 3,
     tier: "beta",
     description:
-      "First public beta of the relationships service. REST + MCP from day one, single-binary install, SQLite by default.",
+      "First public beta of the relationships service. REST + MCP from day one, one-command install, PostgreSQL beneath.",
     bullets: [
       "People, groups, and threads",
       "Touchpoints & timelines",
