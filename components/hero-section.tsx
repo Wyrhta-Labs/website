@@ -107,6 +107,22 @@ export function HeroSection() {
                       family gathers.
                     </div>
                   </div>
+                  <div className="rule-warm" />
+                  <div>
+                    <div className="font-serif text-2xl">
+                      feoh{" "}
+                      <span className="font-mono text-sm text-muted-foreground align-middle">
+                        /ˈfe.oh/
+                      </span>
+                    </div>
+                    <div className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                      <span className="text-eyebrow text-foreground/70">n. Old English</span>{" "}
+                      cattle, wealth, property — the household&apos;s movable
+                      goods. The first rune of the Anglo-Saxon{" "}
+                      <em>futhorc</em> (<span className="font-serif">ᚠ</span>),
+                      and the root of modern English <em>fee</em>.
+                    </div>
+                  </div>
                 </div>
               </figure>
             </Reveal>
