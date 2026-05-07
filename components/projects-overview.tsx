@@ -50,7 +50,7 @@ const PROJECTS: Project[] = [
     name: "Feoh",
     tagline: "A finance module for the household — attaches to Heorth.",
     description:
-      "Envelopes on the kitchen wall, double-entry behind the cupboard. Recurring bills, joint expenses split fairly, savings goals that breathe with the season. Runs as a first-class module beside Heorth, sharing the same household, the same auth, and the same MCP surface — co-authored with the help of AI coding agents.",
+      "Envelopes on the kitchen wall, double-entry behind the cupboard. Recurring bills, joint expenses split fairly, savings goals that breathe with the season. Runs as a first-class module beside Heorth, sharing the same household, the same auth, and the same MCP surface.",
     status: "0.1 beta · Q1 2027",
     language: "TypeScript · PostgreSQL",
     license: "MIT",
@@ -87,9 +87,8 @@ export function ProjectsOverview() {
                 ship their first 0.1 beta in Q3 2026; Feoh follows in Q1 2027,
                 once the kitchen has settled. All three are designed
                 API-first — a quiet UI for the people who live with them,
-                an MCP server so AI agents can work the same surface.
-                Co-authored, in the open, with the help of AI coding agents; additional
-                contributors are warmly invited.
+                an MCP server so AI agents can work the same surface. Built
+                in the open; additional contributors are warmly invited.
               </p>
             </Reveal>
           </div>
@@ -180,11 +179,6 @@ function ProjectCard({ project }: { project: Project }) {
           <dd className="font-mono text-xs text-foreground">github.com/wyrhta-labs</dd>
         </div>
       </dl>
-
-      <div className="mt-5 flex items-center gap-2 text-eyebrow text-muted-foreground">
-        <span>Drafted with</span>
-        <span className="font-mono text-foreground/80">AI coding agents</span>
-      </div>
     </a>
   )
 }

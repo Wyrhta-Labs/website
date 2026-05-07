@@ -70,7 +70,7 @@ export function FeohFeature() {
                 you live with, savings goals that breathe with the seasons. It
                 is API-first like Heorth, ships its own MCP surface, and
                 quietly inherits the household&apos;s auth and self-hosted
-                setup. Co-authored, in the open, with the help of AI coding agents.
+                setup. Built in the open.
               </p>
               <a
                 href="https://github.com/wyrhta-labs/feoh"

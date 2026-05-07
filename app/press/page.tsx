@@ -301,7 +301,7 @@ export default function PressPage() {
           />
           <BoilerCard
             length="Long · 1 paragraph"
-            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system; KithLedger, an API-first database for nurturing personal relationships; and Feoh, a finance module that attaches to Heorth and brings envelopes, joint expenses, and double-entry household books — all designed API-first, with a UI for human hands and an MCP server for AI agents, and co-authored in the open with the help of AI coding agents. The first 0.1 beta of Heorth and KithLedger is scheduled for Q3 2026; Feoh follows in Q1 2027. Everything ships under the permissive MIT license, with a public roadmap, a journal posted when the work warrants, and an open invitation to additional developers who would like to join."
+            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system; KithLedger, an API-first database for nurturing personal relationships; and Feoh, a finance module that attaches to Heorth and brings envelopes, joint expenses, and double-entry household books — all designed API-first, with a UI for human hands and an MCP server for AI agents, and built in the open. The first 0.1 beta of Heorth and KithLedger is scheduled for Q3 2026; Feoh follows in Q1 2027. Everything ships under the permissive MIT license, with a public roadmap, a journal posted when the work warrants, and an open invitation to additional developers who would like to join."
           />
         </Section>
 
@@ -309,11 +309,9 @@ export default function PressPage() {
           <p>
             Wyrhta Labs is authored and maintained by a single Castropian
             working from Castrop-Rauxel, in the open and at a deliberate
-            pace. AI coding agents are used as drafting partners on
-            both code and prose, with every commit
-            and every letter read, edited, and signed by a person before
-            it ships. For interview availability, a head shot, or a short
-            bio, please write to{" "}
+            pace. Every commit and every letter is read, edited, and
+            signed by a person before it ships. For interview
+            availability, a head shot, or a short bio, please write to{" "}
             <a
               href="mailto:press@wyrhta.dev"
               className="border-b border-foreground/30 hover:border-foreground"
