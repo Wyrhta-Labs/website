@@ -5,7 +5,6 @@ import { HeorthFeature } from "@/components/heorth-feature"
 import { KithLedgerFeature } from "@/components/kithledger-feature"
 import { FeohFeature } from "@/components/feoh-feature"
 import { PhilosophySection } from "@/components/philosophy-section"
-import { JournalTeaser } from "@/components/journal-teaser"
 import { CommunitySection } from "@/components/community-section"
 import { SiteFooter } from "@/components/site-footer"
 
@@ -19,7 +18,6 @@ export default function HomePage() {
       <KithLedgerFeature />
       <FeohFeature />
       <PhilosophySection />
-      <JournalTeaser />
       <CommunitySection />
       <SiteFooter />
     </main>
