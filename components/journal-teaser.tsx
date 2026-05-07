@@ -17,7 +17,7 @@ export function JournalTeaser() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end mb-12 md:mb-16">
           <div className="md:col-span-7">
             <Reveal>
-              <div className="text-eyebrow text-primary mb-4">§ 06 — Journal</div>
+              <div className="text-eyebrow text-primary mb-4">§ 07 — Journal</div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.02] text-balance">
@@ -29,7 +29,7 @@ export function JournalTeaser() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
-                {"One letter a month, posted on the first Sunday. It is where we work out loud — design dilemmas, code we are proud of, code we have since deleted, and what the families using Heorth and KithLedger have taught us."}
+                {"One letter a month, posted on the first Sunday. It is where we work out loud — design dilemmas, code we are proud of, code we have since deleted, and what the families using Heorth, KithLedger, and Feoh have taught us."}
               </p>
             </Reveal>
           </div>

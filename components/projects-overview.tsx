@@ -15,6 +15,7 @@ type Project = {
   agents: string
   href: string
   featured?: boolean
+  badge?: string
 }
 
 const PROJECTS: Project[] = [
@@ -30,6 +31,7 @@ const PROJECTS: Project[] = [
     agents: "MCP-ready",
     href: "#heorth",
     featured: true,
+    badge: "Flagship",
   },
   {
     id: "kithledger",
@@ -43,9 +45,25 @@ const PROJECTS: Project[] = [
     agents: "MCP-ready",
     href: "#kithledger",
   },
+  {
+    id: "feoh",
+    name: "Feoh",
+    tagline: "A finance module for the household — attaches to Heorth.",
+    description:
+      "Envelopes on the kitchen wall, double-entry behind the cupboard. Recurring bills, joint expenses split fairly, savings goals that breathe with the season. Runs as a first-class module beside Heorth, sharing the same household, the same auth, and the same MCP surface — co-authored with Claude and Codex.",
+    status: "0.1 beta · Q1 2027",
+    language: "TypeScript · SQLite",
+    license: "MIT",
+    agents: "MCP-ready",
+    href: "#feoh",
+    badge: "Module",
+  },
 ]
 
 export function ProjectsOverview() {
+  const featured = PROJECTS.find((p) => p.featured)
+  const others = PROJECTS.filter((p) => !p.featured)
+
   return (
     <section id="projects" className="relative py-20 md:py-28 border-t border-border">
       <div className="container-custom">
@@ -56,27 +74,38 @@ export function ProjectsOverview() {
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-serif text-4xl md:text-5xl tracking-tight leading-[1.05]">
-                Two tools we&apos;re building, in the open.
+                Three tools we&apos;re building, in the open.
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-7 md:col-start-6 flex md:items-end">
             <Reveal delay={0.1}>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
-                We focus narrowly. One main project for the household, and a small
-                companion service that grew out of it. Both ship their first 0.1
-                beta in Q3 2026, both are designed API-first — a quiet UI for
-                the people who live with them, and an MCP server so AI agents
-                can work the same surface. Co-authored, in the open, with Claude
-                and Codex; additional contributors are warmly invited.
+                We focus narrowly. One main project for the household, one
+                small companion service that grew out of it, and a finance
+                module that attaches to the first. Heorth and KithLedger
+                ship their first 0.1 beta in Q3 2026; Feoh follows in Q1 2027,
+                once the kitchen has settled. All three are designed
+                API-first — a quiet UI for the people who live with them,
+                an MCP server so AI agents can work the same surface.
+                Co-authored, in the open, with Claude and Codex; additional
+                contributors are warmly invited.
               </p>
             </Reveal>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6">
-          {PROJECTS.map((p, idx) => (
-            <Reveal key={p.id} delay={0.1 + idx * 0.08} className={cn(p.featured ? "lg:col-span-3" : "lg:col-span-2")}>
+        {/* Featured project — full width */}
+        {featured && (
+          <Reveal delay={0.1} className="block">
+            <ProjectCard project={featured} />
+          </Reveal>
+        )}
+
+        {/* Companion projects — equal halves below */}
+        <div className="mt-4 md:mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+          {others.map((p, idx) => (
+            <Reveal key={p.id} delay={0.18 + idx * 0.08}>
               <ProjectCard project={p} />
             </Reveal>
           ))}
@@ -114,9 +143,16 @@ function ProjectCard({ project }: { project: Project }) {
 
       <h3 className="font-serif text-3xl md:text-4xl tracking-tight">
         {project.name}
-        {project.featured && (
-          <span className="ml-3 align-middle inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[0.625rem] font-mono uppercase tracking-wider text-primary">
-            Flagship
+        {project.badge && (
+          <span
+            className={cn(
+              "ml-3 align-middle inline-flex items-center rounded-full px-2 py-0.5 text-[0.625rem] font-mono uppercase tracking-wider",
+              project.featured
+                ? "border border-primary/40 bg-primary/10 text-primary"
+                : "border border-border bg-secondary text-muted-foreground",
+            )}
+          >
+            {project.badge}
           </span>
         )}
       </h3>

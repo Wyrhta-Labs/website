@@ -11,18 +11,29 @@ import {
 const PROJECT_LABEL: Record<Project, string> = {
   heorth: "Heorth",
   kithledger: "KithLedger",
+  feoh: "Feoh",
 }
 
 const PROJECT_TAGLINE: Record<Project, string> = {
   heorth: "Homestead & family management",
   kithledger: "API-first relationship ledger",
+  feoh: "Finance module · attaches to Heorth",
 }
 
-// Solid bar (release) classes — design system: 1 accent only, so KithLedger
-// uses foreground (deep ink) while Heorth uses primary (ember).
+const PROJECT_LANE_NUM: Record<Project, string> = {
+  heorth: "01",
+  kithledger: "02",
+  feoh: "03",
+}
+
+// Solid bar (release) classes — design system: 1 accent only, so:
+//   Heorth      → primary (ember)
+//   KithLedger  → foreground (deep ink)
+//   Feoh        → muted-foreground (warm taupe), already in the palette
 const BAR_SOLID: Record<Project, string> = {
   heorth: "bg-primary text-primary-foreground border-primary",
   kithledger: "bg-foreground text-background border-foreground",
+  feoh: "bg-muted-foreground text-background border-muted-foreground",
 }
 
 const BAR_GA: Record<Project, string> = {
@@ -30,6 +41,8 @@ const BAR_GA: Record<Project, string> = {
     "bg-primary text-primary-foreground border-primary ring-2 ring-primary/30 ring-offset-2 ring-offset-background",
   kithledger:
     "bg-foreground text-background border-foreground ring-2 ring-foreground/25 ring-offset-2 ring-offset-background",
+  feoh:
+    "bg-muted-foreground text-background border-muted-foreground ring-2 ring-muted-foreground/30 ring-offset-2 ring-offset-background",
 }
 
 const BAR_BETA: Record<Project, string> = {
@@ -37,11 +50,14 @@ const BAR_BETA: Record<Project, string> = {
     "bg-primary/90 text-primary-foreground border border-dashed border-primary",
   kithledger:
     "bg-foreground/90 text-background border border-dashed border-foreground",
+  feoh:
+    "bg-muted-foreground/90 text-background border border-dashed border-muted-foreground",
 }
 
 const BAND_BG: Record<Project, string> = {
   heorth: "bg-primary/10 border border-primary/25 text-primary",
   kithledger: "bg-foreground/[0.06] border border-foreground/20 text-foreground",
+  feoh: "bg-muted-foreground/[0.10] border border-muted-foreground/30 text-muted-foreground",
 }
 
 const TIER_BADGE: Record<Milestone["tier"], string> = {
@@ -59,6 +75,10 @@ export function RoadmapTimeline() {
         <LegendSwatch
           className="bg-foreground border-foreground"
           label="KithLedger"
+        />
+        <LegendSwatch
+          className="bg-muted-foreground border-muted-foreground"
+          label="Feoh"
         />
         <LegendSwatch
           className="bg-transparent border-dashed border-foreground/50"
@@ -83,6 +103,7 @@ export function RoadmapTimeline() {
       <div className="md:hidden space-y-8">
         <MobileLane project="heorth" />
         <MobileLane project="kithledger" />
+        <MobileLane project="feoh" />
       </div>
     </div>
   )
@@ -154,6 +175,8 @@ function GanttGrid() {
       <Lane project="heorth" gridStyle={gridStyle} />
       <div className="rule-warm" aria-hidden />
       <Lane project="kithledger" gridStyle={gridStyle} />
+      <div className="rule-warm" aria-hidden />
+      <Lane project="feoh" gridStyle={gridStyle} />
     </div>
   )
 }
@@ -176,7 +199,7 @@ function Lane({
       <div className="grid items-baseline" style={gridStyle}>
         <div className="px-5">
           <div className="text-eyebrow text-muted-foreground">
-            {project === "heorth" ? "01" : "02"}
+            {PROJECT_LANE_NUM[project]}
           </div>
           <div className="mt-1 font-serif text-xl tracking-tight">
             {PROJECT_LABEL[project]}
@@ -281,7 +304,7 @@ function MobileLane({ project }: { project: Project }) {
   return (
     <div className="rounded-lg border border-border bg-card p-5">
       <div className="text-eyebrow text-muted-foreground">
-        {project === "heorth" ? "01 · Lane" : "02 · Lane"}
+        {PROJECT_LANE_NUM[project]} · Lane
       </div>
       <div className="mt-1 font-serif text-2xl tracking-tight">
         {PROJECT_LABEL[project]}

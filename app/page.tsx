@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { ProjectsOverview } from "@/components/projects-overview"
 import { HeorthFeature } from "@/components/heorth-feature"
 import { KithLedgerFeature } from "@/components/kithledger-feature"
+import { FeohFeature } from "@/components/feoh-feature"
 import { PhilosophySection } from "@/components/philosophy-section"
 import { JournalTeaser } from "@/components/journal-teaser"
 import { CommunitySection } from "@/components/community-section"
@@ -16,6 +17,7 @@ export default function HomePage() {
       <ProjectsOverview />
       <HeorthFeature />
       <KithLedgerFeature />
+      <FeohFeature />
       <PhilosophySection />
       <JournalTeaser />
       <CommunitySection />

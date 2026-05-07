@@ -1,4 +1,4 @@
-export type Project = "heorth" | "kithledger"
+export type Project = "heorth" | "kithledger" | "feoh"
 
 export type Quarter = {
   id: string
@@ -55,6 +55,13 @@ export const BANDS: Band[] = [
     start: 1,
     end: 7,
     note: "Versioned endpoints, deprecation windows, no surprise breaks.",
+  },
+  {
+    project: "feoh",
+    label: "Companion to Heorth · scaffolding & feedback",
+    start: 3,
+    end: 7,
+    note: "Built atop Heorth's API; no work begins until the kitchen is settled.",
   },
 ]
 
@@ -117,7 +124,7 @@ export const MILESTONES: Milestone[] = [
     end: 6,
     tier: "release",
     description:
-      "Money and books — two slow surfaces a household uses without rush. Both work offline; both export to plain text.",
+      "Money and books — two slow surfaces a household uses without rush. The Heorth side stays small (envelopes, bills) and hands the deeper finance work over to Feoh, which lands the same quarter.",
     bullets: [
       "Envelope budgeting",
       "Recurring bills & subscriptions",
@@ -223,6 +230,57 @@ export const MILESTONES: Milestone[] = [
       "Hosted plan (optional)",
     ],
   },
+
+  // ───────────────────────────── Feoh
+  {
+    project: "feoh",
+    version: "0.1",
+    title: "Beta launch",
+    start: 4,
+    end: 5,
+    tier: "beta",
+    description:
+      "First public beta of the finance module. Attaches to a running Heorth, brings double-entry under the hood, envelopes on top, and the same self-hosted promises. Ships the same quarter as Heorth's budgets layer so the two settle together.",
+    bullets: [
+      "Attach-to-Heorth handshake",
+      "Envelopes & double-entry ledger",
+      "Recurring bills & subscriptions",
+      "REST API + MCP server",
+      "CSV import & ledger-format export",
+    ],
+  },
+  {
+    project: "feoh",
+    version: "0.2",
+    title: "Shared expenses & savings",
+    start: 5,
+    end: 6,
+    tier: "release",
+    description:
+      "Money between people who live together becomes its own first-class surface: joint accounts, fair splits, and savings goals that flex with the season.",
+    bullets: [
+      "Per-member shares & fair splits",
+      "Savings goals with envelopes",
+      "Joint vs. solo account scoping",
+      "Reconciliation helpers",
+    ],
+  },
+  {
+    project: "feoh",
+    version: "0.3",
+    title: "Imports & quiet forecasting",
+    start: 6,
+    end: 7,
+    tier: "release",
+    description:
+      "Bringing in the wider world without giving it a microphone: bank-statement and broker imports, plus a small, honest forecast of the months ahead.",
+    bullets: [
+      "Bank statement importers (CAMT.053, CSV)",
+      "Honest 6-month forecast",
+      "Tax-year envelope rollovers",
+      "Plain-text annual review export",
+    ],
+  },
 ]
 
 export const BEYOND: { project: Project; items: string[] }[] = [
@@ -242,6 +300,15 @@ export const BEYOND: { project: Project; items: string[] }[] = [
       "Importers for Google, Apple, ProtonMail",
       "Journal entries with encrypted attachments",
       "Public read-only profiles (opt-in)",
+    ],
+  },
+  {
+    project: "feoh",
+    items: [
+      "Feoh 1.0 — frozen v1 API alongside Heorth 1.0",
+      "Multi-currency household books (EUR · GBP · USD)",
+      "Investment & pension envelopes (read-only)",
+      "Receipts: photo capture & OCR (offline)",
     ],
   },
 ]

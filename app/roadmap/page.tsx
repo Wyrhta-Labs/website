@@ -16,7 +16,7 @@ import { BEYOND, MILESTONES, QUARTERS } from "@/lib/roadmap-data"
 export const metadata: Metadata = {
   title: "Roadmap — Wyrhta Labs",
   description:
-    "What is being built, when, and why — for Heorth and KithLedger. Starting with the 0.1 beta in Q3 2026 and continuing through general availability.",
+    "What is being built, when, and why — for Heorth, KithLedger, and Feoh. Starting with the 0.1 beta of Heorth and KithLedger in Q3 2026, Feoh in Q1 2027, and continuing through general availability.",
 }
 
 const toc: TocItem[] = [
@@ -24,9 +24,10 @@ const toc: TocItem[] = [
   { id: "timeline", n: "02", label: "Timeline" },
   { id: "heorth", n: "03", label: "Heorth, by quarter" },
   { id: "kithledger", n: "04", label: "KithLedger, by quarter" },
-  { id: "beyond", n: "05", label: "Beyond 1.0" },
-  { id: "principles", n: "06", label: "Working principles" },
-  { id: "shape", n: "07", label: "How to shape it" },
+  { id: "feoh", n: "05", label: "Feoh, by quarter" },
+  { id: "beyond", n: "06", label: "Beyond 1.0" },
+  { id: "principles", n: "07", label: "Working principles" },
+  { id: "shape", n: "08", label: "How to shape it" },
 ]
 
 export default function RoadmapPage() {
@@ -35,7 +36,7 @@ export default function RoadmapPage() {
       <PageHeader
         kind="§ Project · Roadmap"
         title="A patient plan, written in pencil."
-        dek="What is being built, when, and why — for Heorth and KithLedger. The first 0.1 beta of each project ships in Q3 2026; the year that follows is shown below, quarter by quarter."
+        dek="What is being built, when, and why — for Heorth, KithLedger, and Feoh. Heorth and KithLedger ship their first 0.1 beta in Q3 2026; Feoh, the finance module that attaches to Heorth, follows in Q1 2027. The year that follows is shown below, quarter by quarter."
         crumbs={[{ label: "Roadmap" }]}
         meta={[
           { label: "Cadence", value: "One release per quarter" },
@@ -93,15 +94,17 @@ export default function RoadmapPage() {
       >
         <Section id="now" n="01" title="Now & next">
           <Lede>
-            We are six weeks from the first public beta. Two projects, one
+            We are six weeks from the first public beta. Three projects, one
             cadence, written down so it can be argued with.
           </Lede>
           <p>
             The roadmap below is deliberately small. One quarter, one
-            release, per project — paired so the two pieces grow together.
-            Heorth is the household, KithLedger is the address book of
-            kin and friendships beneath it; each release of one usually
-            unlocks something in the other.
+            release, per project — paired so the pieces grow together.
+            Heorth is the household; KithLedger is the address book of
+            kin and friendships beneath it; Feoh is the household&apos;s
+            books — a finance module that attaches to Heorth and lands
+            two quarters later, once the kitchen has settled. Each
+            release of one usually unlocks something in another.
           </p>
           <p>
             Today we are inside <Mono>Q2 2026</Mono>, finishing the
@@ -120,9 +123,9 @@ export default function RoadmapPage() {
 
         <Section id="timeline" n="02" title="Timeline">
           <p>
-            Six quarters, two lanes, ten releases. The dashed line marks
-            today; the bands above each lane describe the work that runs
-            continuously beneath the milestones.
+            Six quarters, three lanes, thirteen releases. The dashed line
+            marks today; the bands above each lane describe the work that
+            runs continuously beneath the milestones.
           </p>
           <div className="mt-6">
             <RoadmapTimeline />
@@ -153,7 +156,19 @@ export default function RoadmapPage() {
           <ProjectQuarters project="kithledger" />
         </Section>
 
-        <Section id="beyond" n="05" title="Beyond 1.0">
+        <Section id="feoh" n="05" title="Feoh, by quarter">
+          <p>
+            Feoh is the household&apos;s books — a finance module that
+            attaches to Heorth and runs beside it. Its 0.1 beta lands in{" "}
+            <Mono>Q1 2027</Mono>, the same quarter as Heorth&apos;s
+            budgets layer, so the two settle together. Three releases on
+            this page; v1.0 sits in &ldquo;Beyond 1.0&rdquo; below, paired
+            with Heorth&apos;s.
+          </p>
+          <ProjectQuarters project="feoh" />
+        </Section>
+
+        <Section id="beyond" n="06" title="Beyond 1.0">
           <p>
             1.0 is not the end; it is the first stable surface. Past
             general availability we slow further, ship less often, and
@@ -161,7 +176,7 @@ export default function RoadmapPage() {
             change later — federation, native clients, and an honest
             plugin SDK.
           </p>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {BEYOND.map((b) => (
               <div
                 key={b.project}
@@ -169,7 +184,11 @@ export default function RoadmapPage() {
               >
                 <div className="flex items-center justify-between">
                   <div className="text-eyebrow text-primary">
-                    {b.project === "heorth" ? "Heorth · 1.x" : "KithLedger · 1.x"}
+                    {b.project === "heorth"
+                      ? "Heorth · 1.x"
+                      : b.project === "kithledger"
+                        ? "KithLedger · 1.x"
+                        : "Feoh · 1.x"}
                   </div>
                   <span className="font-mono text-[10px] text-muted-foreground tracking-wider">
                     Beyond Q3 2027
@@ -194,7 +213,7 @@ export default function RoadmapPage() {
           </div>
         </Section>
 
-        <Section id="principles" n="06" title="Working principles">
+        <Section id="principles" n="07" title="Working principles">
           <p>
             A roadmap is only useful if you know how it gets revised.
             These four rules govern this page; all four can be
@@ -241,7 +260,7 @@ export default function RoadmapPage() {
           </ol>
         </Section>
 
-        <Section id="shape" n="07" title="How to shape it">
+        <Section id="shape" n="08" title="How to shape it">
           <p>
             This roadmap is short on purpose, and a deliberate amount of
             it is still negotiable. There are three good ways to

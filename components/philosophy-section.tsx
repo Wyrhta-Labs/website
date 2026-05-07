@@ -31,7 +31,7 @@ const PRINCIPLES = [
     n: "v",
     title: "Small surface, deep roots.",
     body:
-      "We'd rather have two finished tools than ten half-finished ones. Each project earns its keep before we plant another.",
+      "We'd rather have three finished tools than a dozen half-finished ones. Each project earns its keep before we plant another.",
   },
   {
     n: "vi",
@@ -51,7 +51,7 @@ export function PhilosophySection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-14 md:mb-20">
           <div className="md:col-span-5">
             <Reveal>
-              <div className="text-eyebrow text-primary mb-4">§ 04 — Philosophy</div>
+              <div className="text-eyebrow text-primary mb-4">§ 05 — Philosophy</div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-serif text-4xl md:text-6xl tracking-tight leading-[1] text-balance">

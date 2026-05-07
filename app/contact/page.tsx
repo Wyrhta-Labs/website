@@ -23,6 +23,12 @@ const REPOS = [
     href: "https://github.com/wyrhta-labs/kithledger/issues",
   },
   {
+    name: "Feoh",
+    description:
+      "Envelopes, double-entry questions, the attach-to-Heorth handshake, and anything financial that runs beside the hearth.",
+    href: "https://github.com/wyrhta-labs/feoh/issues",
+  },
+  {
     name: "Wyrhta meta",
     description:
       "Documentation, the website, the journal — anything that isn't tied to a specific project.",
