@@ -12,12 +12,12 @@ const POINTS = [
   {
     icon: Zap,
     title: "Agent-ready over MCP",
-    body: "Ships with a Model Context Protocol server so Claude, Codex, and your own LLM-driven assistants can read and write the ledger as a first-class backend — same auth, same audit trail as the UI.",
+    body: "Ships with a Model Context Protocol server so AI coding agents and your own LLM-driven assistants can read and write the ledger as a first-class backend — same auth, same audit trail as the UI.",
   },
   {
     icon: Lock,
     title: "Yours, end-to-end",
-    body: "Single-binary Rust service. SQLite or Postgres. Encrypted at rest. No telemetry, no accounts you don't host yourself. Co-authored with Claude and Codex, kept small and readable on purpose.",
+    body: "Single-binary Rust service. SQLite or Postgres. Encrypted at rest. No telemetry, no accounts you don't host yourself. Co-authored with the help of AI coding agents, kept small and readable on purpose.",
   },
 ]
 
@@ -43,7 +43,7 @@ export function KithLedgerFeature() {
                 last-met dates. KithLedger is the quiet database underneath:
                 API-first, with a thin UI for daily use and an MCP server so
                 AI agents can keep the ledger alongside you. It started as a
-                service Heorth needed, was co-authored with Claude and Codex,
+                service Heorth needed, was co-authored with the help of AI coding agents,
                 and became a project of its own.
               </p>
               <a

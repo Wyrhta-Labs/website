@@ -40,7 +40,7 @@ export function HeorthFeature() {
                 home-shaped place. Designed API-first: a UI for human hands and
                 tired evenings, an MCP server for AI agents that help you plan,
                 balance, and remember. Self-hosted, end-to-end encrypted, and
-                co-authored in the open with Claude and Codex.
+                co-authored in the open with the help of AI coding agents.
               </p>
               <a
                 href="https://github.com/wyrhta-labs/heorth"
@@ -59,8 +59,8 @@ export function HeorthFeature() {
                   <dd className="font-mono text-xs text-foreground">Web · CLI · Agents</dd>
                 </div>
                 <div>
-                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Co-authors</dt>
-                  <dd className="font-mono text-xs text-foreground">Claude · Codex</dd>
+                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Drafted with</dt>
+                  <dd className="font-mono text-xs text-foreground">AI coding agents</dd>
                 </div>
               </dl>
             </Reveal>

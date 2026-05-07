@@ -194,7 +194,7 @@ export const MILESTONES: Milestone[] = [
     bullets: [
       "Scoped tokens & per-tool capabilities",
       "Append-only audit log",
-      "Reference clients for Claude & Codex",
+      "Reference clients for popular MCP-aware editors",
       "Reasoning hints in OpenAPI extensions",
     ],
   },

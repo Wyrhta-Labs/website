@@ -153,7 +153,7 @@ export default function JournalPage() {
       <PageHeader
         kind="§ Project · Journal"
         title="Notes from the workshop, posted when the work warrants it."
-        dek="Drafted with the help of AI coding agents — Claude and Codex — then read, trimmed, and signed by a person before it goes out. We publish when there is something genuinely worth a letter: a design we settled, a decision we reversed, a release worth marking. Never to fill a slot."
+        dek="Drafted with the help of AI coding agents, then read, trimmed, and signed by a person before it goes out. We publish when there is something genuinely worth a letter: a design we settled, a decision we reversed, a release worth marking. Never to fill a slot."
         crumbs={[{ label: "Journal" }]}
         meta={[
           { label: "Cadence", value: "When the work warrants" },
