@@ -228,6 +228,29 @@ export default function PressPage() {
             </a>
             {" and we'll send a packet within a working day."}
           </p>
+
+          <a
+            href="/wyrhta-design-guide.pdf"
+            download
+            className="mt-6 group flex items-center justify-between gap-6 rounded-lg border border-dashed border-border bg-card/60 p-5 hover:border-primary/60 hover:bg-card transition-colors"
+          >
+            <div className="min-w-0">
+              <div className="text-eyebrow text-primary">
+                Full design guide · PDF
+              </div>
+              <div className="mt-1.5 font-serif text-lg tracking-tight text-foreground">
+                Brand foundation, mark, colour, type, and layout — in one
+                file.
+              </div>
+              <div className="mt-1 font-mono text-xs text-muted-foreground">
+                A4 · 13 pages · 94 KB · Spring 2026
+              </div>
+            </div>
+            <span className="shrink-0 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-xs font-mono group-hover:bg-primary transition-colors">
+              <ArrowDownToLine size={12} />
+              Design-guide.pdf
+            </span>
+          </a>
         </Section>
 
         <Section id="color" n="05" title="Color">
