@@ -11,12 +11,12 @@ import {
   type TocItem,
 } from "@/components/page-shell"
 import { RoadmapTimeline } from "@/components/roadmap-timeline"
-import { BEYOND, MILESTONES, QUARTERS } from "@/lib/roadmap-data"
+import { BEYOND, MILESTONES, QUARTERS, type Project } from "@/lib/roadmap-data"
 
 export const metadata: Metadata = {
   title: "Roadmap — Wyrhta Labs",
   description:
-    "What is being built, when, and why — for Heorth, KithLedger, and Feoh. Starting with the 0.1 beta of Heorth and KithLedger in Q3 2026, Feoh in Q1 2027, and continuing through general availability.",
+    "What is being built, when, and why — for Heorth and KithLedger, plus Feoh, Heorth's finance module. Starting with the 0.1 beta of Heorth and KithLedger in Q3 2026, Feoh in Q1 2027, and continuing through general availability.",
 }
 
 const toc: TocItem[] = [
@@ -24,7 +24,7 @@ const toc: TocItem[] = [
   { id: "timeline", n: "02", label: "Timeline" },
   { id: "heorth", n: "03", label: "Heorth, by quarter" },
   { id: "kithledger", n: "04", label: "KithLedger, by quarter" },
-  { id: "feoh", n: "05", label: "Feoh, by quarter" },
+  { id: "feoh", n: "05", label: "Feoh, Heorth's finance module" },
   { id: "beyond", n: "06", label: "Beyond 1.0" },
   { id: "principles", n: "07", label: "Working principles" },
   { id: "shape", n: "08", label: "How to shape it" },
@@ -36,7 +36,7 @@ export default function RoadmapPage() {
       <PageHeader
         kind="§ Project · Roadmap"
         title="A patient plan, written in pencil."
-        dek="What is being built, when, and why — for Heorth, KithLedger, and Feoh. Heorth and KithLedger ship their first 0.1 beta in Q3 2026; Feoh, the finance module that attaches to Heorth, follows in Q1 2027. The year that follows is shown below, quarter by quarter."
+        dek="What is being built, when, and why — for Heorth and KithLedger. Heorth and KithLedger ship their first 0.1 beta in Q3 2026; Feoh, Heorth's finance module, follows in Q1 2027. The year that follows is shown below, quarter by quarter."
         crumbs={[{ label: "Roadmap" }]}
         meta={[
           { label: "Cadence", value: "One release per quarter" },
@@ -94,8 +94,8 @@ export default function RoadmapPage() {
       >
         <Section id="now" n="01" title="Now & next">
           <Lede>
-            We are six weeks from the first public beta. Three projects, one
-            cadence, written down so it can be argued with.
+            We are six weeks from the first public beta. Two products and a
+            finance module, one cadence, written down so it can be argued with.
           </Lede>
           <p>
             The roadmap below is deliberately small. One quarter, one
@@ -123,9 +123,10 @@ export default function RoadmapPage() {
 
         <Section id="timeline" n="02" title="Timeline">
           <p>
-            Six quarters, three lanes, thirteen releases. The dashed line
-            marks today; the bands above each lane describe the work that
-            runs continuously beneath the milestones.
+            Six quarters, three lanes, thirteen releases — Heorth and
+            KithLedger, with Feoh charted as Heorth&apos;s finance module.
+            The dashed line marks today; the bands above each lane describe
+            the work that runs continuously beneath the milestones.
           </p>
           <div className="mt-6">
             <RoadmapTimeline />
@@ -156,7 +157,7 @@ export default function RoadmapPage() {
           <ProjectQuarters project="kithledger" />
         </Section>
 
-        <Section id="feoh" n="05" title="Feoh, by quarter">
+        <Section id="feoh" n="05" title="Feoh, Heorth's finance module">
           <p>
             Feoh is the household&apos;s books — a finance module that
             attaches to Heorth and runs beside it. Its 0.1 beta lands in{" "}
@@ -319,7 +320,7 @@ export default function RoadmapPage() {
   )
 }
 
-function ProjectQuarters({ project }: { project: "heorth" | "kithledger" }) {
+function ProjectQuarters({ project }: { project: Project }) {
   const items = MILESTONES.filter((m) => m.project === project)
   return (
     <ol className="mt-6 space-y-4">

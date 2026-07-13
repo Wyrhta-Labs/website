@@ -58,7 +58,7 @@ export const BANDS: Band[] = [
   },
   {
     project: "feoh",
-    label: "Companion to Heorth · scaffolding & feedback",
+    label: "Heorth's finance module · scaffolding & feedback",
     start: 3,
     end: 7,
     note: "Built atop Heorth's API; no work begins until the kitchen is settled.",
@@ -201,15 +201,15 @@ export const MILESTONES: Milestone[] = [
   {
     project: "kithledger",
     version: "0.4",
-    title: "gRPC & webhooks",
+    title: "Webhooks & sync tooling",
     start: 5,
     end: 6,
     tier: "release",
     description:
-      "For tools that need streaming: a gRPC mirror of the REST API and outbound webhooks for journals, calendars, and home dashboards.",
+      "For tools that need to react as things change: outbound webhooks for journals, calendars, and home dashboards, plus the tooling to keep contacts in sync.",
     bullets: [
-      "gRPC service definitions",
       "Outbound webhook subscriptions",
+      "Signed delivery & retries",
       "Bulk import from contacts",
       "CLI sync tooling",
     ],

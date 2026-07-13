@@ -15,8 +15,8 @@ export default function HomePage() {
       <HeroSection />
       <ProjectsOverview />
       <HeorthFeature />
-      <KithLedgerFeature />
       <FeohFeature />
+      <KithLedgerFeature />
       <PhilosophySection />
       <CommunitySection />
       <SiteFooter />

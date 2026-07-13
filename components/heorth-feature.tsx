@@ -52,7 +52,7 @@ export function HeorthFeature() {
               <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-border">
                 <div>
                   <dt className="text-eyebrow text-muted-foreground mb-1.5">Surface</dt>
-                  <dd className="font-mono text-xs text-foreground">REST · gRPC · MCP</dd>
+                  <dd className="font-mono text-xs text-foreground">REST · MCP</dd>
                 </div>
                 <div>
                   <dt className="text-eyebrow text-muted-foreground mb-1.5">Clients</dt>

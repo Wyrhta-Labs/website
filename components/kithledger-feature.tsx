@@ -7,7 +7,7 @@ const POINTS = [
   {
     icon: Database,
     title: "API-first by design",
-    body: "Every relationship, touchpoint, and note reachable through a small, well-versioned REST and gRPC surface. The web UI is one client among many; the human is welcome but not assumed.",
+    body: "Every relationship, touchpoint, and note reachable through a small, well-versioned REST surface. The web UI is one client among many; the human is welcome but not assumed.",
   },
   {
     icon: Zap,

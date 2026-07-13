@@ -23,9 +23,9 @@ const REPOS = [
     href: "https://github.com/wyrhta-labs/kithledger/issues",
   },
   {
-    name: "Feoh",
+    name: "Feoh · Heorth finance module",
     description:
-      "Envelopes, double-entry questions, the attach-to-Heorth handshake, and anything financial that runs beside the hearth.",
+      "Envelopes, double-entry questions, the attach-to-Heorth handshake, and anything financial in Heorth's finance module.",
     href: "https://github.com/wyrhta-labs/feoh/issues",
   },
   {

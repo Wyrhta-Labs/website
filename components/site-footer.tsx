@@ -10,8 +10,8 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
     title: "Projects",
     links: [
       { label: "Heorth", href: "/#heorth" },
+      { label: "Feoh (Heorth finance)", href: "/#feoh" },
       { label: "KithLedger", href: "/#kithledger" },
-      { label: "Feoh", href: "/#feoh" },
       { label: "Roadmap", href: "/roadmap" },
       { label: "Changelog", href: "/#changelog" },
     ],

@@ -149,18 +149,18 @@ export default function PressPage() {
               <div className="flex items-center gap-2">
                 <div className="text-eyebrow text-primary">Feoh</div>
                 <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground border border-border rounded-full px-2 py-0.5">
-                  Module
+                  Heorth module
                 </span>
               </div>
               <h3 className="mt-2 font-serif text-xl tracking-tight">
-                A finance module for the household — attaches to Heorth.
+                Heorth&apos;s finance module — envelopes and household books.
               </h3>
               <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
-                Envelopes, double-entry ledgers, recurring bills, joint
-                expenses split between household members, and savings goals.
-                Runs as a first-class module beside Heorth, sharing its auth
-                and MCP surface; round-trips through CSV and a plain ledger
-                format so nothing is locked in.
+                Not a separate product: Feoh is the finance module inside
+                Heorth. Envelopes, double-entry ledgers, recurring bills, joint
+                expenses split between household members, and savings goals —
+                sharing Heorth&apos;s auth and MCP surface, and round-tripping
+                through CSV and a plain ledger format so nothing is locked in.
               </p>
               <div className="mt-4 font-mono text-xs text-muted-foreground">
                 0.1 beta · Q1 2027
@@ -320,11 +320,11 @@ export default function PressPage() {
           <p>Two paragraphs you can paste verbatim, short and long.</p>
           <BoilerCard
             length="Short · 1 sentence"
-            text="Wyrhta Labs is a personal open-source initiative building an organization core for family and home life — the maker of Heorth, KithLedger, and Feoh, with the first 0.1 beta of the household projects planned for Q3 2026 and contributors warmly invited."
+            text="Wyrhta Labs is a personal open-source initiative building an organization core for family and home life — the maker of Heorth and KithLedger, with the first 0.1 beta of the household projects planned for Q3 2026 and contributors warmly invited."
           />
           <BoilerCard
             length="Long · 1 paragraph"
-            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system; KithLedger, an API-first database for nurturing personal relationships; and Feoh, a finance module that attaches to Heorth and brings envelopes, joint expenses, and double-entry household books — all designed API-first, with a UI for human hands and an MCP server for AI agents, and built in the open. The first 0.1 beta of Heorth and KithLedger is scheduled for Q3 2026; Feoh follows in Q1 2027. Everything ships under the permissive MIT license, with a public roadmap, a journal posted when the work warrants, and an open invitation to additional developers who would like to join."
+            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system — including Feoh, its finance module for envelopes, joint expenses, and double-entry household books; and KithLedger, an API-first database for nurturing personal relationships — all designed API-first, with a UI for human hands and an MCP server for AI agents, and built in the open. The first 0.1 beta of Heorth and KithLedger is scheduled for Q3 2026; Feoh follows in Q1 2027. Everything ships under the permissive MIT license, with a public roadmap, a journal posted when the work warrants, and an open invitation to additional developers who would like to join."
           />
         </Section>
 

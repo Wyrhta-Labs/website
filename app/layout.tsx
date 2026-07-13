@@ -14,7 +14,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Wyrhta Labs — Open-source tools for the home",
   description:
-    "A small open-source team building an organization core for family and home life. Makers of Heorth, KithLedger, and Feoh.",
+    "A small open-source team building an organization core for family and home life. Makers of Heorth and KithLedger.",
   generator: "v0.app",
   alternates: {
     canonical: "https://wyrhta.example/",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Wyrhta Labs",
     title: "Wyrhta Labs — Open-source tools for the home",
     description:
-      "A small open-source team building an organization core for family and home life. Makers of Heorth, KithLedger, and Feoh.",
+      "A small open-source team building an organization core for family and home life. Makers of Heorth and KithLedger.",
     type: "website",
     url: "https://wyrhta.example/",
     locale: "en_US",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wyrhta Labs — Open-source tools for the home",
     description:
-      "A small open-source team building an organization core for family and home life. Makers of Heorth, KithLedger, and Feoh.",
+      "A small open-source team building an organization core for family and home life. Makers of Heorth and KithLedger.",
   },
 }
 

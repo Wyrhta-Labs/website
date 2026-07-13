@@ -133,7 +133,7 @@ export function HeroSection() {
         <Reveal delay={0.35}>
           <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-border py-6">
             {[
-              ["03", "Active projects"],
+              ["02", "Active projects"],
               ["100%", "Source available"],
               ["MIT", "Default license"],
               ["self-host", "First-class"],

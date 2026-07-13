@@ -49,9 +49,11 @@ export function FeohFeature() {
           <div className="md:col-span-5">
             <Reveal>
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <div className="text-eyebrow text-primary">§ 04 — Feoh</div>
+                <div className="text-eyebrow text-primary">
+                  § 02 · Feoh — Heorth&apos;s finance module
+                </div>
                 <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground border border-border rounded-full px-2 py-0.5">
-                  Module · attaches to Heorth
+                  Part of Heorth
                 </span>
               </div>
             </Reveal>

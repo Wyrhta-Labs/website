@@ -38,25 +38,12 @@ const PROJECTS: Project[] = [
     name: "KithLedger",
     tagline: "An API-first database for nurturing relationships.",
     description:
-      "A small, opinionated service for keeping track of the people in your life — the threads worth tending. REST, gRPC, and an MCP surface so your own tools (or your agent) can read and write touchpoints. Designed to be embedded, not another app to check.",
+      "A small, opinionated service for keeping track of the people in your life — the threads worth tending. A REST and MCP surface so your own tools (or your agent) can read and write touchpoints. Designed to be embedded, not another app to check.",
     status: "0.1 beta · Q3 2026",
     language: "TypeScript · PostgreSQL",
     license: "MIT",
     agents: "MCP-ready",
     href: "#kithledger",
-  },
-  {
-    id: "feoh",
-    name: "Feoh",
-    tagline: "A finance module for the household — attaches to Heorth.",
-    description:
-      "Envelopes on the kitchen wall, double-entry behind the cupboard. Recurring bills, joint expenses split fairly, savings goals that breathe with the season. Runs as a first-class module beside Heorth, sharing the same household, the same auth, and the same MCP surface.",
-    status: "0.1 beta · Q1 2027",
-    language: "TypeScript · PostgreSQL",
-    license: "MIT",
-    agents: "MCP-ready",
-    href: "#feoh",
-    badge: "Module",
   },
 ]
 
@@ -74,18 +61,19 @@ export function ProjectsOverview() {
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-serif text-4xl md:text-5xl tracking-tight leading-[1.05]">
-                Three tools we&apos;re building, in the open.
+                Two tools we&apos;re building, in the open.
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-7 md:col-start-6 flex md:items-end">
             <Reveal delay={0.1}>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
-                We focus narrowly. One main project for the household, one
-                small companion service that grew out of it, and a finance
-                module that attaches to the first. Heorth and KithLedger
-                ship their first 0.1 beta in Q3 2026; Feoh follows in Q1 2027,
-                once the kitchen has settled. All three are designed
+                We focus narrowly. One main project for the household, and
+                one small companion service that grew out of it. Heorth
+                carries its own finance module, Feoh — envelopes and
+                household books that attach to the hearth and land in Q1
+                2027, once the kitchen has settled. Heorth and KithLedger
+                ship their first 0.1 beta in Q3 2026. Both are designed
                 API-first — a quiet UI for the people who live with them,
                 an MCP server so AI agents can work the same surface. Built
                 in the open; additional contributors are warmly invited.

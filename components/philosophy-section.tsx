@@ -31,7 +31,7 @@ const PRINCIPLES = [
     n: "v",
     title: "Small surface, deep roots.",
     body:
-      "We'd rather have three finished tools than a dozen half-finished ones. Each project earns its keep before we plant another.",
+      "We'd rather have two finished tools than a dozen half-finished ones. Each project earns its keep before we plant another.",
   },
   {
     n: "vi",
