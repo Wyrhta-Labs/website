@@ -89,8 +89,13 @@ export function ProjectsOverview() {
           </Reveal>
         )}
 
-        {/* Companion projects — equal halves below */}
-        <div className="mt-4 md:mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+        {/* Companion projects — equal halves when there are several, full width when solo */}
+        <div
+          className={cn(
+            "mt-4 md:mt-6 grid grid-cols-1 gap-4 md:gap-6",
+            others.length > 1 && "lg:grid-cols-2",
+          )}
+        >
           {others.map((p, idx) => (
             <Reveal key={p.id} delay={0.18 + idx * 0.08}>
               <ProjectCard project={p} />

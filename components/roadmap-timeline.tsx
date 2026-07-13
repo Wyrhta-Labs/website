@@ -17,19 +17,20 @@ const PROJECT_LABEL: Record<Project, string> = {
 const PROJECT_TAGLINE: Record<Project, string> = {
   heorth: "Homestead & family management",
   kithledger: "API-first relationship ledger",
-  feoh: "Finance module · attaches to Heorth",
+  feoh: "Attaches to Heorth · envelopes & double-entry",
 }
 
 const PROJECT_LANE_NUM: Record<Project, string> = {
   heorth: "01",
   kithledger: "02",
-  feoh: "03",
+  feoh: "01 · f", // finance module within Heorth's lane
 }
 
 // Solid bar (release) classes — design system: 1 accent only, so:
 //   Heorth      → primary (ember)
 //   KithLedger  → foreground (deep ink)
-//   Feoh        → muted-foreground (warm taupe), already in the palette
+//   Feoh        → muted-foreground (warm taupe); reads as subordinate to
+//                 Heorth's ember because it is Heorth's finance module.
 const BAR_SOLID: Record<Project, string> = {
   heorth: "bg-primary text-primary-foreground border-primary",
   kithledger: "bg-foreground text-background border-foreground",
@@ -78,7 +79,7 @@ export function RoadmapTimeline() {
         />
         <LegendSwatch
           className="bg-muted-foreground border-muted-foreground"
-          label="Feoh"
+          label="Feoh · Heorth finance module"
         />
         <LegendSwatch
           className="bg-transparent border-dashed border-foreground/50"
@@ -101,9 +102,8 @@ export function RoadmapTimeline() {
 
       {/* Mobile stacked timeline */}
       <div className="md:hidden space-y-8">
-        <MobileLane project="heorth" />
+        <MobileLane project="heorth" attached={["feoh"]} />
         <MobileLane project="kithledger" />
-        <MobileLane project="feoh" />
       </div>
     </div>
   )
@@ -172,11 +172,9 @@ function GanttGrid() {
         ))}
       </div>
 
-      <Lane project="heorth" gridStyle={gridStyle} />
+      <Lane project="heorth" gridStyle={gridStyle} attached={["feoh"]} />
       <div className="rule-warm" aria-hidden />
       <Lane project="kithledger" gridStyle={gridStyle} />
-      <div className="rule-warm" aria-hidden />
-      <Lane project="feoh" gridStyle={gridStyle} />
     </div>
   )
 }
@@ -184,15 +182,12 @@ function GanttGrid() {
 function Lane({
   project,
   gridStyle,
+  attached,
 }: {
   project: Project
   gridStyle: React.CSSProperties
+  attached?: Project[]
 }) {
-  const releases = MILESTONES.filter((m) => m.project === project).sort(
-    (a, b) => a.start - b.start,
-  )
-  const bands = BANDS.filter((b) => b.project === project)
-
   return (
     <div className="py-5">
       {/* Lane title row */}
@@ -211,6 +206,55 @@ function Lane({
         <div className="col-span-6" />
       </div>
 
+      <LaneRows project={project} gridStyle={gridStyle} />
+
+      {/* Attached modules (e.g. Feoh) — nested inside this lane, not a co-equal lane */}
+      {attached?.map((sub) => (
+        <div key={sub} className="mt-6">
+          {/* Sub-module title row */}
+          <div className="grid items-baseline" style={gridStyle}>
+            <div className="px-5">
+              <div className="pl-3 border-l-2 border-muted-foreground/40">
+                <div className="text-eyebrow text-muted-foreground">
+                  Finance module
+                </div>
+                <div className="mt-1 font-serif text-base tracking-tight">
+                  {PROJECT_LABEL[sub]}
+                </div>
+                <div className="mt-0.5 text-xs text-muted-foreground leading-snug">
+                  {PROJECT_TAGLINE[sub]}
+                </div>
+              </div>
+            </div>
+            <div className="col-span-6" />
+          </div>
+
+          <LaneRows project={sub} gridStyle={gridStyle} indent />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function LaneRows({
+  project,
+  gridStyle,
+  indent = false,
+}: {
+  project: Project
+  gridStyle: React.CSSProperties
+  indent?: boolean
+}) {
+  const releases = MILESTONES.filter((m) => m.project === project).sort(
+    (a, b) => a.start - b.start,
+  )
+  const bands = BANDS.filter((b) => b.project === project)
+  const labelIndent = indent
+    ? "pl-3 border-l-2 border-muted-foreground/25"
+    : ""
+
+  return (
+    <>
       {/* Continuous bands */}
       {bands.map((band) => (
         <div
@@ -218,7 +262,7 @@ function Lane({
           className="grid items-center mt-4"
           style={gridStyle}
         >
-          <div className="px-5 text-xs text-muted-foreground">
+          <div className={cn("px-5 text-xs text-muted-foreground", labelIndent)}>
             {band.label}
           </div>
           <div
@@ -250,7 +294,7 @@ function Lane({
           className="grid items-center mt-3"
           style={gridStyle}
         >
-          <div className="px-5">
+          <div className={cn("px-5", labelIndent)}>
             <div className="font-mono text-xs text-foreground">
               v{m.version}
             </div>
@@ -266,7 +310,7 @@ function Lane({
           </div>
         </div>
       ))}
-    </div>
+    </>
   )
 }
 
@@ -299,8 +343,48 @@ function ReleaseBar({ milestone }: { milestone: Milestone }) {
   )
 }
 
-function MobileLane({ project }: { project: Project }) {
+function MobileReleaseList({ project }: { project: Project }) {
   const releases = MILESTONES.filter((m) => m.project === project)
+  return (
+    <ol className="mt-4 space-y-4">
+      {releases.map((m) => (
+        <li
+          key={m.version}
+          className="grid grid-cols-[auto_1fr] gap-3 items-baseline border-t border-border pt-4"
+        >
+          <span
+            className={cn(
+              "font-mono text-[10px] tracking-wider px-2 py-0.5 rounded-sm border",
+              m.tier === "ga"
+                ? BAR_GA[project]
+                : m.tier === "beta"
+                  ? BAR_BETA[project]
+                  : BAR_SOLID[project],
+            )}
+          >
+            v{m.version}
+          </span>
+          <div>
+            <div className="font-serif text-base tracking-tight">
+              {m.title}
+            </div>
+            <div className="font-mono text-[10px] text-muted-foreground mt-0.5 tracking-wider">
+              {QUARTERS[m.start - 1].label} · {TIER_BADGE[m.tier]}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+function MobileLane({
+  project,
+  attached,
+}: {
+  project: Project
+  attached?: Project[]
+}) {
   return (
     <div className="rounded-lg border border-border bg-card p-5">
       <div className="text-eyebrow text-muted-foreground">
@@ -312,35 +396,26 @@ function MobileLane({ project }: { project: Project }) {
       <div className="text-xs text-muted-foreground mt-0.5">
         {PROJECT_TAGLINE[project]}
       </div>
-      <ol className="mt-5 space-y-4">
-        {releases.map((m) => (
-          <li
-            key={m.version}
-            className="grid grid-cols-[auto_1fr] gap-3 items-baseline border-t border-border pt-4"
-          >
-            <span
-              className={cn(
-                "font-mono text-[10px] tracking-wider px-2 py-0.5 rounded-sm border",
-                m.tier === "ga"
-                  ? BAR_GA[project]
-                  : m.tier === "beta"
-                    ? BAR_BETA[project]
-                    : BAR_SOLID[project],
-              )}
-            >
-              v{m.version}
-            </span>
-            <div>
-              <div className="font-serif text-base tracking-tight">
-                {m.title}
-              </div>
-              <div className="font-mono text-[10px] text-muted-foreground mt-0.5 tracking-wider">
-                {QUARTERS[m.start - 1].label} · {TIER_BADGE[m.tier]}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <MobileReleaseList project={project} />
+
+      {/* Attached modules (e.g. Feoh) — nested inside this lane */}
+      {attached?.map((sub) => (
+        <div
+          key={sub}
+          className="mt-6 pl-3 border-l-2 border-muted-foreground/40"
+        >
+          <div className="text-eyebrow text-muted-foreground">
+            Finance module
+          </div>
+          <div className="mt-1 font-serif text-lg tracking-tight">
+            {PROJECT_LABEL[sub]}
+          </div>
+          <div className="text-xs text-muted-foreground mt-0.5">
+            {PROJECT_TAGLINE[sub]}
+          </div>
+          <MobileReleaseList project={sub} />
+        </div>
+      ))}
     </div>
   )
 }

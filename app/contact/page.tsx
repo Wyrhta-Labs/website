@@ -238,16 +238,10 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {SOCIALS.map((s) => {
               const external = s.href.startsWith("http")
-              const Tag: typeof Link | "a" = external ? "a" : Link
-              const props = external
-                ? { href: s.href, target: "_blank", rel: "noreferrer" }
-                : { href: s.href }
-              return (
-                <Tag
-                  key={s.label}
-                  {...(props as never)}
-                  className="group flex items-center justify-between rounded-lg border border-border bg-card px-5 py-4 hover:border-primary/40 transition-colors"
-                >
+              const className =
+                "group flex items-center justify-between rounded-lg border border-border bg-card px-5 py-4 hover:border-primary/40 transition-colors"
+              const inner = (
+                <>
                   <div>
                     <div className="text-eyebrow text-muted-foreground">
                       {s.label}
@@ -260,7 +254,22 @@ export default function ContactPage() {
                     size={16}
                     className="text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
-                </Tag>
+                </>
+              )
+              return external ? (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={className}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <Link key={s.label} href={s.href} className={className}>
+                  {inner}
+                </Link>
               )
             })}
           </div>
