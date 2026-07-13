@@ -11,28 +11,10 @@ export const metadata: Metadata = {
 
 const REPOS = [
   {
-    name: "Heorth",
+    name: "Wyrhta core",
     description:
-      "Bugs, design questions, feature requests, and conversation about the homestead and family system.",
-    href: "https://github.com/wyrhta-labs/heorth/issues",
-  },
-  {
-    name: "KithLedger",
-    description:
-      "API design, schema thoughts, MCP integrations, and anything touching the relationships ledger.",
-    href: "https://github.com/wyrhta-labs/kithledger/issues",
-  },
-  {
-    name: "Feoh · Heorth finance module",
-    description:
-      "Envelopes, double-entry questions, the attach-to-Heorth handshake, and anything financial in Heorth's finance module.",
-    href: "https://github.com/wyrhta-labs/feoh/issues",
-  },
-  {
-    name: "Wyrhta meta",
-    description:
-      "Documentation, the website, the journal — anything that isn't tied to a specific project.",
-    href: "https://github.com/wyrhta-labs/wyrhta/issues",
+      "Bugs, design questions, feature requests, roadmap notes, and conversation about Heorth, KithLedger, Feoh, or the website.",
+    href: "https://github.com/wyrhta-labs/wyrhta-core/issues",
   },
 ]
 
@@ -107,7 +89,7 @@ export default function ContactPage() {
               person.
             </p>
 
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="mt-8 grid grid-cols-1 gap-3">
               {REPOS.map((repo) => (
                 <a
                   key={repo.name}

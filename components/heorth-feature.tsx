@@ -39,14 +39,14 @@ export function HeorthFeature() {
                 appointments, the manuals for the boiler — pulled into a single
                 home-shaped place. Designed API-first: a UI for human hands and
                 tired evenings, an MCP server for AI agents that help you plan,
-                balance, and remember. Self-hosted, end-to-end encrypted, and
-                built in the open.
+                balance, and remember. Planned as a self-hosted project with
+                local-first privacy defaults, built in the open.
               </p>
               <a
-                href="https://github.com/wyrhta-labs/heorth"
+                href="https://github.com/wyrhta-labs/wyrhta-core"
                 className="mt-6 inline-flex items-center gap-2 text-foreground border-b border-foreground/30 hover:border-foreground pb-0.5 text-sm font-medium"
               >
-                Read the README
+                Follow the source
                 <ArrowRight size={14} />
               </a>
               <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-border">
@@ -103,7 +103,7 @@ function HeorthMockup() {
         </div>
         <div className="text-eyebrow text-muted-foreground">heorth · the rowan house</div>
         <div className="font-mono text-[10px] text-muted-foreground hidden sm:block">
-          self-hosted · v0.4.2 · mcp on
+          prototype · beta target · mcp planned
         </div>
       </div>
 

@@ -34,11 +34,11 @@ export const QUARTERS: Quarter[] = [
   { id: "q3-2027", label: "Q3 2027", range: "Jul — Sep" },
 ]
 
-// "today" is April 30, 2026 — roughly one third of the way through Q2 2026.
+// "today" is July 13, 2026 — early in Q3 2026.
 export const TODAY = {
-  column: 1, // 1-indexed; Q2 2026
-  pct: 0.33,
-  label: "Today · Apr 2026",
+  column: 2, // 1-indexed; Q3 2026
+  pct: 0.14,
+  label: "Today · Jul 2026",
 }
 
 export const BANDS: Band[] = [

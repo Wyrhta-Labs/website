@@ -148,7 +148,7 @@ function GanttGrid() {
             key={q.id}
             className={cn(
               "px-3 py-4 border-l border-border relative",
-              i === TODAY.column && "bg-primary/[0.04]",
+              i === TODAY.column - 1 && "bg-primary/[0.04]",
             )}
           >
             <div className="font-mono text-[11px] text-foreground tracking-wider">

@@ -13,7 +13,6 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
       { label: "Feoh (Heorth finance)", href: "/#feoh" },
       { label: "KithLedger", href: "/#kithledger" },
       { label: "Roadmap", href: "/roadmap" },
-      { label: "Changelog", href: "/#changelog" },
     ],
   },
   {
@@ -29,7 +28,6 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
     title: "Open source",
     links: [
       { label: "GitHub", href: "https://github.com/wyrhta-labs", external: true },
-      { label: "Sponsor", href: "/#sponsor" },
       { label: "Code of conduct", href: "/code-of-conduct" },
       { label: "Security", href: "/security" },
     ],
@@ -40,7 +38,7 @@ const LEGAL: LinkItem[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
   { label: "Security", href: "/security" },
-  { label: "RSS", href: "/journal" },
+  { label: "RSS", href: "/rss.xml" },
 ]
 
 function FooterLink({ link, className }: { link: LinkItem; className?: string }) {

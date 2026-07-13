@@ -46,10 +46,10 @@ export function KithLedgerFeature() {
                 service Heorth needed, and became a project of its own.
               </p>
               <a
-                href="https://github.com/wyrhta-labs/kithledger"
+                href="https://github.com/wyrhta-labs/wyrhta-core"
                 className="mt-6 inline-flex items-center gap-2 text-foreground border-b border-foreground/30 hover:border-foreground pb-0.5 text-sm font-medium"
               >
-                Read the API docs
+                Follow the source
                 <ArrowRight size={14} />
               </a>
             </Reveal>

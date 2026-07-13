@@ -22,7 +22,7 @@ export const FEATURED_ENTRY: JournalEntry = {
   title: "On building Heorth's meal planner without 'streaks'.",
   dek: "Why we removed the gamification we had quietly built, and what replaced it on Sunday evenings.",
   body:
-    "We shipped the first meal planner in March with a small calendar streak in the corner — the kind of thing every productivity tool grows by default. Two beta households told us, in almost identical words, that the streak made cooking feel like an obligation to the software rather than to the people at the table. We took it out the next week. In its place is a quiet weekly ledger: what you cooked, what was leftover, who set the table. No badges. No green squares. Just a record you can read like a diary, and ignore for a month without consequence.",
+    "The first meal-planner prototype had a small calendar streak in the corner — the kind of thing every productivity tool grows by default. In review, it made cooking feel like an obligation to the software rather than to the people at the table. We took it out. In its place is a quiet weekly ledger: what you cooked, what was leftover, who set the table. No badges. No green squares. Just a record you can read like a diary, and ignore for a month without consequence.",
   read: "6 min read",
   author: "Ingrid",
 }
@@ -34,10 +34,10 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
     display: "March 2026",
     issue: "№ 013",
     tag: "KithLedger",
-    title: "KithLedger v0.4 — touchpoints, tides, and a smaller schema.",
-    dek: "We cut the schema in half and finally landed on a shape we can live with for a year.",
+    title: "KithLedger schema notes — touchpoints, tides, and a smaller core.",
+    dek: "We cut the proposed schema in half and landed on a shape we can live with for a year.",
     body:
-      "The v0.4 release shrinks KithLedger to four tables: people, touchpoints, tides, and tags. Touchpoints are anything that happens between you and someone — a call, a letter, a shared meal. Tides are the slow rhythm we want to keep with each person; the API answers, in plain English, who you're drifting from. Migration notes, breaking changes, and the new /tides endpoint are below.",
+      "The current KithLedger design shrinks the service to four tables: people, touchpoints, tides, and tags. Touchpoints are anything that happens between you and someone — a call, a letter, a shared meal. Tides are the slow rhythm we want to keep with each person; the API should answer, in plain English, who you're drifting from. The beta implementation still has to prove this shape in code.",
     read: "9 min read",
     author: "Olu",
   },

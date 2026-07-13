@@ -75,10 +75,10 @@ export function FeohFeature() {
                 setup. Built in the open.
               </p>
               <a
-                href="https://github.com/wyrhta-labs/feoh"
+                href="https://github.com/wyrhta-labs/wyrhta-core"
                 className="mt-6 inline-flex items-center gap-2 text-foreground border-b border-foreground/30 hover:border-foreground pb-0.5 text-sm font-medium"
               >
-                Read the README
+                Follow the source
                 <ArrowRight size={14} />
               </a>
               <dl className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 pt-6 border-t border-border">
@@ -150,7 +150,7 @@ function FeohMockup() {
           feoh · attached to heorth
         </div>
         <div className="font-mono text-[10px] text-muted-foreground hidden sm:block">
-          self-hosted · v0.2.1 · mcp on
+          prototype · q1 2027 target · mcp planned
         </div>
       </div>
 

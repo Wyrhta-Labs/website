@@ -42,7 +42,7 @@ export default function RoadmapPage() {
           { label: "Cadence", value: "One release per quarter" },
           { label: "First beta", value: "Q3 2026" },
           { label: "Target 1.0", value: "Q3 2027" },
-          { label: "Updated", value: "April 28, 2026" },
+          { label: "Updated", value: "July 13, 2026" },
         ]}
       />
       <PageBody
@@ -94,7 +94,7 @@ export default function RoadmapPage() {
       >
         <Section id="now" n="01" title="Now & next">
           <Lede>
-            We are six weeks from the first public beta. Two products and a
+            We are in the first public beta quarter. Two products and a
             finance module, one cadence, written down so it can be argued with.
           </Lede>
           <p>
@@ -107,12 +107,12 @@ export default function RoadmapPage() {
             release of one usually unlocks something in another.
           </p>
           <p>
-            Today we are inside <Mono>Q2 2026</Mono>, finishing the
-            scaffolding: data model, auth, the MCP server, and a
-            kitchen-wall layout that runs on a five-year-old tablet. The
-            first <Mono>0.1 beta</Mono> ships in <Mono>Q3 2026</Mono>{" "}
-            (July — September), with weekly notes on the journal until
-            then.
+            Today we are inside <Mono>Q3 2026</Mono>, the planned beta
+            window for Heorth and KithLedger. The focus is still narrow:
+            data model, auth, the MCP server, and the kitchen-wall layout
+            that needs to run on older household hardware. If the beta
+            needs to move, this page and the journal should say so in the
+            same week.
           </p>
           <p>
             Dates are pencilled, not inked. If a quarter slips, we say so on
@@ -275,8 +275,9 @@ export default function RoadmapPage() {
                   Open an issue on the milestone you care about.
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                  Each release has a GitHub milestone with the same name.
-                  Comments on those threads are read every Friday.
+                  Open an issue on the public repository and name the
+                  release you care about. Project-specific repositories
+                  will be linked here as they become public.
                 </p>
               </div>
             </li>

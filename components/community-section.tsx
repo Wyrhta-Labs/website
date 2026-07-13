@@ -13,10 +13,10 @@ const CHANNELS = [
   },
   {
     icon: MessageCircle,
-    label: "Forum",
-    handle: "discuss.wyrhta.dev",
-    note: "Slow-channel discussion. Threads measured in days, not minutes.",
-    href: "#",
+    label: "Contact",
+    handle: "GitHub Issues first",
+    note: "Slow-channel discussion tied to the work.",
+    href: "/contact",
   },
   {
     icon: Rss,
@@ -48,7 +48,7 @@ export function CommunitySection() {
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
                 Wyrhta Labs is, today, a personal initiative — one maker in
-                Castrop-Rauxel, three repositories, and a deliberate pace
+                Castrop-Rauxel, one public source repository, and a deliberate pace
                 toward a 0.1 beta in Q3 2026. We are openly inviting additional
                 developers to join: TypeScript and PostgreSQL hands, designers, or
                 simply people who run the homes they&apos;re writing software
@@ -67,10 +67,10 @@ export function CommunitySection() {
                   Star us on GitHub
                 </a>
                 <a
-                  href="#sponsor"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:border-foreground transition-colors"
                 >
-                  Become a sponsor
+                  Start a conversation
                   <ArrowRight size={14} />
                 </a>
               </div>
