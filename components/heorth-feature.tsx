@@ -8,7 +8,7 @@ const MODULES = [
   { icon: Utensils, name: "Meals", note: "Recipes, weekly plans, the shopping list." },
   { icon: Home, name: "Chores", note: "Rotations that flex with the week." },
   { icon: Wallet, name: "Finances", note: "Envelopes, bills, household budgets." },
-  { icon: BookOpen, name: "Library", note: "Books, manuals, recipes — searchable." },
+  { icon: BookOpen, name: "Extended library", note: "Books, manuals, warranties, recipes." },
   { icon: Sprout, name: "Garden", note: "Planting calendars and harvest notes." },
 ]
 
@@ -36,7 +36,8 @@ export function HeorthFeature() {
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
                 Heorth replaces the dozen apps and shared docs that quietly run a
                 family. Calendars, meal plans, chores, budgets, the children&apos;s
-                appointments, the manuals for the boiler — pulled into a single
+                appointments, the manuals for the boiler, and the household&apos;s
+                extended library — pulled into a single
                 home-shaped place. Designed API-first: a UI for human hands and
                 tired evenings, an MCP server for AI agents that help you plan,
                 balance, and remember. Planned as a self-hosted project with
@@ -112,7 +113,7 @@ function HeorthMockup() {
         <aside className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-border p-5 bg-secondary/30">
           <div className="text-eyebrow text-muted-foreground mb-3">Household</div>
           <div className="space-y-1.5 mb-6">
-            {["Dashboard", "Calendar", "Meals", "Chores", "Finances", "Garden"].map((it, i) => (
+            {["Dashboard", "Calendar", "Meals", "Chores", "Library", "Finances", "Garden"].map((it, i) => (
               <div
                 key={it}
                 className={`flex items-center justify-between px-2.5 py-1.5 rounded text-sm ${

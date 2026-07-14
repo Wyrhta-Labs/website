@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/site-header"
 import { HeroSection } from "@/components/hero-section"
 import { ProjectsOverview } from "@/components/projects-overview"
 import { HeorthFeature } from "@/components/heorth-feature"
+import { ExtendedLibraryFeature } from "@/components/extended-library-feature"
 import { KithLedgerFeature } from "@/components/kithledger-feature"
 import { FeohFeature } from "@/components/feoh-feature"
 import { PhilosophySection } from "@/components/philosophy-section"
@@ -15,6 +16,7 @@ export default function HomePage() {
       <HeroSection />
       <ProjectsOverview />
       <HeorthFeature />
+      <ExtendedLibraryFeature />
       <FeohFeature />
       <KithLedgerFeature />
       <PhilosophySection />

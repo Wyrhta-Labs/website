@@ -119,16 +119,16 @@ export const MILESTONES: Milestone[] = [
   {
     project: "heorth",
     version: "0.4",
-    title: "Budgets & home library",
+    title: "Budgets & extended library",
     start: 5,
     end: 6,
     tier: "release",
     description:
-      "Money and books — two slow surfaces a household uses without rush. The Heorth side stays small (envelopes, bills) and hands the deeper finance work over to Feoh, which lands the same quarter.",
+      "Money and household memory — two slow surfaces a family uses without rush. The Heorth side keeps budgets light, expands the library into books, manuals, warranties, recipes, and receipts, and hands the deeper finance work over to Feoh, which lands the same quarter.",
     bullets: [
       "Envelope budgeting",
       "Recurring bills & subscriptions",
-      "Home library (books, manuals, warranties)",
+      "Extended library (books, manuals, warranties, recipes, receipts)",
       "Annual review export",
     ],
   },
