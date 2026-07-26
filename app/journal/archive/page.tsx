@@ -22,13 +22,13 @@ export default function JournalArchivePage() {
       <PageHeader
         kind="§ Project · Journal archive"
         title="All notes, newest first."
-        dek="A compact archive of the letters published so far: planning notes, design reversals, schema thoughts, and the occasional naming argument."
+        dek="A compact archive of the notes published so far: decisions settled, a service extracted, and the occasional point of etymology."
         crumbs={[
           { label: "Journal", href: "/journal" },
           { label: "Archive" },
         ]}
         meta={[
-          { label: "Issues", value: `${ENTRIES.length} published` },
+          { label: "Notes", value: `${ENTRIES.length} published` },
           { label: "Latest", value: ENTRIES[0].date },
           { label: "Format", value: "Plain HTML" },
           { label: "Feed", value: "/rss.xml" },
@@ -78,8 +78,6 @@ export default function JournalArchivePage() {
                     <time dateTime={entry.date}>{entry.date}</time>
                     <span className="mx-2">·</span>
                     {entry.read}
-                    <span className="mx-2">·</span>
-                    by {entry.author}
                   </div>
                 </div>
                 <ArrowUpRight

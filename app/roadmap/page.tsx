@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight, Github, Mail, Rss } from "lucide-react"
+import { ArrowUpRight, Github, Rss } from "lucide-react"
 import {
   PageShell,
   PageHeader,
@@ -10,24 +10,23 @@ import {
   Mono,
   type TocItem,
 } from "@/components/page-shell"
-import { RoadmapTimeline } from "@/components/roadmap-timeline"
-import { BEYOND, MILESTONES, QUARTERS, type Project } from "@/lib/roadmap-data"
+import { RoadmapTimeline, ServiceTable } from "@/components/roadmap-timeline"
+import { ADRS, OUT_OF_SCOPE } from "@/lib/roadmap-data"
 
 export const metadata: Metadata = {
   title: "Roadmap — Wyrhta Labs",
   description:
-    "What is being built, when, and why — for Heorth and KithLedger, plus Feoh, Heorth's finance module. Starting with the 0.1 beta of Heorth and KithLedger in Q3 2026, Feoh in Q1 2027, and continuing through general availability.",
+    "Where the work actually stands: the foundation and the Feoh extraction are done, the acceptance release is code-complete but not deployed, and nothing goes live until the household adopts it. Phases, not dates.",
 }
 
 const toc: TocItem[] = [
-  { id: "now", n: "01", label: "Now & next" },
-  { id: "timeline", n: "02", label: "Timeline" },
-  { id: "heorth", n: "03", label: "Heorth, by quarter" },
-  { id: "kithledger", n: "04", label: "KithLedger, by quarter" },
-  { id: "feoh", n: "05", label: "Feoh, Heorth's finance module" },
-  { id: "beyond", n: "06", label: "Beyond 1.0" },
-  { id: "principles", n: "07", label: "Working principles" },
-  { id: "shape", n: "08", label: "How to shape it" },
+  { id: "now", n: "01", label: "Where this is" },
+  { id: "services", n: "02", label: "The four services" },
+  { id: "phases", n: "03", label: "The phases" },
+  { id: "decisions", n: "04", label: "Decisions behind it" },
+  { id: "not", n: "05", label: "What this is not" },
+  { id: "rules", n: "06", label: "How this page changes" },
+  { id: "shape", n: "07", label: "How to shape it" },
 ]
 
 export default function RoadmapPage() {
@@ -35,14 +34,14 @@ export default function RoadmapPage() {
     <PageShell>
       <PageHeader
         kind="§ Project · Roadmap"
-        title="A patient plan, written in pencil."
-        dek="What is being built, when, and why — for Heorth and KithLedger. Heorth and KithLedger ship their first 0.1 beta in Q3 2026; Feoh, Heorth's finance module, follows in Q1 2027. The year that follows is shown below, quarter by quarter."
+        title="Phases, not dates."
+        dek="The foundation is laid and finance has been extracted into its own service. The release meant to get this adopted at home is written and tested — and not deployed. Nothing here is live yet, and this page is careful to say so."
         crumbs={[{ label: "Roadmap" }]}
         meta={[
-          { label: "Cadence", value: "One release per quarter" },
-          { label: "First beta", value: "Q3 2026" },
-          { label: "Target 1.0", value: "Q3 2027" },
-          { label: "Updated", value: "July 13, 2026" },
+          { label: "Stage", value: "Pre-launch" },
+          { label: "Phases done", value: "0 and 1" },
+          { label: "Current", value: "Phase 2 · code-complete" },
+          { label: "Updated", value: "July 26, 2026" },
         ]}
       />
       <PageBody
@@ -63,11 +62,11 @@ export default function RoadmapPage() {
                 />
               </div>
               <div className="mt-3 font-serif text-lg tracking-tight">
-                Follow on GitHub
+                Read @wyrhta/core
               </div>
               <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                Issues, milestones, and the public project board live alongside
-                the code.
+                The foundation library is the public one. The services open up
+                as they become fit to read.
               </p>
             </a>
             <Link
@@ -85,162 +84,163 @@ export default function RoadmapPage() {
                 Read the journal
               </div>
               <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                A monthly note in plain prose on what shipped, what slipped, and
-                what was learned.
+                Notes on what was decided and why, posted when a phase actually
+                moves.
               </p>
             </Link>
           </div>
         }
       >
-        <Section id="now" n="01" title="Now & next">
+        <Section id="now" n="01" title="Where this is">
           <Lede>
-            We are in the first public beta quarter. Two products and a
-            finance module, one cadence, written down so it can be argued with.
+            Pre-launch. A good deal is built; none of it is deployed, and it is
+            not a product you can run yet.
           </Lede>
           <p>
-            The roadmap below is deliberately small. One quarter, one
-            release, per project — paired so the pieces grow together.
-            Heorth is the household; KithLedger is the address book of
-            kin and friendships beneath it; Feoh is the household&apos;s
-            books — a finance module that attaches to Heorth and lands
-            two quarters later, once the kitchen has settled. Each
-            release of one usually unlocks something in another.
+            Three things are true at once, and it is worth separating them.
+            The foundation library is done and public. The Feoh extraction is
+            done — finance now lives in its own service. And the release
+            designed to get this adopted at home is{" "}
+            <em className="text-foreground">code-complete</em>: written,
+            tested, and sitting there. What stands between it and being real is
+            a real-tenant smoke test, a screen on a kitchen wall, and one
+            household deciding it is worth using.
           </p>
           <p>
-            Today we are inside <Mono>Q3 2026</Mono>, the planned beta
-            window for Heorth and KithLedger. The focus is still narrow:
-            data model, auth, the MCP server, and the kitchen-wall layout
-            that needs to run on older household hardware. If the beta
-            needs to move, this page and the journal should say so in the
-            same week.
+            That last one is the actual gate. A release here is not ready when
+            the tests pass — it is ready when the people who live in the house
+            would rather use it than not. Until then this reads as{" "}
+            <em className="text-foreground">
+              in active development toward a first at-home release
+            </em>
+            , and any wording on this site that sounds more confident than that
+            is a bug.
           </p>
           <p>
-            Dates are pencilled, not inked. If a quarter slips, we say so on
-            the journal in the same week it slips, and the table here moves
-            with it.
+            There are no quarters on this page, and that is deliberate. The
+            plan is a sequence of phases, each gated on the one before, and
+            attaching dates to it would only produce a set of promises to
+            quietly walk back. The order is the commitment. The calendar is
+            not.
           </p>
         </Section>
 
-        <Section id="timeline" n="02" title="Timeline">
+        <Section id="services" n="02" title="The four services">
           <p>
-            Six quarters, three lanes, thirteen releases — Heorth and
-            KithLedger, with Feoh charted as Heorth&apos;s finance module.
-            The dashed line marks today; the bands above each lane describe
-            the work that runs continuously beneath the milestones.
+            One foundation library and three services — a hub and two
+            satellites, each an independent repository rather than a folder in
+            a monorepo. Everything builds on{" "}
+            <Mono>@wyrhta/core</Mono>, consumed as a pinned GitHub tag, so no
+            service ever gets a foundation change it did not ask for.
           </p>
           <div className="mt-6">
-            <RoadmapTimeline />
+            <ServiceTable />
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            Each bar is a single release. Beta bars are dashed; GA bars are
-            ringed. Hover the version on GitHub for the full milestone
-            issue list.
+            Heorth is the only human-facing surface for now. KithLedger and
+            Feoh are API-first satellites that Heorth consumes over their own
+            APIs, using service keys.
           </p>
         </Section>
 
-        <Section id="heorth" n="03" title="Heorth, by quarter">
+        <Section id="phases" n="03" title="The phases">
           <p>
-            Heorth grows from a single hearth: a working calendar, a chore
-            board, a meal plan. Each quarter adds one room to the house,
-            and finishes the previous one.
+            Each phase is gated on the one above it. Two are behind; one is
+            written but unproven; the rest are ahead, and the further down the
+            page they sit, the less anyone should trust the detail.
           </p>
-          <ProjectQuarters project="heorth" />
-        </Section>
-
-        <Section id="kithledger" n="04" title="KithLedger, by quarter">
-          <p>
-            KithLedger stays small on purpose. It is an API and a thin UI
-            for the people in your life, designed to be embedded in
-            Heorth, in your own dashboard, or in a journaling app you have
-            yet to write.
-          </p>
-          <ProjectQuarters project="kithledger" />
-        </Section>
-
-        <Section id="feoh" n="05" title="Feoh, Heorth's finance module">
-          <p>
-            Feoh is the household&apos;s books — a finance module that
-            attaches to Heorth and runs beside it. Its 0.1 beta lands in{" "}
-            <Mono>Q1 2027</Mono>, the same quarter as Heorth&apos;s
-            budgets layer, so the two settle together. Three releases on
-            this page; v1.0 sits in &ldquo;Beyond 1.0&rdquo; below, paired
-            with Heorth&apos;s.
-          </p>
-          <ProjectQuarters project="feoh" />
-        </Section>
-
-        <Section id="beyond" n="06" title="Beyond 1.0">
-          <p>
-            1.0 is not the end; it is the first stable surface. Past
-            general availability we slow further, ship less often, and
-            invest in the parts of the project that are hardest to
-            change later — federation, native clients, and an honest
-            plugin SDK.
-          </p>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BEYOND.map((b) => (
-              <div
-                key={b.project}
-                className="rounded-lg border border-border bg-card p-6"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-eyebrow text-primary">
-                    {b.project === "heorth"
-                      ? "Heorth · 1.x"
-                      : b.project === "kithledger"
-                        ? "KithLedger · 1.x"
-                        : "Feoh · 1.x"}
-                  </div>
-                  <span className="font-mono text-[10px] text-muted-foreground tracking-wider">
-                    Beyond Q3 2027
-                  </span>
-                </div>
-                <ul className="mt-4 space-y-3">
-                  {b.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-foreground/85 leading-relaxed"
-                    >
-                      <span
-                        className="mt-2 inline-block h-1 w-3 bg-foreground/40 shrink-0"
-                        aria-hidden
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="mt-8">
+            <RoadmapTimeline />
           </div>
         </Section>
 
-        <Section id="principles" n="07" title="Working principles">
+        <Section id="decisions" n="04" title="Decisions behind it">
           <p>
-            A roadmap is only useful if you know how it gets revised.
-            These four rules govern this page; all four can be
-            renegotiated, but only in writing.
+            Four architecture decisions do most of the load-bearing work.
+            Two are settled; two are still proposals — design direction rather
+            than committed features, with nothing built for either until its
+            phase arrives.
+          </p>
+          <ol className="mt-6 space-y-4">
+            {ADRS.map((adr) => (
+              <li
+                key={adr.n}
+                className="rounded-lg border border-border bg-card p-5 md:p-6"
+              >
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-eyebrow text-muted-foreground">
+                    ADR {adr.n}
+                  </span>
+                  <span
+                    className={
+                      adr.status === "accepted"
+                        ? "font-mono text-[10px] uppercase tracking-wider rounded-full border border-foreground/30 bg-foreground/[0.06] text-foreground/70 px-2 py-0.5"
+                        : "font-mono text-[10px] uppercase tracking-wider rounded-full border border-dashed border-primary/50 text-primary px-2 py-0.5"
+                    }
+                  >
+                    {adr.status}
+                  </span>
+                </div>
+                <h3 className="mt-2 font-serif text-xl tracking-tight leading-snug">
+                  {adr.title}
+                </h3>
+                <p className="mt-2.5 text-sm text-foreground/80 leading-relaxed">
+                  {adr.summary}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+
+        <Section id="not" n="05" title="What this is not">
+          <p>
+            A roadmap is as much what it refuses. These are ruled out until
+            further notice — not deprioritised, not coming later in the year,
+            simply not being built.
+          </p>
+          <ul className="mt-6 divide-y divide-border border-y border-border">
+            {OUT_OF_SCOPE.map((o) => (
+              <li
+                key={o.label}
+                className="grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-2 sm:gap-6 py-4"
+              >
+                <div className="font-serif text-lg tracking-tight text-foreground/70 line-through decoration-foreground/25">
+                  {o.label}
+                </div>
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  {o.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section id="rules" n="06" title="How this page changes">
+          <p>
+            This page is a downstream rendering of a strategy document kept in
+            a separate repository. It does not get to invent anything.
           </p>
           <ol className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               {
                 n: "01",
-                title: "One release per quarter, per project.",
-                body: "If we cannot fit a release into a quarter, the release shrinks. If it still cannot fit, the quarter slips and the journal explains why.",
+                title: "The strategy document wins.",
+                body: "If this page and the strategy record ever disagree, this page is the one that is wrong, and it gets corrected — never the other way around.",
               },
               {
                 n: "02",
-                title: "API before UI.",
-                body: "Every milestone ships its endpoints, OpenAPI, and MCP surface before the screens that consume them. Agents are first-class users.",
+                title: "Built is not shipped.",
+                body: "Code-complete, deployed, and adopted are three different states, and this page names which one applies. Nothing gets described as shipping before it runs in a real house.",
               },
               {
                 n: "03",
-                title: "No dark releases.",
-                body: "Work-in-progress lives behind feature flags in the open source. There are no private branches with the 'real' product.",
+                title: "Own household first.",
+                body: "The primary user for the next year or so is one household. Other self-hosters are a gate to pass near 1.0, not an audience to design for now.",
               },
               {
                 n: "04",
-                title: "Slip in public.",
-                body: "If a date moves, the journal entry that announces the slip is published in the week it happens, with the new date and the reason.",
+                title: "No dates to slip.",
+                body: "Phases are ordered and gated, not scheduled. Where something is genuinely unordered — everything past Phase 4 — the page says so rather than inventing a sequence.",
               },
             ].map((p) => (
               <li
@@ -261,37 +261,24 @@ export default function RoadmapPage() {
           </ol>
         </Section>
 
-        <Section id="shape" n="08" title="How to shape it">
+        <Section id="shape" n="07" title="How to shape it">
           <p>
-            This roadmap is short on purpose, and a deliberate amount of
-            it is still negotiable. There are three good ways to
-            influence what lands in which quarter:
+            Phase 3 has to happen before anything below it gets reordered, and
+            real use will rearrange that list more than any suggestion could.
+            That said, two things genuinely help:
           </p>
           <ul className="mt-4 space-y-4">
             <li className="flex items-start gap-4">
               <Github size={16} className="mt-1 text-foreground shrink-0" />
               <div>
                 <div className="font-serif text-base tracking-tight">
-                  Open an issue on the milestone you care about.
+                  Open an issue on the foundation library.
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                  Open an issue on the public repository and name the
-                  release you care about. Project-specific repositories
-                  will be linked here as they become public.
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-4">
-              <Mail size={16} className="mt-1 text-foreground shrink-0" />
-              <div>
-                <div className="font-serif text-base tracking-tight">
-                  Write a letter to the journal.
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                  Reply to any monthly note from{" "}
-                  <Mono>journal@wyrhta.dev</Mono>; thoughtful replies
-                  often become next month's entry — and sometimes a
-                  milestone.
+                  <Mono>@wyrhta/core</Mono> is the public repository and the
+                  place conversation happens. It is demand-driven on purpose —
+                  things land in it when a consumer actually needs them, so a
+                  concrete need is more useful than a feature request.
                 </p>
               </div>
             </li>
@@ -299,18 +286,19 @@ export default function RoadmapPage() {
               <Rss size={16} className="mt-1 text-foreground shrink-0" />
               <div>
                 <div className="font-serif text-base tracking-tight">
-                  Join the build.
+                  Argue with a decision.
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                  Additional developers are warmly invited. TypeScript,
-                  PostgreSQL, and design hands all welcome — see{" "}
+                  The two proposed decisions above are the ones still open. If
+                  you have run into the problems they describe, that is worth
+                  more than agreement — see{" "}
                   <Link
                     href="/contact"
                     className="border-b border-foreground/30 hover:border-foreground"
                   >
                     contact
-                  </Link>{" "}
-                  for the easiest way in.
+                  </Link>
+                  .
                 </p>
               </div>
             </li>
@@ -318,60 +306,5 @@ export default function RoadmapPage() {
         </Section>
       </PageBody>
     </PageShell>
-  )
-}
-
-function ProjectQuarters({ project }: { project: Project }) {
-  const items = MILESTONES.filter((m) => m.project === project)
-  return (
-    <ol className="mt-6 space-y-4">
-      {items.map((m) => {
-        const q = QUARTERS[m.start - 1]
-        return (
-          <li
-            key={m.version}
-            className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-8 border-t border-border pt-5"
-          >
-            <div>
-              <div className="font-mono text-[11px] text-muted-foreground tracking-wider">
-                {q.label}
-              </div>
-              <div className="mt-1 font-mono text-2xl text-foreground">
-                v{m.version}
-              </div>
-              <div className="mt-1 font-mono text-[10px] text-muted-foreground tracking-wider uppercase">
-                {m.tier === "beta"
-                  ? "Beta launch"
-                  : m.tier === "ga"
-                    ? "General availability"
-                    : "Release"}
-              </div>
-            </div>
-            <div>
-              <h3 className="font-serif text-xl tracking-tight">
-                {m.title}
-              </h3>
-              <p className="mt-2 text-foreground/85 leading-relaxed">
-                {m.description}
-              </p>
-              <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
-                {m.bullets.map((b) => (
-                  <li
-                    key={b}
-                    className="flex items-start gap-3 text-sm text-foreground/80"
-                  >
-                    <span
-                      className="mt-2 inline-block h-1 w-2.5 bg-foreground/40 shrink-0"
-                      aria-hidden
-                    />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        )
-      })}
-    </ol>
   )
 }

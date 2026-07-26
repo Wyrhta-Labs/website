@@ -27,15 +27,15 @@ const POINTS = [
   },
   {
     icon: Tags,
-    title: "A library that connects to chores and meals.",
+    title: "A library that connects to meals and upkeep.",
     body:
-      "A mixer manual can sit beside a warranty, a recipe can feed the meal planner, and a borrowed book can appear as a quiet reminder on the weekly board.",
+      "An appliance manual sits beside its warranty, a recipe feeds the meal plan, and a book due back becomes an item in the household's existing task list rather than in a second one.",
   },
   {
     icon: ShieldCheck,
-    title: "Private by default, exportable by habit.",
+    title: "One of the domains Heorth genuinely owns.",
     body:
-      "The catalogue stays in the same self-hosted Heorth store, reachable over REST and MCP, with CSV and plain-file exports for audits and house moves.",
+      "Nothing external models a house catalogue, so this is one of the few places Heorth is the system of record rather than a mirror. It lives in the same self-hosted store as the rest, reachable over REST and MCP.",
   },
 ]
 
@@ -95,16 +95,16 @@ export function ExtendedLibraryFeature() {
                 boiler, lending a book, or planning next week&apos;s meals.
               </p>
               <a
-                href="https://github.com/wyrhta-labs/wyrhta-core"
+                href="/roadmap#services"
                 className="mt-6 inline-flex items-center gap-2 text-foreground border-b border-foreground/30 hover:border-foreground pb-0.5 text-sm font-medium"
               >
-                Follow the source
+                Where this sits in the plan
                 <ArrowRight size={14} />
               </a>
               <dl className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 pt-6 border-t border-border">
                 <div>
-                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Release</dt>
-                  <dd className="font-mono text-xs text-foreground">Heorth 0.4 · Q2 2027</dd>
+                  <dt className="text-eyebrow text-muted-foreground mb-1.5">Status</dt>
+                  <dd className="font-mono text-xs text-foreground">Built · verified</dd>
                 </div>
                 <div>
                   <dt className="text-eyebrow text-muted-foreground mb-1.5">Scope</dt>
@@ -112,7 +112,7 @@ export function ExtendedLibraryFeature() {
                 </div>
                 <div>
                   <dt className="text-eyebrow text-muted-foreground mb-1.5">Surface</dt>
-                  <dd className="font-mono text-xs text-foreground">REST · MCP · CSV</dd>
+                  <dd className="font-mono text-xs text-foreground">REST · MCP</dd>
                 </div>
               </dl>
             </Reveal>
@@ -157,7 +157,7 @@ function LibraryMockup() {
           heorth · library
         </div>
         <div className="font-mono text-[10px] text-muted-foreground hidden sm:block">
-          prototype · q2 2027 target · mcp planned
+          illustration · built · not yet running
         </div>
       </div>
 

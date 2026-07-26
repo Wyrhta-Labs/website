@@ -60,7 +60,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
           { label: "Issue", value: entry.issue },
           { label: "Published", value: entry.date },
           { label: "Read", value: entry.read },
-          { label: "Author", value: entry.author },
+          { label: "Written by", value: "The maintainer" },
         ]}
       />
       <PageBody
@@ -110,9 +110,13 @@ export default async function JournalEntryPage({ params }: PageProps) {
           </p>
 
           <p className="text-base leading-relaxed text-muted-foreground">
-            This note is currently published as a concise workshop letter.
-            Longer implementation notes will be linked from the source once the
-            corresponding project repositories are public.
+            Notes are kept short on purpose. Longer implementation write-ups
+            will be linked from the source once the corresponding repositories
+            are public — for now only{" "}
+            <span className="font-mono text-sm text-foreground">
+              @wyrhta/core
+            </span>{" "}
+            is.
           </p>
         </article>
       </PageBody>

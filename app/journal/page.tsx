@@ -51,8 +51,6 @@ function FeaturedNote({ entry }: { entry: JournalEntry }) {
               <time dateTime={entry.date}>{entry.date}</time>
               <span className="mx-2">·</span>
               {entry.read}
-              <span className="mx-2">·</span>
-              by {entry.author}
             </div>
             <ArrowUpRight
               size={18}
@@ -127,8 +125,6 @@ function ArchiveItem({ entry }: { entry: JournalEntry }) {
             <time dateTime={entry.date}>{entry.date}</time>
             <span className="mx-2">·</span>
             {entry.read}
-            <span className="mx-2">·</span>
-            by {entry.author}
           </div>
         </div>
 
@@ -152,14 +148,14 @@ export default function JournalPage() {
     <PageShell>
       <PageHeader
         kind="§ Project · Journal"
-        title="Notes from the workshop, posted when the work warrants it."
-        dek="Each letter is read, trimmed, and signed by a person before it goes out. We publish when there is something genuinely worth a letter: a design we settled, a decision we reversed, a release worth marking. Never to fill a slot."
+        title="Notes from the workshop, posted when a phase actually moves."
+        dek="Written by one person, in the first person, about work that has already happened — a decision settled, a service extracted, a release finished. There is no publishing schedule to fill, so quiet stretches here mean quiet stretches at the bench."
         crumbs={[{ label: "Journal" }]}
         meta={[
           { label: "Cadence", value: "When the work warrants" },
-          { label: "Issues", value: `${totalIssues} published` },
+          { label: "Notes", value: `${totalIssues} published` },
           { label: "Last posted", value: lastUpdated },
-          { label: "Read at", value: "wyrhta.dev/journal" },
+          { label: "Written by", value: "1 · the maintainer" },
         ]}
       />
       <PageBody
@@ -169,7 +165,7 @@ export default function JournalPage() {
               <p className="font-mono text-xs text-muted-foreground">
                 <span className="text-foreground">wyrhta.dev/journal</span>
                 <span className="mx-2">·</span>
-                {"Plain HTML, no analytics, no popups. Subscribe by RSS, by email, or simply by remembering."}
+                {"Plain HTML, no analytics, no popups. Follow by RSS, or simply by remembering."}
               </p>
             </div>
             <div className="md:col-span-5 flex flex-wrap items-center justify-start md:justify-end gap-3">
@@ -188,10 +184,10 @@ export default function JournalPage() {
                 RSS feed
               </a>
               <Link
-                href="/contact"
+                href="/roadmap"
                 className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-sm font-medium hover:bg-primary transition-colors"
               >
-                Subscribe by email
+                See where this stands
                 <ArrowUpRight size={14} />
               </Link>
             </div>
@@ -205,7 +201,7 @@ export default function JournalPage() {
               id="latest"
               className="font-serif text-2xl md:text-[1.875rem] tracking-tight leading-tight"
             >
-              Latest letter
+              Latest note
             </h2>
           </div>
           <FeaturedNote entry={FEATURED_ENTRY} />

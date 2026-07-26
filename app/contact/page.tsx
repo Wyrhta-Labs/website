@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 const REPOS = [
   {
-    name: "Wyrhta core",
+    name: "@wyrhta/core",
     description:
-      "Bugs, design questions, feature requests, roadmap notes, and conversation about Heorth, KithLedger, Feoh, or the website.",
+      "The one public repository, and so the place for everything: bugs, design questions, roadmap arguments, and conversation about Heorth, KithLedger, Feoh, or this site. The service repositories open up as they become fit to read; until then, this is the queue.",
     href: "https://github.com/wyrhta-labs/wyrhta-core/issues",
   },
 ]
@@ -44,9 +44,9 @@ const EXCEPTIONS = [
 
 const SOCIALS = [
   { label: "GitHub", handle: "@wyrhta-labs", href: "https://github.com/wyrhta-labs" },
-  { label: "Mastodon", handle: "@wyrhta@social.coop", href: "https://social.coop/@wyrhta" },
-  { label: "Matrix", handle: "#wyrhta:matrix.org", href: "https://matrix.to/#/#wyrhta:matrix.org" },
   { label: "Journal", handle: "wyrhta.dev/journal", href: "/journal" },
+  { label: "RSS", handle: "wyrhta.dev/rss.xml", href: "/rss.xml" },
+  { label: "Roadmap", handle: "wyrhta.dev/roadmap", href: "/roadmap" },
 ]
 
 export default function ContactPage() {
@@ -55,12 +55,12 @@ export default function ContactPage() {
       <PageHeader
         kind="§ Project · Contact"
         title="Talk to me on GitHub Issues."
-        dek="Wyrhta Labs is, today, a private and personal open-source project — one maintainer, working in the open. The clearest way to reach me, and the most useful for the work itself, is to open an issue on the repository the conversation belongs to."
+        dek="Wyrhta Labs is one person working in the open. The clearest way to reach me — and the most useful for the work itself — is to open an issue on the public repository, where the reply stays attached to the thing it is about."
         crumbs={[{ label: "Contact" }]}
         meta={[
           { label: "Best channel", value: "GitHub Issues" },
-          { label: "Maintainer", value: "1 · signed by name" },
-          { label: "Project", value: "Personal initiative" },
+          { label: "Maintainer", value: "1" },
+          { label: "Stage", value: "Pre-launch" },
           { label: "Languages", value: "EN · DE" },
         ]}
       />
@@ -214,9 +214,15 @@ export default function ContactPage() {
               id="elsewhere"
               className="font-serif text-2xl md:text-[1.875rem] tracking-tight leading-tight"
             >
-              Elsewhere on the network
+              Everywhere else this project exists
             </h2>
           </div>
+          <p className="max-w-2xl text-[1rem] md:text-[1.0625rem] text-foreground/85 leading-[1.7] mb-8">
+            A short list, deliberately. There is no Mastodon account, no chat
+            server, and no Discord — not as an oversight, but because a
+            one-person project with nothing deployed cannot staff them, and an
+            abandoned channel is worse than no channel.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {SOCIALS.map((s) => {
               const external = s.href.startsWith("http")

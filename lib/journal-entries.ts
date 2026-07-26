@@ -1,97 +1,75 @@
-export type JournalTag = "Heorth" | "KithLedger" | "Studio" | "Engineering"
+// Notes are written by one person, in the first person, about work that has
+// actually happened. No personas, no bylines, no composite "we". If an entry
+// cannot be traced to something in the strategy record, it does not belong here.
+
+export type JournalTag =
+  | "Heorth"
+  | "Feoh"
+  | "KithLedger"
+  | "Architecture"
+  | "Engineering"
 
 export type JournalEntry = {
   slug: string
   date: string // ISO yyyy-mm-dd
-  display: string // "April 2026"
-  issue: string // "№ 014"
+  display: string // "July 2026"
+  issue: string // "№ 004"
   tag: JournalTag
   title: string
   dek: string
   body: string
   read: string
-  author: string
 }
 
 export const FEATURED_ENTRY: JournalEntry = {
-  slug: "on-meal-planning-without-streaks",
-  date: "2026-04-12",
-  display: "April 2026",
-  issue: "№ 014",
+  slug: "code-complete-is-not-shipped",
+  date: "2026-07-26",
+  display: "July 2026",
+  issue: "№ 004",
   tag: "Heorth",
-  title: "On building Heorth's meal planner without 'streaks'.",
-  dek: "Why we removed the gamification we had quietly built, and what replaced it on Sunday evenings.",
+  title: "Code-complete is not shipped.",
+  dek: "Heorth v0.3.0 is written and tested. It is also not running anywhere, and I would rather say so plainly than let the distinction blur.",
   body:
-    "The first meal-planner prototype had a small calendar streak in the corner — the kind of thing every productivity tool grows by default. In review, it made cooking feel like an obligation to the software rather than to the people at the table. We took it out. In its place is a quiet weekly ledger: what you cooked, what was leftover, who set the table. No badges. No green squares. Just a record you can read like a diary, and ignore for a month without consequence.",
-  read: "6 min read",
-  author: "Ingrid",
+    "The acceptance release is done in the only sense I can honestly claim: the code exists and the tests pass. It has a read-only mirror of the family calendar, task sync against the list the household already uses, an installable phone companion, and the Hearth View — the week's meals beside the calendar and whatever is currently outstanding, laid out for a screen on a kitchen wall rather than a laptop. That was the whole point of the release. Not the most features; the smallest set that might actually get used. What it does not have is a deployment. There is no container running on the homelab, no Postgres with a backup schedule behind it, no real tenant, and no screen on the wall. Those are Phase 3, and feature work does not resume until they are done — partly for discipline, mostly because I expect living with the thing for a month to rearrange my priorities more usefully than any planning session would. And past deployment there is a gate I cannot engineer my way through. A release here is ready when the other people in this house would rather use it than not. Test suites are not evidence of that. They are evidence that I have not broken what I already wrote.",
+  read: "4 min read",
 }
 
 export const JOURNAL_ENTRIES: JournalEntry[] = [
   {
-    slug: "kithledger-v0-4-touchpoints",
-    date: "2026-03-21",
-    display: "March 2026",
-    issue: "№ 013",
-    tag: "KithLedger",
-    title: "KithLedger schema notes — touchpoints, tides, and a smaller core.",
-    dek: "We cut the proposed schema in half and landed on a shape we can live with for a year.",
+    slug: "mirroring-not-replacing",
+    date: "2026-07-26",
+    display: "July 2026",
+    issue: "№ 003",
+    tag: "Architecture",
+    title: "Why Heorth mirrors your calendar instead of replacing it.",
+    dek: "The tempting design is to own everything. The accepted decision is to own almost nothing, and to be a very good client of what a household already runs.",
     body:
-      "The current KithLedger design shrinks the service to four tables: people, touchpoints, tides, and tags. Touchpoints are anything that happens between you and someone — a call, a letter, a shared meal. Tides are the slow rhythm we want to keep with each person; the API should answer, in plain English, who you're drifting from. The beta implementation still has to prove this shape in code.",
-    read: "9 min read",
-    author: "Olu",
+      "Every household system wants to become the household's system of record. It is the obvious move and I think it is the wrong one. The calendar this house runs on is in Microsoft 365, and the everyday to-do list is in Microsoft To Do, and both of those already work — on phones, on watches, in the places people actually look. Replacing them would mean asking the household to migrate to my hobby project, which is the fastest way I know to have it rejected. So Heorth mirrors them instead. It reads the calendar and enriches it; it syncs everyday tasks rather than hosting a competing inbox. Where Heorth is a system of record is precisely where nothing else models the domain: the home itself, maintenance, meals, finance, the library. The important part is what sits between Heorth and Microsoft. Every bit of this goes through a provider interface — a CalendarProvider, a TaskProvider — from day one, with Graph as merely the first implementation rather than the assumed one. That has a cost today and buys something specific later: when a second calendar or task backend is worth supporting, it is a new implementation rather than an excavation. Two further consequences fall out of it. Calendar writes are deliberately absent for now — a read-only mirror is much harder to get catastrophically wrong than a two-way sync, and a mirror that quietly corrupts a shared family calendar would end this project on the spot. And Heorth's own maintenance work does not sit in a separate list waiting to be forgotten; it projects outward into the task provider, so all the doing lands in one inbox even though the knowledge lives here.",
+    read: "6 min read",
   },
   {
-    slug: "roadmap-as-a-sunday-letter",
-    date: "2026-02-18",
-    display: "February 2026",
-    issue: "№ 012",
-    tag: "Studio",
-    title: "Why our roadmap is a Sunday letter, not a Gantt chart.",
-    dek: "On planning slowly, in prose, and what we learned from a year of refusing to estimate.",
+    slug: "extracting-feoh",
+    date: "2026-07-24",
+    display: "July 2026",
+    issue: "№ 002",
+    tag: "Feoh",
+    title: "Taking finance out of Heorth before anything depended on it.",
+    dek: "Feoh v0.1.0 is now its own repository, API, and database. The best moment to split a service is while the split is still boring.",
     body:
-      "We don't keep a public roadmap in the usual sense — no tickets in a swimlane, no quarters with confident dates. Once a month, one of us writes a letter to the other two, in plain prose, about what we believe should come next and why. The letters are dull, careful, and occasionally wrong, which is roughly the right ratio. This month's is appended in full.",
+      "Finance used to be a module inside Heorth. As of this week it is Feoh — an independent service with its own repository, its own API, its own MCP server, and its own database. Heorth's finance screens now proxy across to it over a service key. The timing was the whole decision. Doing this after deployment would have meant a data migration, a larger surface to carve up, and a household noticing the seams. Doing it now meant none of those: there is no production data to move, Feoh is at its smallest it will ever be, and the extraction was mechanical rather than delicate. The acceptance test I set myself was deliberately unglamorous — the household cannot tell it happened — and the Heorth release that accompanied it, v0.2.0, is explicitly labelled as no functional change. What I actually wanted out of it was the client. Heorth now reaches Feoh the way it will eventually reach every satellite: over a real API, with a service key, across a process boundary that cannot be quietly cheated around. That proxy is the template. It is much easier to establish that pattern once, against a service I have just written and fully understand, than to retrofit it later against three of them. The naming, since someone will ask: feoh is the first rune of the Anglo-Saxon futhorc, meaning cattle, and by extension wealth — the movable kind. Its counterpart ēðel is the immovable kind, the estate, which is what the property domain will be called when it arrives.",
     read: "5 min read",
-    author: "Tomás",
   },
   {
-    slug: "self-hosting-on-a-pi",
-    date: "2026-01-09",
-    display: "January 2026",
-    issue: "№ 011",
-    tag: "Heorth",
-    title: "Self-hosting Heorth on a Raspberry Pi, three families later.",
-    dek: "Notes from a winter spent watching three households install a single binary on a shelf.",
-    body:
-      "Three families ran the holiday-season build of Heorth on a Pi 5 under the stairs, behind the boiler, and on top of a fridge respectively. The one-command install — Node service, PostgreSQL alongside, all in a single Compose file — held. We learned that the hardest step is not the install: it's the moment a family realises their photos and their grocery list now live on a small computer they own, not on someone else's. We have notes on backups, on the Tailscale path, and on what to tell a partner who is, reasonably, sceptical.",
-    read: "8 min read",
-    author: "Ingrid",
-  },
-  {
-    slug: "naming-things-in-old-english",
-    date: "2025-12-15",
-    display: "December 2025",
-    issue: "№ 010",
-    tag: "Studio",
-    title: "Notes on naming things in Old English.",
-    dek: "Wyrhta, heorth, kith — where the names come from, and why we keep choosing them.",
-    body:
-      "A wyrhta is a maker, a wright. A heorth is the hearth — both the literal stone and the household around it. Kith is the older half of 'kith and kin', meaning the people you know well enough to be at ease with. We did not pick these names to be quaint. We picked them because each one already does the work of a paragraph, and English, given a thousand years, tends to know what it is talking about.",
-    read: "4 min read",
-    author: "Tomás",
-  },
-  {
-    slug: "choosing-sqlite-for-the-household",
-    date: "2025-11-04",
-    display: "November 2025",
-    issue: "№ 009",
+    slug: "housekeeping-before-the-interesting-part",
+    date: "2026-07-23",
+    display: "July 2026",
+    issue: "№ 001",
     tag: "Engineering",
-    title: "Choosing PostgreSQL for the household.",
-    dek: "On the boring database — and the operational calm that follows when one of the oldest things in computing runs your kitchen.",
+    title: "Housekeeping before the interesting part.",
+    dek: "A version-drift fix, a changelog, and a verification pass. None of it is exciting, and skipping it is how the next three months get expensive.",
     body:
-      "Heorth, KithLedger, and Feoh all ship with PostgreSQL as the canonical store. We tried SQLite first — a family of four generates roughly twenty megabytes of data a year, after all — and it almost won. What changed our minds was the second device. The moment a partner opens Heorth on a phone while a tablet shows the meal plan in the kitchen, we want the same numbers everywhere, in the same second. A modern Postgres on a Pi handles a household's lifetime of data without breaking a sweat, restores cleanly from a single dump file on a Sunday afternoon, and gives us logical replication for free when a family decides their data should also live at a grandparent's house. It is, in the end, the boring choice — and the boring choice is the property we optimise for.",
-    read: "7 min read",
-    author: "Olu",
+      "The first phase of this plan contains nothing anyone would demo. The foundation library, @wyrhta/core, went to v0.1.2 with a README and a changelog that actually describes what changed, and a version drift between what it claimed to be and what it was got resolved. KithLedger went to v0.2.0, taking its web UI and a round of security hardening with it. And Heorth's Library feature got verified rather than assumed to work — which is a distinction I have learned to take seriously about code I wrote months ago and have not run since. The reason to do this first is that the core is consumed by pinned GitHub tag rather than a workspace link. These are three independent repositories that share a library by version, not a monorepo pretending otherwise. That has a real consequence: a change in the foundation does not reach a consumer until a tag is cut and that consumer's dependency is deliberately bumped. It is slower, and it is the point — nobody gets a foundation change they did not ask for. But it only works if the tags are honest and the changelog is real. A pinned dependency pointing at a version whose contents are a guess is worse than no pinning at all. So: housekeeping. The interesting part is easier to reach from a tidy desk.",
+    read: "4 min read",
   },
 ]
 
@@ -99,9 +77,11 @@ export function tagColor(tag: JournalTag) {
   switch (tag) {
     case "Heorth":
       return "text-primary border-primary/40 bg-primary/5"
+    case "Feoh":
+      return "text-foreground border-foreground/30 bg-foreground/5"
     case "KithLedger":
       return "text-foreground border-foreground/30 bg-foreground/5"
-    case "Studio":
+    case "Architecture":
       return "text-muted-foreground border-border bg-secondary"
     case "Engineering":
       return "text-muted-foreground border-border bg-card"

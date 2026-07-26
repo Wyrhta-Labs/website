@@ -7,19 +7,20 @@ type LinkItem = { label: string; href: string; external?: boolean }
 
 const COLUMNS: { title: string; links: LinkItem[] }[] = [
   {
-    title: "Projects",
+    title: "Services",
     links: [
-      { label: "Heorth", href: "/#heorth" },
+      { label: "Heorth (hub)", href: "/#heorth" },
       { label: "Extended Library", href: "/#library" },
-      { label: "Feoh (Heorth finance)", href: "/#feoh" },
-      { label: "KithLedger", href: "/#kithledger" },
-      { label: "Roadmap", href: "/roadmap" },
+      { label: "Feoh (satellite)", href: "/#feoh" },
+      { label: "KithLedger (satellite)", href: "/#kithledger" },
+      { label: "How it works", href: "/#how-it-works" },
     ],
   },
   {
     title: "Project",
     links: [
-      { label: "Philosophy", href: "/#philosophy" },
+      { label: "Roadmap", href: "/roadmap" },
+      { label: "Doctrine", href: "/#philosophy" },
       { label: "Journal", href: "/journal" },
       { label: "Press kit", href: "/press" },
       { label: "Contact", href: "/contact" },
@@ -28,7 +29,7 @@ const COLUMNS: { title: string; links: LinkItem[] }[] = [
   {
     title: "Open source",
     links: [
-      { label: "GitHub", href: "https://github.com/wyrhta-labs", external: true },
+      { label: "@wyrhta/core", href: "https://github.com/wyrhta-labs", external: true },
       { label: "Code of conduct", href: "/code-of-conduct" },
       { label: "Security", href: "/security" },
     ],
@@ -77,15 +78,16 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-5 max-w-md text-base text-muted-foreground leading-relaxed">
-              A private, personal open-source project devoted to an
-              organization core for family and home life. Names borrowed
-              from Old English, code written in modern stacks.
+              A personal open-source project building a self-hosted household
+              manager — a hub, two satellites, and a shared foundation. Names
+              borrowed from Old English, code written in modern stacks. Not
+              deployed yet, and saying so.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 text-eyebrow text-muted-foreground">
               <span>Made in</span>
-              <span className="font-mono text-foreground">West Germany</span>
+              <span className="font-mono text-foreground">Castrop-Rauxel</span>
               <span>by</span>
-              <span className="font-mono text-foreground">Castropians</span>
+              <span className="font-mono text-foreground">one maker</span>
             </div>
           </div>
 

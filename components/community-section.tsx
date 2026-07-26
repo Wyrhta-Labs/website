@@ -7,8 +7,8 @@ const CHANNELS = [
   {
     icon: Github,
     label: "GitHub",
-    handle: "github.com/wyrhta-labs",
-    note: "Source, issues, pull requests, releases.",
+    handle: "@wyrhta/core",
+    note: "The one public repository so far — the foundation library.",
     href: "https://github.com/wyrhta-labs",
   },
   {
@@ -22,7 +22,7 @@ const CHANNELS = [
     icon: Rss,
     label: "Journal",
     handle: "wyrhta.dev/journal",
-    note: "A monthly note on what we're building, in plain prose.",
+    note: "Notes posted when a phase actually moves, not on a schedule.",
     href: "/journal",
   },
 ]
@@ -35,24 +35,26 @@ export function CommunitySection() {
           {/* CTA */}
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="text-eyebrow text-primary mb-4">§ 06 — Community</div>
+              <div className="text-eyebrow text-primary mb-4">§ 07 — Reading along</div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.02] text-balance">
-                Build with us, or just{" "}
+                Nothing to install yet.{" "}
                 <span className="italic font-light text-muted-foreground">
-                  read along.
+                  Plenty to read.
                 </span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
-                Wyrhta Labs is, today, a personal initiative — one maker in
-                Castrop-Rauxel, one public source repository, and a deliberate pace
-                toward a 0.1 beta in Q3 2026. We are openly inviting additional
-                developers to join: TypeScript and PostgreSQL hands, designers, or
-                simply people who run the homes they&apos;re writing software
-                for. There is room at the bench.
+                Wyrhta Labs is one person in Castrop-Rauxel, one public
+                repository, and a plan that gets to its interesting part only
+                after the thing is running in an actual house. There is no
+                community to join yet and nothing to install — but the
+                foundation library is readable now, the decisions are written
+                down, and arguing with them is genuinely more useful than
+                agreeing. If you run the home you would be writing software
+                for, that perspective is the scarce one.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
@@ -64,7 +66,7 @@ export function CommunitySection() {
                   className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-3 text-sm font-medium hover:bg-primary transition-colors"
                 >
                   <Github size={16} />
-                  Star us on GitHub
+                  Read @wyrhta/core
                 </a>
                 <a
                   href="/contact"

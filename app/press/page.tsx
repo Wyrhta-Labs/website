@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "Press Kit — Wyrhta Labs",
   description:
-    "Facts, logos, palette, typography, and boilerplate copy for writers, podcasters, and conferences covering Wyrhta Labs.",
+    "Facts, logos, palette, typography, and boilerplate copy for anyone covering Wyrhta Labs — including the one fact easiest to get wrong: it is built, but not yet deployed.",
 }
 
 const toc: TocItem[] = [
@@ -33,11 +33,11 @@ const toc: TocItem[] = [
 const FACTS = [
   { label: "Founded", value: "2026, Castrop-Rauxel" },
   { label: "Form", value: "Personal initiative" },
-  { label: "Maintainers", value: "1 · open to contributors" },
-  { label: "First release", value: "0.1 beta, Q3 2026" },
-  { label: "Location", value: "Castrop-Rauxel, West Germany" },
-  { label: "License", value: "MIT (all projects & packages)" },
-  { label: "Funding", value: "Self-funded, patrons welcome" },
+  { label: "Maintainers", value: "1" },
+  { label: "Stage", value: "Pre-launch, not deployed" },
+  { label: "Services", value: "4 · 1 public so far" },
+  { label: "Distribution", value: "Self-hosted only" },
+  { label: "Funding", value: "Self-funded" },
   { label: "Languages", value: "EN · DE" },
 ]
 
@@ -58,7 +58,7 @@ export default function PressPage() {
         dek="Everything a thoughtful piece needs about Wyrhta Labs: facts, logos, colour, type, and a few sentences you can paste without rewriting."
         crumbs={[{ label: "Press" }]}
         meta={[
-          { label: "Updated", value: "April 12, 2026" },
+          { label: "Updated", value: "July 26, 2026" },
           { label: "Press contact", value: "press@wyrhta.dev" },
           { label: "Reply window", value: "≤ 3 working days" },
           { label: "License", value: "Marks reserved · text CC BY-SA" },
@@ -67,8 +67,9 @@ export default function PressPage() {
       <PageBody toc={toc}>
         <Section id="glance" n="01" title="At a glance">
           <Lede>
-            Wyrhta Labs is a private, personal open-source project devoted
-            to an organization core for family and home life.
+            Wyrhta Labs is a one-person open-source project building a
+            self-hosted household manager. It is not yet deployed, and any
+            coverage should say so.
           </Lede>
           <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-5 border-t border-b border-border py-6">
             {FACTS.map((f) => (
@@ -91,16 +92,29 @@ export default function PressPage() {
             correspondence between people who care for one another.
           </p>
           <p>
-            The work is done in the open by default: code on GitHub under
-            the permissive MIT license, a public handbook, a journal
-            posted when the work warrants, and a roadmap discussed openly
-            before it is built. The first 0.1 beta of Heorth and
-            KithLedger is planned for{" "}
-            <em className="text-foreground">Q3 2026</em>; Feoh, the
-            finance module that attaches to Heorth, follows in{" "}
-            <em className="text-foreground">Q1 2027</em>. Additional
-            developers are warmly invited to join — please open an issue
-            on{" "}
+            The architecture is a hub and satellites rather than one large
+            application: <em className="text-foreground">Heorth</em> is the
+            household hub and the only human-facing surface for now, while{" "}
+            <em className="text-foreground">KithLedger</em> and{" "}
+            <em className="text-foreground">Feoh</em> are independent,
+            API-first services it consumes over their own APIs. All three build
+            on <em className="text-foreground">@wyrhta/core</em>, consumed as a
+            pinned version tag rather than linked in a monorepo.
+          </p>
+          <p>
+            The most important thing to get right in coverage is the stage.
+            The foundation is done, finance has been extracted into its own
+            service, and the release intended to get the system adopted at home
+            is code-complete — written and tested. It is{" "}
+            <em className="text-foreground">not deployed</em>: there is no
+            instance running, no household using it, and nothing to sign up
+            for or install. There are no target dates to quote, because the
+            plan is a sequence of gated phases rather than a schedule. The
+            accurate framing is{" "}
+            <em className="text-foreground">
+              in active development toward a first at-home release
+            </em>
+            . Conversation happens on{" "}
             <a
               href="https://github.com/wyrhta-labs"
               className="border-b border-foreground/30 hover:border-foreground"
@@ -109,61 +123,99 @@ export default function PressPage() {
             >
               GitHub
             </a>
-            , which is the project&apos;s primary place of conversation.
+            , where the foundation library is public.
           </p>
         </Section>
 
         <Section id="projects" n="03" title="Projects">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <p className="mb-6">
+            Four independent repositories. None of the three services is
+            deployed; the version each is at, and what that version means, is
+            noted on every card.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <article className="rounded-lg border border-border bg-card p-6">
-              <div className="text-eyebrow text-primary">Heorth</div>
+              <div className="flex items-center gap-2">
+                <div className="text-eyebrow text-primary">Heorth</div>
+                <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground border border-border rounded-full px-2 py-0.5">
+                  Hub
+                </span>
+              </div>
               <h3 className="mt-2 font-serif text-xl tracking-tight">
-                A homestead and family management system.
+                The household hub, and the only human-facing surface.
               </h3>
               <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
-                Meal plans, chores, calendars, pantry, garden, and a shared
-                family journal. Designed for a wall-mounted screen, a phone
-                in the kitchen, and a laptop after the children are in bed.
-                Self-hosted by default; hosted beta available.
+                Meals, the house library, the home and its upkeep — plus the
+                family calendar and task list, mirrored from the services a
+                household already uses rather than replacing them. Its headline
+                surface is the Hearth View, designed for a kitchen-wall
+                touchscreen, with a phone PWA as companion. Also the
+                household&apos;s identity provider.
               </p>
               <div className="mt-4 font-mono text-xs text-muted-foreground">
-                0.1 beta · Q3 2026
+                v0.3.0 · code-complete, not deployed
               </div>
             </article>
             <article className="rounded-lg border border-border bg-card p-6">
-              <div className="text-eyebrow text-primary">KithLedger</div>
+              <div className="flex items-center gap-2">
+                <div className="text-eyebrow text-primary">KithLedger</div>
+                <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground border border-border rounded-full px-2 py-0.5">
+                  Satellite
+                </span>
+              </div>
               <h3 className="mt-2 font-serif text-xl tracking-tight">
-                An API-first ledger for personal relationships.
+                An API-first record of the people a household deals with.
               </h3>
               <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
-                A small, self-hostable database for tracking and nurturing
-                the people you care about: birthdays, last touchpoints, the
-                shape of a friendship over years. Used inside Heorth and
-                consumed by third-party clients.
+                Family, friends, and equally the tradespeople who service the
+                house. Consumed by Heorth over its API with a service key; it
+                holds no member accounts of its own. Its MCP server moves from
+                stdio to HTTP before it can deploy as a satellite.
               </p>
               <div className="mt-4 font-mono text-xs text-muted-foreground">
-                0.1 beta · Q3 2026
+                v0.2.0 · tagged, not deployed
               </div>
             </article>
             <article className="rounded-lg border border-border bg-card p-6">
               <div className="flex items-center gap-2">
                 <div className="text-eyebrow text-primary">Feoh</div>
                 <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground border border-border rounded-full px-2 py-0.5">
-                  Heorth module
+                  Satellite
                 </span>
               </div>
               <h3 className="mt-2 font-serif text-xl tracking-tight">
-                Heorth&apos;s finance module — envelopes and household books.
+                An independent finance service, extracted from the hub.
               </h3>
               <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
-                Not a separate product: Feoh is the finance module inside
-                Heorth. Envelopes, double-entry ledgers, recurring bills, joint
-                expenses split between household members, and savings goals —
-                sharing Heorth&apos;s auth and MCP surface, and round-tripping
-                through CSV and a plain ledger format so nothing is locked in.
+                Previously a module inside Heorth, now its own repository, API,
+                MCP server, and database. Heorth&apos;s finance screens proxy
+                across to it over a service key — the first satellite
+                consumption, and the template for the rest. Repository is
+                private.
               </p>
               <div className="mt-4 font-mono text-xs text-muted-foreground">
-                0.1 beta · Q1 2027
+                v0.1.0 · extracted, not deployed
+              </div>
+            </article>
+            <article className="rounded-lg border border-border bg-card p-6">
+              <div className="flex items-center gap-2">
+                <div className="text-eyebrow text-primary">@wyrhta/core</div>
+                <span className="font-mono text-[9px] uppercase tracking-wider text-primary border border-primary/40 bg-primary/10 rounded-full px-2 py-0.5">
+                  Public
+                </span>
+              </div>
+              <h3 className="mt-2 font-serif text-xl tracking-tight">
+                The shared foundation all three are built on.
+              </h3>
+              <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
+                Identity, auth, an HTTP kit, the household model, an MCP
+                scaffold, and database conventions. Demand-driven, with no
+                business domains and no UI. Consumed as a pinned GitHub tag, so
+                each service upgrades deliberately. The only public repository
+                so far.
+              </p>
+              <div className="mt-4 font-mono text-xs text-muted-foreground">
+                v0.1.2 · public, in use
               </div>
             </article>
           </div>
@@ -320,20 +372,21 @@ export default function PressPage() {
           <p>Two paragraphs you can paste verbatim, short and long.</p>
           <BoilerCard
             length="Short · 1 sentence"
-            text="Wyrhta Labs is a personal open-source initiative building an organization core for family and home life — the maker of Heorth and KithLedger, with the first 0.1 beta of the household projects planned for Q3 2026 and contributors warmly invited."
+            text="Wyrhta Labs is a one-person open-source project in Castrop-Rauxel building a self-hosted household manager — Heorth as the hub, with KithLedger and Feoh as independent satellite services — currently in active development toward a first at-home release."
           />
           <BoilerCard
             length="Long · 1 paragraph"
-            text="Wyrhta Labs is an independent open-source initiative founded in 2026 by a single Castropian, working from Castrop-Rauxel in West Germany. It builds tools for households rather than enterprises: Heorth, a homestead and family management system — including Feoh, its finance module for envelopes, joint expenses, and double-entry household books; and KithLedger, an API-first database for nurturing personal relationships — all designed API-first, with a UI for human hands and an MCP server for AI agents, and built in the open. The first 0.1 beta of Heorth and KithLedger is scheduled for Q3 2026; Feoh follows in Q1 2027. Everything ships under the permissive MIT license, with a public roadmap, a journal posted when the work warrants, and an open invitation to additional developers who would like to join."
+            text="Wyrhta Labs is an independent open-source project started in 2026 by a single maintainer working from Castrop-Rauxel, Germany. It builds a self-hosted household manager for homes rather than enterprises, structured as a small constellation of independent services rather than one application: Heorth, the household hub and the only human-facing surface for now, whose headline feature is a kitchen-wall Hearth View showing the week's meals beside the family calendar; and KithLedger and Feoh, API-first satellite services for the people a household deals with and for its finances respectively, which Heorth consumes over their own APIs. All three build on @wyrhta/core, a shared foundation library consumed as a pinned version tag. A deliberate design choice runs through it: rather than becoming the household's system of record, Heorth mirrors the calendar and task list a family already uses — Microsoft 365 today, behind provider interfaces that keep other backends possible — so nothing has to be migrated. The project is pre-launch. The foundation and the extraction of finance into its own service are done, and the release intended to get the system adopted at home is code-complete, but nothing is deployed and no household is running it. There is no hosted offering, and none is planned."
           />
         </Section>
 
         <Section id="people" n="08" title="People">
           <p>
-            Wyrhta Labs is authored and maintained by a single Castropian
-            working from Castrop-Rauxel, in the open and at a deliberate
-            pace. Every commit and every letter is read, edited, and
-            signed by a person before it ships. For interview
+            Wyrhta Labs is authored and maintained by one person, working from
+            Castrop-Rauxel at a deliberate pace. There is no team, no
+            collective &ldquo;we&rdquo;, and no contributor roster — anything
+            on this site written in the first person is written by the same
+            maintainer. For interview
             availability, a head shot, or a short bio, please write to{" "}
             <a
               href="mailto:press@wyrhta.dev"

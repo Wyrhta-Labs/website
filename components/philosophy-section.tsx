@@ -5,39 +5,39 @@ import { Reveal } from "./reveal"
 const PRINCIPLES = [
   {
     n: "i",
-    title: "Patient software.",
+    title: "Own household first.",
     body:
-      "We build slowly. We'd rather ship the right thing in a year than the wrong thing in a quarter. Software made at the speed of woodwork tends to last as long.",
+      "The primary user for the next year or so is one household — the maker's. Other self-hosters are a gate to pass somewhere near 1.0, not an audience to design for now. Building for imagined users is how you end up serving none of them.",
   },
   {
     n: "ii",
-    title: "For families, not enterprises.",
+    title: "The spouse is the acceptance gate.",
     body:
-      "We design for the household — small, irregular, lifelong. Not for procurement, dashboards, or quarterly reviews. The unit of value is a Sunday evening, not a sales call.",
+      "A release is ready when the people who live in the house would rather use it than not. Not when the tests pass. A green suite means nothing has broken since yesterday; it is not evidence that anyone wants this.",
   },
   {
     n: "iii",
-    title: "Source available, by default.",
+    title: "Don't make anyone migrate.",
     body:
-      "Every line we write is published under the permissive MIT license — Heorth, KithLedger, and every package we ship beside them. You can read it, fork it, host it, audit it — and fix it when we're asleep.",
+      "The calendar and task list a household already uses keep owning that data. Heorth mirrors and enriches them, and pushes its own work outward into them. Asking a family to abandon what works on their phone is the fastest route to rejection.",
   },
   {
     n: "iv",
-    title: "Self-host first.",
+    title: "Self-host, or nothing.",
     body:
-      "Your home runs your home. Our hosted offerings are conveniences, never strategies. The run-it-on-a-Pi path — a Node service with PostgreSQL tucked beside it — is always the one we test most.",
+      "This runs on your hardware, holding your household's data, with no account on anyone else's service. There is no hosted offering — not as a fallback, not as a convenience. It is ruled out rather than unbuilt.",
   },
   {
     n: "v",
-    title: "Small surface, deep roots.",
+    title: "Seams before you need them.",
     body:
-      "We'd rather have two finished tools than a dozen half-finished ones. Each project earns its keep before we plant another.",
+      "Every external dependency sits behind a provider interface from day one, and every satellite is reached across a real process boundary with a service key. It costs something now. It is what makes swapping a backend an implementation rather than an excavation.",
   },
   {
     n: "vi",
-    title: "Quiet by design.",
+    title: "Built is not shipped.",
     body:
-      "No notifications begging for attention. No streaks, no badges, no dark patterns. The hearth doesn't need to alert you that it is, in fact, still warm.",
+      "Code-complete, deployed, and adopted are three different states, and conflating them is the most common lie a project page tells. This one names which applies, and would rather read as unfinished than as further along than it is.",
   },
 ]
 
@@ -51,21 +51,25 @@ export function PhilosophySection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-14 md:mb-20">
           <div className="md:col-span-5">
             <Reveal>
-              <div className="text-eyebrow text-primary mb-4">§ 05 — Philosophy</div>
+              <div className="text-eyebrow text-primary mb-4">§ 06 — Doctrine</div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-serif text-4xl md:text-6xl tracking-tight leading-[1] text-balance">
-                Six principles{" "}
-                <span className="italic font-light text-muted-foreground">we keep at the door.</span>
+                Six rules{" "}
+                <span className="italic font-light text-muted-foreground">
+                  that decide arguments.
+                </span>
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7 md:pt-6">
             <Reveal delay={0.1}>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
-                {
-                  "These aren't marketing values — they're the rules we argue from in pull requests and design reviews. They're why we ship slowly, document carefully, and refuse certain features even when people ask for them."
-                }
+                These are not values chosen to look good on a website. They are
+                the load-bearing constraints the design actually gets argued
+                from — the reasons certain obvious features are refused, and the
+                reasons this page is careful about the word{" "}
+                <em className="text-foreground not-italic">shipped</em>.
               </p>
             </Reveal>
           </div>

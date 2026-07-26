@@ -15,12 +15,12 @@ export function HeroSection() {
           <Reveal>
             <div className="flex items-center gap-3 text-eyebrow text-muted-foreground">
               <span className="inline-block size-1.5 rounded-full bg-primary animate-pulse" />
-              Established 2026 · Personal initiative
+              Established 2026 · One maker
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="hidden sm:block text-eyebrow text-muted-foreground">
-              0.1 beta · Q3 2026
+              Pre-launch · not yet deployed
             </div>
           </Reveal>
         </div>
@@ -29,43 +29,44 @@ export function HeroSection() {
           <div className="lg:col-span-8">
             <Reveal>
               <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight text-balance">
-                Patient software{" "}
-                <span className="italic font-light text-muted-foreground">for the</span>{" "}
-                <span className="text-primary">hearth</span>{" "}
-                <span className="italic font-light text-muted-foreground">and</span>{" "}
-                <span className="">kin.</span>
+                A household manager{" "}
+                <span className="italic font-light text-muted-foreground">
+                  you
+                </span>{" "}
+                <span className="text-primary">actually own</span>
+                <span className="">.</span>
               </h1>
             </Reveal>
 
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">
-                Wyrhta Labs is a private, personal open-source project,
-                started in 2026 — a quiet labour of devotion toward one
-                clear goal: an organization core for family and home life, built
-                slowly, in the open, with the patience of woodwork. The
-                first <span className="text-foreground">0.1 beta</span>{" "}
-                ships in <span className="text-foreground">Q3 2026</span>,
-                and additional developers are warmly welcome at the bench.
+                Wyrhta Labs is a personal open-source project building a
+                self-hosted system for running a home — a small constellation
+                of services on your own hardware, not an account on someone
+                else&apos;s. It is{" "}
+                <span className="text-foreground">
+                  in active development toward a first at-home release
+                </span>
+                : much of it is built, none of it is deployed, and this site
+                tries hard not to blur those two things.
               </p>
             </Reveal>
 
             <Reveal delay={0.25}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <a
-                  href="#projects"
+                  href="#hearth-view"
                   className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-3 text-sm font-medium hover:bg-primary transition-colors"
                 >
-                  Explore our projects
+                  See the Hearth View
                   <ArrowRight size={16} />
                 </a>
                 <a
-                  href="https://github.com/wyrhta-labs"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="/roadmap"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:border-foreground transition-colors"
                 >
                   <GitBranch size={16} />
-                  Read the source
+                  Where this actually stands
                 </a>
               </div>
             </Reveal>
@@ -104,7 +105,7 @@ export function HeroSection() {
                     <div className="mt-1 text-sm text-muted-foreground leading-relaxed">
                       <span className="text-eyebrow text-foreground/70">n. Old English</span>{" "}
                       hearth — the warm centre of a home, the place where the
-                      family gathers.
+                      household gathers.
                     </div>
                   </div>
                   <div className="rule-warm" />
@@ -129,14 +130,14 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Inline marquee of values */}
+        {/* Honest counts — nothing here implies a live product */}
         <Reveal delay={0.35}>
           <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-border py-6">
             {[
-              ["02", "Active projects"],
-              ["100%", "Source available"],
-              ["MIT", "Default license"],
-              ["self-host", "First-class"],
+              ["04", "Services in the constellation"],
+              ["01", "Public repository so far"],
+              ["00", "Households live on it"],
+              ["self-host", "The only way to run it"],
             ].map(([k, v]) => (
               <div key={v} className="flex flex-col gap-1">
                 <span className="font-serif text-2xl md:text-3xl tracking-tight">{k}</span>

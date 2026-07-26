@@ -11,28 +11,29 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT"],
 })
 
+const TITLE = "Wyrhta Labs — A self-hosted household manager you actually own"
+const DESCRIPTION =
+  "A personal open-source project building a self-hosted household system: Heorth as the hub, KithLedger and Feoh as satellites, all on @wyrhta/core. In active development toward a first at-home release — built, but not yet deployed."
+
 export const metadata: Metadata = {
-  title: "Wyrhta Labs — Open-source tools for the home",
-  description:
-    "A personal open-source initiative building an organization core for family and home life. Planning Heorth, KithLedger, and Feoh.",
+  title: TITLE,
+  description: DESCRIPTION,
   generator: "v0.app",
   alternates: {
     canonical: "https://wyrhta.dev/",
   },
   openGraph: {
     siteName: "Wyrhta Labs",
-    title: "Wyrhta Labs — Open-source tools for the home",
-    description:
-      "A personal open-source initiative building an organization core for family and home life. Planning Heorth, KithLedger, and Feoh.",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
     url: "https://wyrhta.dev/",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wyrhta Labs — Open-source tools for the home",
-    description:
-      "A personal open-source initiative building an organization core for family and home life. Planning Heorth, KithLedger, and Feoh.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 }
 

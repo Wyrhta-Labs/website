@@ -7,11 +7,11 @@ import { Menu, X } from "lucide-react"
 import { WyrhtaMark } from "./wyrhta-mark"
 
 const NAV = [
-  { label: "Projects", href: "/#projects" },
+  { label: "Services", href: "/#projects" },
+  { label: "How it works", href: "/#how-it-works" },
   { label: "Roadmap", href: "/roadmap" },
-  { label: "Philosophy", href: "/#philosophy" },
+  { label: "Doctrine", href: "/#philosophy" },
   { label: "Journal", href: "/journal" },
-  { label: "Community", href: "/#community" },
 ]
 
 export function SiteHeader() {
@@ -69,10 +69,10 @@ export function SiteHeader() {
               GitHub ↗
             </a>
             <Link
-              href="/#projects"
+              href="/roadmap"
               className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-sm font-medium hover:bg-primary transition-colors"
             >
-              See projects
+              Where this stands
             </Link>
           </div>
 

@@ -1,421 +1,257 @@
 import { cn } from "@/lib/utils"
 import {
-  BANDS,
-  MILESTONES,
-  QUARTERS,
-  TODAY,
-  type Milestone,
-  type Project,
+  PHASES,
+  SERVICES,
+  STATE_LABEL,
+  type Phase,
+  type PhaseState,
+  type Service,
 } from "@/lib/roadmap-data"
 
-const PROJECT_LABEL: Record<Project, string> = {
+const SERVICE_LABEL: Record<Service, string> = {
+  core: "@wyrhta/core",
   heorth: "Heorth",
   kithledger: "KithLedger",
   feoh: "Feoh",
 }
 
-const PROJECT_TAGLINE: Record<Project, string> = {
-  heorth: "Homestead & family management",
-  kithledger: "API-first relationship ledger",
-  feoh: "Attaches to Heorth · envelopes & double-entry",
+// One accent only (ember), reserved for where the work actually stands.
+// Everything behind is settled ink; everything ahead recedes into taupe.
+const STATE_CHIP: Record<PhaseState, string> = {
+  done: "border-foreground/25 bg-foreground/[0.06] text-foreground/70",
+  "code-complete": "border-primary/40 bg-primary/10 text-primary",
+  next: "border-foreground/40 bg-transparent text-foreground",
+  planned: "border-dashed border-border bg-transparent text-muted-foreground",
+  unordered: "border-dotted border-border bg-transparent text-muted-foreground",
 }
 
-const PROJECT_LANE_NUM: Record<Project, string> = {
-  heorth: "01",
-  kithledger: "02",
-  feoh: "01 · f", // finance module within Heorth's lane
+const MARKER: Record<PhaseState, string> = {
+  done: "bg-foreground/40 border-foreground/40",
+  "code-complete": "bg-primary border-primary",
+  next: "bg-background border-foreground",
+  planned: "bg-background border-dashed border-muted-foreground/60",
+  unordered: "bg-background border-dotted border-muted-foreground/50",
 }
 
-// Solid bar (release) classes — design system: 1 accent only, so:
-//   Heorth      → primary (ember)
-//   KithLedger  → foreground (deep ink)
-//   Feoh        → muted-foreground (warm taupe); reads as subordinate to
-//                 Heorth's ember because it is Heorth's finance module.
-const BAR_SOLID: Record<Project, string> = {
-  heorth: "bg-primary text-primary-foreground border-primary",
-  kithledger: "bg-foreground text-background border-foreground",
-  feoh: "bg-muted-foreground text-background border-muted-foreground",
-}
-
-const BAR_GA: Record<Project, string> = {
-  heorth:
-    "bg-primary text-primary-foreground border-primary ring-2 ring-primary/30 ring-offset-2 ring-offset-background",
-  kithledger:
-    "bg-foreground text-background border-foreground ring-2 ring-foreground/25 ring-offset-2 ring-offset-background",
-  feoh:
-    "bg-muted-foreground text-background border-muted-foreground ring-2 ring-muted-foreground/30 ring-offset-2 ring-offset-background",
-}
-
-const BAR_BETA: Record<Project, string> = {
-  heorth:
-    "bg-primary/90 text-primary-foreground border border-dashed border-primary",
-  kithledger:
-    "bg-foreground/90 text-background border border-dashed border-foreground",
-  feoh:
-    "bg-muted-foreground/90 text-background border border-dashed border-muted-foreground",
-}
-
-const BAND_BG: Record<Project, string> = {
-  heorth: "bg-primary/10 border border-primary/25 text-primary",
-  kithledger: "bg-foreground/[0.06] border border-foreground/20 text-foreground",
-  feoh: "bg-muted-foreground/[0.10] border border-muted-foreground/30 text-muted-foreground",
-}
-
-const TIER_BADGE: Record<Milestone["tier"], string> = {
-  beta: "Beta",
-  release: "Release",
-  ga: "GA",
+/** The rail segment *above* each phase — solid where the work is behind us. */
+const RAIL: Record<PhaseState, string> = {
+  done: "bg-foreground/25",
+  "code-complete": "bg-foreground/25",
+  next: "bg-border",
+  planned: "bg-border",
+  unordered: "bg-border",
 }
 
 export function RoadmapTimeline() {
   return (
     <div className="not-prose">
-      {/* Legend */}
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-6 text-eyebrow text-muted-foreground">
-        <LegendSwatch className="bg-primary border-primary" label="Heorth" />
-        <LegendSwatch
-          className="bg-foreground border-foreground"
-          label="KithLedger"
-        />
-        <LegendSwatch
-          className="bg-muted-foreground border-muted-foreground"
-          label="Feoh · Heorth finance module"
-        />
-        <LegendSwatch
-          className="bg-transparent border-dashed border-foreground/50"
-          label="Beta"
-        />
-        <LegendSwatch
-          className="bg-transparent ring-1 ring-foreground/40 border-foreground/60"
-          label="GA"
-        />
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-block h-3 w-px bg-primary" />
-          {TODAY.label}
-        </span>
-      </div>
+      <Legend />
 
-      {/* Desktop / tablet Gantt */}
-      <div className="hidden md:block rounded-lg border border-border bg-card overflow-hidden">
-        <GanttGrid />
-      </div>
-
-      {/* Mobile stacked timeline */}
-      <div className="md:hidden space-y-8">
-        <MobileLane project="heorth" attached={["feoh"]} />
-        <MobileLane project="kithledger" />
-      </div>
-    </div>
-  )
-}
-
-function LegendSwatch({
-  className,
-  label,
-}: {
-  className: string
-  label: string
-}) {
-  return (
-    <span className="inline-flex items-center gap-2">
-      <span
-        className={cn("inline-block h-3 w-6 rounded-sm border", className)}
-        aria-hidden
-      />
-      {label}
-    </span>
-  )
-}
-
-function GanttGrid() {
-  // grid-template-columns: a fixed 200px label column, then 6 quarter columns.
-  const gridStyle = {
-    gridTemplateColumns: "minmax(168px, 200px) repeat(6, minmax(0, 1fr))",
-  } as const
-
-  return (
-    <div className="text-foreground">
-      {/* Quarter header */}
-      <div
-        className="grid border-b border-border bg-secondary/40"
-        style={gridStyle}
-      >
-        <div className="px-5 py-4 text-eyebrow text-muted-foreground">
-          Project · Lane
-        </div>
-        {QUARTERS.map((q, i) => (
-          <div
-            key={q.id}
-            className={cn(
-              "px-3 py-4 border-l border-border relative",
-              i === TODAY.column - 1 && "bg-primary/[0.04]",
-            )}
-          >
-            <div className="font-mono text-[11px] text-foreground tracking-wider">
-              {q.label}
-            </div>
-            <div className="font-mono text-[10px] text-muted-foreground mt-0.5">
-              {q.range}
-            </div>
-            {i === TODAY.column - 1 && (
-              <div
-                className="absolute top-0 bottom-0 border-l border-dashed border-primary/70 pointer-events-none"
-                style={{ left: `${TODAY.pct * 100}%` }}
-                aria-hidden
-              >
-                <span className="absolute -top-0.5 left-1.5 font-mono text-[9px] text-primary tracking-wider whitespace-nowrap">
-                  ▼ today
-                </span>
-              </div>
-            )}
-          </div>
+      <ol className="mt-8">
+        {PHASES.map((phase, i) => (
+          <PhaseRow
+            key={phase.id}
+            phase={phase}
+            first={i === 0}
+            last={i === PHASES.length - 1}
+            /* The line between "code-complete" and the phase after it is the
+               real edge of the project — everything past it is unbuilt. */
+            frontier={
+              PHASES[i - 1]?.state === "code-complete" && phase.state === "next"
+            }
+          />
         ))}
-      </div>
-
-      <Lane project="heorth" gridStyle={gridStyle} attached={["feoh"]} />
-      <div className="rule-warm" aria-hidden />
-      <Lane project="kithledger" gridStyle={gridStyle} />
+      </ol>
     </div>
   )
 }
 
-function Lane({
-  project,
-  gridStyle,
-  attached,
+function Legend() {
+  return (
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-eyebrow text-muted-foreground">
+      {(
+        ["done", "code-complete", "next", "planned", "unordered"] as PhaseState[]
+      ).map((s) => (
+        <span key={s} className="inline-flex items-center gap-2">
+          <span
+            className={cn("inline-block size-2.5 rounded-full border", MARKER[s])}
+            aria-hidden
+          />
+          {STATE_LABEL[s]}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function PhaseRow({
+  phase,
+  first,
+  last,
+  frontier,
 }: {
-  project: Project
-  gridStyle: React.CSSProperties
-  attached?: Project[]
+  phase: Phase
+  first: boolean
+  last: boolean
+  frontier: boolean
 }) {
   return (
-    <div className="py-5">
-      {/* Lane title row */}
-      <div className="grid items-baseline" style={gridStyle}>
-        <div className="px-5">
-          <div className="text-eyebrow text-muted-foreground">
-            {PROJECT_LANE_NUM[project]}
-          </div>
-          <div className="mt-1 font-serif text-xl tracking-tight">
-            {PROJECT_LABEL[project]}
-          </div>
-          <div className="mt-1 text-xs text-muted-foreground leading-snug">
-            {PROJECT_TAGLINE[project]}
-          </div>
+    <li className="relative grid grid-cols-[28px_1fr] md:grid-cols-[132px_28px_1fr] gap-x-4 md:gap-x-6">
+      {/* Phase number — its own column on desktop, inlined on mobile */}
+      <div className="hidden md:block pt-7 text-right">
+        <div className="text-eyebrow text-muted-foreground">Phase</div>
+        <div className="mt-1 font-serif text-3xl tracking-tight leading-none text-foreground/70">
+          {phase.n}
         </div>
-        <div className="col-span-6" />
       </div>
 
-      <LaneRows project={project} gridStyle={gridStyle} />
+      {/* Rail + marker. The line is drawn per-row and clipped at the marker on
+          the first and last rows so the spine begins and ends on a dot. */}
+      <div className="relative flex justify-center">
+        <span
+          className={cn(
+            "absolute w-px left-1/2 -translate-x-1/2",
+            RAIL[phase.state],
+            first ? "top-[32px]" : "top-0",
+            last ? "h-0" : "bottom-0",
+          )}
+          aria-hidden
+        />
+        <span
+          className={cn(
+            "absolute top-[26px] size-3 rounded-full border-2 z-10",
+            MARKER[phase.state],
+          )}
+          aria-hidden
+        />
+      </div>
 
-      {/* Attached modules (e.g. Feoh) — nested inside this lane, not a co-equal lane */}
-      {attached?.map((sub) => (
-        <div key={sub} className="mt-6">
-          {/* Sub-module title row */}
-          <div className="grid items-baseline" style={gridStyle}>
-            <div className="px-5">
-              <div className="pl-3 border-l-2 border-muted-foreground/40">
-                <div className="text-eyebrow text-muted-foreground">
-                  Finance module
-                </div>
-                <div className="mt-1 font-serif text-base tracking-tight">
-                  {PROJECT_LABEL[sub]}
-                </div>
-                <div className="mt-0.5 text-xs text-muted-foreground leading-snug">
-                  {PROJECT_TAGLINE[sub]}
-                </div>
-              </div>
-            </div>
-            <div className="col-span-6" />
+      {/* Body */}
+      <div className={cn("pt-6", last ? "pb-0" : "pb-10")}>
+        {frontier && (
+          <div className="mb-5 -mt-2 flex items-center gap-3">
+            <span className="h-px flex-1 border-t border-dashed border-primary/50" />
+            <span className="font-mono text-[10px] uppercase tracking-wider text-primary whitespace-nowrap">
+              ▲ everything above is written · everything below is not
+            </span>
           </div>
+        )}
 
-          <LaneRows project={sub} gridStyle={gridStyle} indent />
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function LaneRows({
-  project,
-  gridStyle,
-  indent = false,
-}: {
-  project: Project
-  gridStyle: React.CSSProperties
-  indent?: boolean
-}) {
-  const releases = MILESTONES.filter((m) => m.project === project).sort(
-    (a, b) => a.start - b.start,
-  )
-  const bands = BANDS.filter((b) => b.project === project)
-  const labelIndent = indent
-    ? "pl-3 border-l-2 border-muted-foreground/25"
-    : ""
-
-  return (
-    <>
-      {/* Continuous bands */}
-      {bands.map((band) => (
-        <div
-          key={band.label}
-          className="grid items-center mt-4"
-          style={gridStyle}
-        >
-          <div className={cn("px-5 text-xs text-muted-foreground", labelIndent)}>
-            {band.label}
-          </div>
-          <div
-            className="col-span-6 grid"
-            style={{ gridTemplateColumns: "repeat(6, minmax(0, 1fr))" }}
-          >
-            <div
-              className={cn(
-                "h-7 rounded-sm flex items-center px-3",
-                BAND_BG[project],
-              )}
-              style={{
-                gridColumnStart: band.start,
-                gridColumnEnd: band.end,
-              }}
-            >
-              <span className="font-mono text-[10px] tracking-wider opacity-80 truncate">
-                {band.note}
-              </span>
-            </div>
-          </div>
-        </div>
-      ))}
-
-      {/* Release rows */}
-      {releases.map((m) => (
-        <div
-          key={`${m.project}-${m.version}`}
-          className="grid items-center mt-3"
-          style={gridStyle}
-        >
-          <div className={cn("px-5", labelIndent)}>
-            <div className="font-mono text-xs text-foreground">
-              v{m.version}
-            </div>
-            <div className="text-[11px] text-muted-foreground leading-snug truncate">
-              {m.title}
-            </div>
-          </div>
-          <div
-            className="col-span-6 grid"
-            style={{ gridTemplateColumns: "repeat(6, minmax(0, 1fr))" }}
-          >
-            <ReleaseBar milestone={m} />
-          </div>
-        </div>
-      ))}
-    </>
-  )
-}
-
-function ReleaseBar({ milestone }: { milestone: Milestone }) {
-  const cls =
-    milestone.tier === "ga"
-      ? BAR_GA[milestone.project]
-      : milestone.tier === "beta"
-        ? BAR_BETA[milestone.project]
-        : BAR_SOLID[milestone.project]
-
-  return (
-    <div
-      className={cn(
-        "h-9 rounded-sm flex items-center justify-between px-3 border",
-        cls,
-      )}
-      style={{
-        gridColumnStart: milestone.start,
-        gridColumnEnd: milestone.end,
-      }}
-    >
-      <span className="font-mono text-[11px] tracking-wider truncate">
-        v{milestone.version} · {milestone.title}
-      </span>
-      <span className="hidden lg:inline font-mono text-[9px] tracking-wider opacity-80 ml-3 shrink-0">
-        {TIER_BADGE[milestone.tier]}
-      </span>
-    </div>
-  )
-}
-
-function MobileReleaseList({ project }: { project: Project }) {
-  const releases = MILESTONES.filter((m) => m.project === project)
-  return (
-    <ol className="mt-4 space-y-4">
-      {releases.map((m) => (
-        <li
-          key={m.version}
-          className="grid grid-cols-[auto_1fr] gap-3 items-baseline border-t border-border pt-4"
-        >
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="md:hidden text-eyebrow text-muted-foreground">
+            Phase {phase.n}
+          </span>
           <span
             className={cn(
-              "font-mono text-[10px] tracking-wider px-2 py-0.5 rounded-sm border",
-              m.tier === "ga"
-                ? BAR_GA[project]
-                : m.tier === "beta"
-                  ? BAR_BETA[project]
-                  : BAR_SOLID[project],
+              "inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider",
+              STATE_CHIP[phase.state],
             )}
           >
-            v{m.version}
+            {STATE_LABEL[phase.state]}
           </span>
-          <div>
-            <div className="font-serif text-base tracking-tight">
-              {m.title}
-            </div>
-            <div className="font-mono text-[10px] text-muted-foreground mt-0.5 tracking-wider">
-              {QUARTERS[m.start - 1].label} · {TIER_BADGE[m.tier]}
-            </div>
-          </div>
-        </li>
-      ))}
-    </ol>
+          <span className="font-mono text-[11px] text-muted-foreground tracking-wider">
+            {phase.stateNote}
+          </span>
+        </div>
+
+        <h3 className="mt-3 font-serif text-2xl md:text-3xl tracking-tight leading-tight">
+          {phase.title}
+        </h3>
+
+        <p className="mt-3 max-w-2xl text-[0.95rem] text-foreground/80 leading-relaxed text-pretty">
+          {phase.summary}
+        </p>
+
+        <ul className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-2">
+          {phase.items.map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed"
+            >
+              <span
+                className="mt-2 inline-block h-1 w-2.5 bg-foreground/35 shrink-0"
+                aria-hidden
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {phase.exit && (
+          <p className="mt-5 border-l-2 border-primary/40 pl-4 text-sm text-foreground/75 italic leading-relaxed">
+            {phase.exit}
+          </p>
+        )}
+
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          {phase.services.map((s) => (
+            <span
+              key={s}
+              className="font-mono text-[10px] tracking-wider text-muted-foreground border border-border rounded-full px-2 py-0.5"
+            >
+              {SERVICE_LABEL[s]}
+            </span>
+          ))}
+        </div>
+      </div>
+    </li>
   )
 }
 
-function MobileLane({
-  project,
-  attached,
-}: {
-  project: Project
-  attached?: Project[]
-}) {
+/** The four services and the versions they are actually at. */
+export function ServiceTable() {
   return (
-    <div className="rounded-lg border border-border bg-card p-5">
-      <div className="text-eyebrow text-muted-foreground">
-        {PROJECT_LANE_NUM[project]} · Lane
-      </div>
-      <div className="mt-1 font-serif text-2xl tracking-tight">
-        {PROJECT_LABEL[project]}
-      </div>
-      <div className="text-xs text-muted-foreground mt-0.5">
-        {PROJECT_TAGLINE[project]}
-      </div>
-      <MobileReleaseList project={project} />
-
-      {/* Attached modules (e.g. Feoh) — nested inside this lane */}
-      {attached?.map((sub) => (
-        <div
-          key={sub}
-          className="mt-6 pl-3 border-l-2 border-muted-foreground/40"
-        >
-          <div className="text-eyebrow text-muted-foreground">
-            Finance module
-          </div>
-          <div className="mt-1 font-serif text-lg tracking-tight">
-            {PROJECT_LABEL[sub]}
-          </div>
-          <div className="text-xs text-muted-foreground mt-0.5">
-            {PROJECT_TAGLINE[sub]}
-          </div>
-          <MobileReleaseList project={sub} />
-        </div>
-      ))}
+    <div className="not-prose overflow-x-auto">
+      <table className="w-full min-w-[560px] border-collapse text-left">
+        <thead>
+          <tr className="border-b border-border">
+            <th className="py-3 pr-4 text-eyebrow text-muted-foreground font-normal">
+              Service
+            </th>
+            <th className="py-3 pr-4 text-eyebrow text-muted-foreground font-normal">
+              At
+            </th>
+            <th className="py-3 pr-4 text-eyebrow text-muted-foreground font-normal">
+              Source
+            </th>
+            <th className="py-3 text-eyebrow text-muted-foreground font-normal">
+              Where it stands
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {SERVICES.map((s) => (
+            <tr key={s.id} className="border-b border-border align-top">
+              <td className="py-4 pr-4">
+                <div className="font-serif text-lg tracking-tight whitespace-nowrap">
+                  {s.name}
+                </div>
+                <div className="mt-1 text-xs text-muted-foreground leading-snug max-w-[15rem]">
+                  {s.role}
+                </div>
+              </td>
+              <td className="py-4 pr-4 font-mono text-sm text-foreground whitespace-nowrap">
+                {s.version}
+              </td>
+              <td className="py-4 pr-4">
+                <span
+                  className={cn(
+                    "font-mono text-[10px] uppercase tracking-wider rounded-full border px-2 py-0.5 whitespace-nowrap",
+                    s.visibility === "public"
+                      ? "border-primary/40 bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground",
+                  )}
+                >
+                  {s.visibility}
+                </span>
+              </td>
+              <td className="py-4 text-sm text-foreground/80 leading-relaxed">
+                {s.state}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }

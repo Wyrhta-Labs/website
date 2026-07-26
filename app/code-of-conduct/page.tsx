@@ -34,7 +34,7 @@ export default function CodeOfConductPage() {
         dek="Wyrhta Labs is a personal project with a public porch. These are the manners expected of everyone — maintainer and visitors alike — when standing on it."
         crumbs={[{ label: "Code of Conduct" }]}
         meta={[
-          { label: "Last updated", value: "March 1, 2026" },
+          { label: "Last updated", value: "July 26, 2026" },
           { label: "Version", value: "v1.2" },
           { label: "Reports", value: "conduct@wyrhta.dev" },
           { label: "Adapted from", value: "Contributor Covenant 2.1" },
@@ -106,13 +106,13 @@ export default function CodeOfConductPage() {
 
         <Section id="scope" n="05" title="Scope">
           <p>
-            This Code of Conduct applies within all community spaces (issues,
-            pull requests, discussions, the journal comments, the Matrix
-            channels, and our IRL meet-ups) and also applies when an
-            individual is officially representing the community in public
-            spaces. Examples include using an official email address, posting
-            via an official social media account, or acting as an appointed
-            representative at an online or offline event.
+            This Code of Conduct applies in every space this project runs.
+            Today that means the issues and pull requests on the public
+            repository and the email addresses listed on this site — there is
+            no chat server, forum, or event, and the journal has no comments.
+            It also applies when someone is representing the project in public
+            elsewhere. Should further spaces ever open, they arrive under this
+            document rather than outside it.
           </p>
         </Section>
 

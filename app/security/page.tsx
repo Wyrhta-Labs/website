@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Security — Wyrhta Labs",
   description:
-    "How to report a vulnerability in Heorth, KithLedger, or wyrhta.dev. Scope, response timelines, safe harbor, and PGP key.",
+    "How to report a vulnerability in @wyrhta/core or wyrhta.dev. Scope, response timelines, safe harbor, and coordinated disclosure.",
 }
 
 const toc: TocItem[] = [
@@ -22,8 +22,7 @@ const toc: TocItem[] = [
   { id: "timeline", n: "04", label: "Response timeline" },
   { id: "harbor", n: "05", label: "Safe harbor" },
   { id: "disclosure", n: "06", label: "Coordinated disclosure" },
-  { id: "pgp", n: "07", label: "PGP key" },
-  { id: "thanks", n: "08", label: "Acknowledgments" },
+  { id: "thanks", n: "07", label: "Credit" },
 ]
 
 export default function SecurityPage() {
@@ -31,14 +30,14 @@ export default function SecurityPage() {
     <PageShell>
       <PageHeader
         kind="§ Engineering · Security"
-        title="If you find something, please tell us first."
-        dek="We treat security reports as a gift. This page is the front door — what to send, where to send it, and what to expect once it lands."
+        title="If you find something, please tell me first."
+        dek="A security report is a gift. This page is the front door — what to send, where to send it, and what to expect once it lands. Note that the scope is small right now: one public repository and this website, because nothing else is published or deployed."
         crumbs={[{ label: "Security" }]}
         meta={[
           { label: "Reports", value: "security@wyrhta.dev" },
-          { label: "Public key", value: "0xA9B3 4C71 8E2F" },
+          { label: "Handled by", value: "1 · the maintainer" },
           { label: "Response", value: "≤ 2 working days" },
-          { label: "Last updated", value: "April 12, 2026" },
+          { label: "Last updated", value: "July 26, 2026" },
         ]}
       />
       <PageBody toc={toc}>
@@ -51,8 +50,7 @@ export default function SecurityPage() {
             >
               security@wyrhta.dev
             </a>{" "}
-            with steps to reproduce. Encrypt with our PGP key if the issue is
-            sensitive.
+            with steps to reproduce, rather than opening a public issue.
           </Lede>
           <p>A useful report typically contains:</p>
           <ul className="list-disc pl-5 space-y-2">
@@ -65,16 +63,23 @@ export default function SecurityPage() {
 
         <Section id="scope" n="02" title="Scope">
           <p>
-            We are interested in reports concerning the following code and
-            services:
+            Two things, which is everything currently published:
           </p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>The <Mono>heorth</Mono> repository and shipped releases.</li>
-            <li>The <Mono>kithledger</Mono> repository and shipped releases.</li>
-            <li>The hosted Heorth beta at <Mono>app.heorth.org</Mono>.</li>
-            <li>The marketing site at <Mono>wyrhta.dev</Mono>.</li>
-            <li>Our public infrastructure listed at <Mono>wyrhta.dev/handbook/infra</Mono>.</li>
+            <li>
+              The <Mono>@wyrhta/core</Mono> repository and its tagged releases
+              — the shared foundation, so anything here affects all three
+              services downstream.
+            </li>
+            <li>
+              This website at <Mono>wyrhta.dev</Mono>.
+            </li>
           </ul>
+          <p>
+            Heorth, KithLedger, and Feoh are not public and not deployed, so
+            there is nothing there to test against. When they open up, this
+            list grows and this page says so.
+          </p>
         </Section>
 
         <Section id="out" n="03" title="Out of scope">
@@ -82,7 +87,7 @@ export default function SecurityPage() {
             <li>Issues that require physical access to an unlocked device.</li>
             <li>Volumetric denial-of-service against our public endpoints.</li>
             <li>Best-practice recommendations without a demonstrated impact (e.g. missing security headers on static pages).</li>
-            <li>Vulnerabilities in third-party services we list but do not operate.</li>
+            <li>Vulnerabilities in third-party services listed here but not operated by this project.</li>
             <li>{"Self-XSS, clickjacking on pages with no sensitive actions, and theoretical issues without a working PoC."}</li>
           </ul>
         </Section>
@@ -90,10 +95,15 @@ export default function SecurityPage() {
         <Section id="timeline" n="04" title="Response timeline">
           <ul className="list-disc pl-5 space-y-2">
             <li><strong className="text-foreground">First reply</strong> within 2 working days.</li>
-            <li><strong className="text-foreground">Triaged</strong> with severity and owner within 5 working days.</li>
-            <li><strong className="text-foreground">Patch released</strong> in 30 days for high/critical, 90 days for medium, best-effort for low.</li>
+            <li><strong className="text-foreground">Triaged</strong> with a severity within 5 working days.</li>
+            <li><strong className="text-foreground">Patch released</strong> in 30 days for high or critical, 90 days for medium, best-effort for low.</li>
             <li><strong className="text-foreground">Public advisory</strong> published in the journal and on GitHub Security Advisories.</li>
           </ul>
+          <p>
+            These are commitments from one person rather than a rota. If
+            something lands during a bad week you will get an honest holding
+            reply rather than silence.
+          </p>
         </Section>
 
         <Section id="harbor" n="05" title="Safe harbor">
@@ -125,28 +135,17 @@ export default function SecurityPage() {
           </p>
         </Section>
 
-        <Section id="pgp" n="07" title="PGP key">
+        <Section id="thanks" n="07" title="Credit">
           <p>
-            Sensitive reports may be encrypted with our key{" "}
-            <Mono>0xA9B3 4C71 8E2F D4A8</Mono>, available at{" "}
-            <a
-              href="https://wyrhta.dev/.well-known/pgp.txt"
-              className="underline underline-offset-2 hover:text-primary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              wyrhta.dev/.well-known/pgp.txt
-            </a>
-            . The same fingerprint is published on our keyserver and in
-            our handbook for cross-checking.
+            No one has had cause to report anything yet — there is very little
+            published to report against. When that changes, reporters get
+            credited by name or chosen handle in the advisory and the release
+            notes that close it, unless they would rather not be.
           </p>
-        </Section>
-
-        <Section id="thanks" n="08" title="Acknowledgments">
           <p>
-            {"We thank everyone who has helped keep our software safe. Recent contributors are credited in each project's "}
-            <Mono>SECURITY.md</Mono>
-            {" and in the release notes for the advisory they helped close."}
+            If you need to send something encrypted, say so in a first plain
+            email and a key will be exchanged then. Publishing a fingerprint
+            here that nobody has verified would be worse than not having one.
           </p>
         </Section>
       </PageBody>
